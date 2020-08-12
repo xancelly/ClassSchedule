@@ -1,0 +1,1742 @@
+﻿<Page x:Class="ClassSchedule.Pages.schedulePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:ClassSchedule.Pages"
+      mc:Ignorable="d"
+      d:DesignHeight="800"
+      d:DesignWidth="1200"
+      Title="Расписание">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="170" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Calendar x:Name="scheduleCalendar"
+                  MouseDoubleClick="scheduleCalendar_MouseDoubleClick"
+                  SelectedDatesChanged="scheduleCalendar_SelectedDatesChanged"/>
+
+        <ScrollViewer x:Name="thirdScrollView"
+                      Grid.Column="1"
+                      Grid.Row="0"
+                      HorizontalScrollBarVisibility="Hidden"
+                      VerticalScrollBarVisibility="Disabled">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="Понедельник"
+                           Width="500"
+                           Height="30"
+                           VerticalAlignment="Bottom"
+                           TextAlignment="Center" />
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="Вторник"
+                           Margin="5,0,0,0"
+                           Width="500"
+                           Height="30"
+                           VerticalAlignment="Bottom"
+                           TextAlignment="Center" />
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="Среда"
+                           Width="500"
+                           Height="30"
+                           Margin="5,0,0,0"
+                           VerticalAlignment="Bottom"
+                           TextAlignment="Center" />
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="Четверг"
+                           Width="500"
+                           Height="30"
+                           Margin="5,0,0,0"
+                           VerticalAlignment="Bottom"
+                           TextAlignment="Center" />
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="Пятница"
+                           Width="500"
+                           Margin="5,0,0,0"
+                           Height="30"
+                           VerticalAlignment="Bottom"
+                           TextAlignment="Center" />
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="Суббота"
+                           Margin="5,0,0,0"
+                           Width="500"
+                           Height="30"
+                           VerticalAlignment="Bottom"
+                           TextAlignment="Center" />
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="Воскресенье"
+                           Width="500"
+                           Margin="5,0,0,0"
+                           Height="30"
+                           VerticalAlignment="Bottom"
+                           TextAlignment="Center" />
+            </StackPanel>
+        </ScrollViewer>
+        
+        <ScrollViewer Grid.Row="1"
+                      x:Name="secondScrollView"
+                      Grid.Column="1"
+                      ScrollChanged="secondScrollView_ScrollChanged"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto">
+            <DockPanel HorizontalAlignment="Left"
+                       VerticalAlignment="Top">
+                <!--ПОНЕДЕЛЬНИК-->
+                <DockPanel x:Name="mondayDockPanel"
+                           Margin="0,0,5,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top">
+                    <DataGrid Width="500"
+                              
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="mondayNineDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Height="200"
+                              Margin="0,0,0,5"
+                              x:Name="mondayTenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Height="200"
+                              Margin="0,0,0,5"
+                              x:Name="mondayElevenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Height="200"
+                              Margin="0,0,0,5"
+                              x:Name="mondayTwelveDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Height="200"
+                              Margin="0,0,0,5"
+                              x:Name="mondayThirteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Height="200"
+                              Margin="0,0,0,5"
+                              x:Name="mondayFourteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Height="200"
+                              Margin="0,0,0,5"
+                              x:Name="mondayFifteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Height="200"
+                              Margin="0,0,0,5"
+                              x:Name="mondaySixteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="mondaySeventeenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="mondayEighteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="mondayNineteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="mondayNineteenHalfDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+
+                <!--ВТОРНИК-->
+                <DockPanel x:Name="tuesdayDockPanel"
+                           Margin="0,0,5,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top">
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="tuesdayNineDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="tuesdayTenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="tuesdayElevenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="tuesdayTwelveDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="tuesdayThirteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="tuesdayFourteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="tuesdayFifteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="tuesdaySixteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="tuesdaySeventeenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="tuesdayEighteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="tuesdayNineteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="tuesdayNineteenHalfDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+
+                <!--СРЕДА-->
+                <DockPanel x:Name="wednesdayDockPanel"
+                           Margin="0,0,5,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top">
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="wednesdayNineDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="wednesdayTenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="wednesdayElevenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="wednesdayTwelveDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="wednesdayThirteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="wednesdayFourteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="wednesdayFifteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="wednesdaySixteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="wednesdaySeventeenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="wednesdayEighteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="wednesdayNineteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="wednesdayNineteenHalfDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+                
+                <!--ЧЕТВЕРГ-->
+                <DockPanel x:Name="thursdayDockPanel"
+                           Margin="0,0,5,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top">
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="thursdayNineDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="thursdayTenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="thursdayElevenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="thursdayTwelveDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="thursdayThirteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="thursdayFourteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="thursdayFifteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="thursdaySixteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="thursdaySeventeenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="thursdayEighteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="thursdayNineteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="thursdayNineteenHalfDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+
+                <!--ПЯТНИЦА-->
+                <DockPanel x:Name="fridayDockPanel"
+                           Margin="0,0,5,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top">
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="fridayNineDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="fridayTenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="fridayElevenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="fridayTwelveDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="fridayThirteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="fridayFourteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="fridayFifteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="fridaySixteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="fridaySeventeenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="fridayEighteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="fridayNineteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="fridayNineteenHalfDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+
+                <!--СУББОТА-->
+                <DockPanel x:Name="saturdayDockPanel"
+                           Margin="0,0,5,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top">
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="saturdayNineDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="saturdayTenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="saturdayElevenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="saturdayTwelveDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="saturdayThirteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="saturdayFourteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="saturdayFifteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="saturdaySixteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="saturdaySeventeenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="saturdayEighteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="saturdayNineteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="saturdayNineteenHalfDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+
+                <!--ВОСКРЕСЕНЬЕ-->
+                <DockPanel x:Name="sundayDockPanel"
+                           Margin="0,0,5,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top">
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="sundayNineDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="sundayTenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="sundayElevenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="sundayTwelveDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="sundayThirteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="sundayFourteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="sundayFifteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="sundaySixteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="sundaySeventeenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="sundayEighteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="sundayNineteenDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Width="500"
+                              Margin="0,0,0,5"
+                              Height="200"
+                              x:Name="sundayNineteenHalfDataGrid"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              DockPanel.Dock="Top">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Преподаватель"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Обучающийся"
+                                                Width="166.6" />
+                            <DataGridTextColumn Header="Группа"
+                                                Width="166.6" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </DockPanel>
+        </ScrollViewer>
+
+        <ScrollViewer x:Name="firstScrollViewer"
+                      Grid.Column="0"
+                      Grid.Row="1"
+                      HorizontalAlignment="Right"
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      ScrollViewer.CanContentScroll="False"
+                      ScrollViewer.IsDeferredScrollingEnabled="False">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="9:00"
+                           Margin="0,0,0,5"
+                           Width="80"
+                           Height="200"
+                           VerticalAlignment="Top"
+                           TextAlignment="Right" />
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="10:00"
+                           Width="80"
+                           Margin="0,0,0,5"
+                           Height="200"
+                           VerticalAlignment="Top"
+                           TextAlignment="Right" />
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="11:00"
+                           Width="80"
+                           Height="200"
+                           VerticalAlignment="Top"
+                           TextAlignment="Right" />
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="12:00"
+                           Width="80"
+                           Margin="0,0,0,5"
+                           Height="200"
+                           VerticalAlignment="Top"
+                           TextAlignment="Right" />
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="13:00"
+                           Width="80"
+                           Margin="0,0,0,5"
+                           Height="200"
+                           VerticalAlignment="Top"
+                           TextAlignment="Right" />
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="14:00"
+                           Width="80"
+                           Margin="0,0,0,5"
+                           Height="200"
+                           VerticalAlignment="Top"
+                           TextAlignment="Right" />
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="15:00"
+                           Width="80"
+                           Margin="0,0,0,5"
+                           Height="200"
+                           VerticalAlignment="Top"
+                           TextAlignment="Right" />
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="16:00"
+                           Width="80"
+                           Margin="0,0,0,5"
+                           Height="200"
+                           VerticalAlignment="Top"
+                           TextAlignment="Right" />
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="17:00"
+                           Width="80"
+                           Margin="0,0,0,5"
+                           Height="200"
+                           VerticalAlignment="Top"
+                           TextAlignment="Right" />
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="18:00"
+                           Width="80"
+                           Margin="0,0,0,5"
+                           Height="200"
+                           VerticalAlignment="Top"
+                           TextAlignment="Right" />
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="19:00"
+                           Width="80"
+                           Margin="0,0,0,5"
+                           Height="200"
+                           VerticalAlignment="Top"
+                           TextAlignment="Right" />
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="19:30"
+                           Width="80"
+                           Margin="0,0,0,5"
+                           Height="200"
+                           VerticalAlignment="Top"
+                           TextAlignment="Right" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

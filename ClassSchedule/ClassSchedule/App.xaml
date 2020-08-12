@@ -4,6 +4,86 @@
              xmlns:local="clr-namespace:ClassSchedule"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="TextBlock" x:Key="mainText">
+            <Setter Property="FontFamily"
+                    Value="/ClassSchedule;component/Fonts/#Neucha"/>
+            <Setter Property="FontSize"
+                    Value="50" />
+            <Setter Property="Foreground"
+                    Value="Black" />
+            <Setter Property="FontWeight"
+                    Value="Bold" />
+        </Style>
+
+        <Style TargetType="TextBlock"
+               x:Key="otherText">
+            <Setter Property="FontFamily"
+                    Value="/ClassSchedule;component/Fonts/#Neucha" />
+            <Setter Property="FontSize"
+                    Value="25" />
+            <Setter Property="Foreground"
+                    Value="Black" />
+            <Setter Property="Width"
+                    Value="230" />
+            <Setter Property="Height"
+                    Value="30" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Width"
+                    Value="230" />
+            <Setter Property="Height"
+                    Value="30" />
+            <Setter Property="FontFamily"
+                    Value="/ClassSchedule;component/Fonts/#Neucha" />
+            <Setter Property="FontSize"
+                    Value="25" />
+            <Setter Property="FontWeight"
+                    Value="Bold" />
+            <Setter Property="Foreground"
+                    Value="White" />
+            <Setter Property="Background"
+                    Value="#215d9c" />
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily"
+                    Value="/ClassSchedule;component/Fonts/#Neucha" />
+            <Setter Property="FontSize"
+                    Value="25" />
+            <Setter Property="Width"
+                    Value="230" />
+            <Setter Property="Height"
+                    Value="30" />
+        </Style>
+
+        <Style TargetType="PasswordBox">
+            <Setter Property="FontFamily"
+                    Value="/ClassSchedule;component/Fonts/#Neucha"  />
+            <Setter Property="FontSize"
+                    Value="25" />
+            <Setter Property="Width"
+                    Value="230" />
+            <Setter Property="Height"
+                    Value="30" />
+        </Style>
+
+        <Style TargetType="DataGrid">
+            <Setter Property="FontFamily"
+                    Value="/ClassSchedule;component/Fonts/#Neucha" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="Background"
+                    Value="#87d1f4" />
+            <Setter Property="BorderBrush"
+                    Value="#87d1f4" />
+        </Style>
+
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background"
+                    Value="White" />
+            <Setter Property="BorderBrush"
+                    Value="#87d1f4" />
+        </Style>
     </Application.Resources>
 </Application>

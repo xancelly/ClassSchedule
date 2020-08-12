@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassSchedule.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,26 @@ namespace ClassSchedule
         public MainWindow()
         {
             InitializeComponent();
+            mainFrame.Navigate(new authorizationPage());
+        }
+
+        private void mainFrame_ContentRendered(object sender, EventArgs e)
+        {
+            if (mainFrame.CanGoBack)
+            {
+                backButton.Visibility = Visibility.Visible;
+            } else
+            {
+                backButton.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (mainFrame.CanGoBack)
+            {
+                mainFrame.GoBack();
+            }
         }
     }
 }

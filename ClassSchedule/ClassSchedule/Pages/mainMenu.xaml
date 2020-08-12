@@ -1,0 +1,30 @@
+﻿<Page x:Class="ClassSchedule.Pages.mainMenu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClassSchedule.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="Главное меню">
+
+    <Grid>
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <Button x:Name="scheduleButton"
+                    Margin="5" 
+                    Content="Расписание"
+                    Click="scheduleButton_Click" />
+            <Button x:Name="clientButton"
+                    Margin="5"
+                    Content="Клиенты" />
+            <Button x:Name="teacherButton"
+                    Margin="5"
+                    Content="Преподаватели" />
+            <Button x:Name="groupButton"
+                    Margin="5"
+                    Content="Учебные группы" />
+        </StackPanel>
+    </Grid>
+</Page>

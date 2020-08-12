@@ -1,0 +1,39 @@
+﻿<Page x:Class="ClassSchedule.Pages.authorizationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClassSchedule.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="Авторизация">
+
+    <Grid>
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal"
+                        Margin="5">
+                <TextBlock Text="Логин"
+                           Style="{StaticResource otherText}"
+                           Margin="5" />
+                <TextBox x:Name="loginTextBox"
+                         Margin="5"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="5">
+                <TextBlock Text="Пароль"
+                           Style="{StaticResource otherText}"
+                           Margin="5" />
+                <PasswordBox x:Name="passwordPasswordBox"
+                         Margin="5" />
+            </StackPanel>
+
+            <Button x:Name="enterButton" 
+                    Content="Войти"
+                    Margin="5"
+                    Click="enterButton_Click" />
+        </StackPanel>
+    </Grid>
+</Page>
