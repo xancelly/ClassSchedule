@@ -43,7 +43,12 @@
                                   Height="40"
                                   DisplayMemberPath="fullnameTeacher"
                                   Width="230" />
-
+                        <TextBlock Text="Группа"
+                                   Style="{StaticResource otherText}" />
+                        <ComboBox x:Name="groupComboBox"
+                                  Height="40"
+                                  DisplayMemberPath="Name"
+                                  Width="230" />
                     </StackPanel>
                     <StackPanel Orientation="Vertical"
                                 Margin="5">
@@ -65,11 +70,14 @@
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
             <Button x:Name="saveButton"
                     Style="{StaticResource normalButton}"
                     Content="Сохранить"
-                    Margin="5"/>
+                    Margin="5"
+                        Click="saveButton_Click" />
             <Button x:Name="cancelButton"
                     Style="{StaticResource normalButton}"
                     Content="Отмена"

@@ -7,7 +7,8 @@
       mc:Ignorable="d"
       d:DesignHeight="800"
       d:DesignWidth="1200"
-      Title="Расписание">
+      Title="Расписание"
+      Loaded="Page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -122,9 +123,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -139,9 +141,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -156,9 +159,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -173,9 +177,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -190,9 +195,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -207,9 +213,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -224,9 +231,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -241,9 +249,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -258,9 +267,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -275,9 +285,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -292,9 +303,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </DockPanel>
@@ -572,9 +584,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -589,9 +602,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -606,9 +620,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -623,9 +638,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -640,9 +656,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -657,9 +674,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -674,9 +692,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -691,9 +710,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -708,9 +728,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -725,9 +746,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -742,9 +764,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -759,9 +782,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </DockPanel>
@@ -1039,9 +1063,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1056,9 +1081,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1073,9 +1099,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1090,9 +1117,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1107,9 +1135,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1124,9 +1153,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1141,9 +1171,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1158,9 +1189,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1175,9 +1207,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1192,9 +1225,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1209,9 +1243,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1226,9 +1261,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </DockPanel>
@@ -1506,9 +1542,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1523,9 +1560,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1540,9 +1578,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1557,9 +1596,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1574,9 +1614,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1591,9 +1632,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1608,9 +1650,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1625,9 +1668,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1642,9 +1686,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1659,9 +1704,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1676,9 +1722,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1693,9 +1740,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </DockPanel>
@@ -1973,9 +2021,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -1990,9 +2039,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2007,9 +2057,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2024,9 +2075,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2041,9 +2093,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2058,9 +2111,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2075,9 +2129,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2092,9 +2147,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2109,9 +2165,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2126,9 +2183,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2143,9 +2201,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2160,9 +2219,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </DockPanel>
@@ -2440,9 +2500,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2457,9 +2518,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2474,9 +2536,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2491,9 +2554,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2508,9 +2572,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2525,9 +2590,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2542,9 +2608,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2559,9 +2626,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2576,9 +2644,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2593,9 +2662,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2610,9 +2680,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2627,9 +2698,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </DockPanel>
@@ -2907,9 +2979,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2924,9 +2997,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2941,9 +3015,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2958,9 +3033,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2975,9 +3051,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -2992,9 +3069,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -3009,9 +3087,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -3026,9 +3105,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -3043,9 +3123,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -3060,9 +3141,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -3077,9 +3159,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -3094,9 +3177,10 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Группа"
                                                 Width="*"
-                                                Binding="{Binding Teacher.FirstName}" />
+                                                Binding="{Binding Groups.Name}" />
                             <DataGridTextColumn Header="Преподаватель"
-                                                Width="*" />
+                                                Width="*"
+                                                Binding="{Binding Teacher.FirstName}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </DockPanel>

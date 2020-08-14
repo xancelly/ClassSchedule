@@ -34,5 +34,29 @@ namespace ClassSchedule.Properties {
                 this["timeStart"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string dateStart {
+            get {
+                return ((string)(this["dateStart"]));
+            }
+            set {
+                this["dateStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string dayStart {
+            get {
+                return ((string)(this["dayStart"]));
+            }
+            set {
+                this["dayStart"] = value;
+            }
+        }
     }
 }

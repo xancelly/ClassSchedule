@@ -27,11 +27,13 @@ namespace ClassSchedule.Pages
         {
             InitializeComponent();
             teacherComboBox.ItemsSource = AppData.Context.Teacher.Where(c => c.FavoriteTime == Properties.Settings.Default.timeStart).ToList();
+            groupComboBox.ItemsSource = AppData.Context.Groups.ToList();
             freeClientsListView.ItemsSource = AppData.Context.Client.Where(c => c.FavoriteTime == Properties.Settings.Default.timeStart).ToList();
             CurrentLesson = lesson;
 
             if (CurrentLesson != null)
             {
+                groupComboBox.SelectedItem = CurrentLesson.Groups as Groups;
                 teacherComboBox.SelectedItem = CurrentLesson.Teacher as Teacher;
                 var lessonClient = AppData.Context.ClientLesson.Where(c => c.IdLesson == CurrentLesson.Id).ToList().Select(c => c.Client).ToList();
                 if (lessonClient == null)
@@ -45,7 +47,6 @@ namespace ClassSchedule.Pages
                         Clients.Add(AppData.Context.Client.Where(c => c.Id == item.Id).FirstOrDefault());
                     }
                     lessonClientsListView.ItemsSource = Clients;
-                    freeClientsListView.ItemsSource = AppData.Context.ClientLesson.Where(c => c.IdLesson == CurrentLesson.Id && c.Client ).ToList().Select(c => c.Client).ToList();
                 }
             }
         }
@@ -77,6 +78,67 @@ namespace ClassSchedule.Pages
                 Clients.RemoveAt(Index);
                 lessonClientsListView.ItemsSource = null;
                 lessonClientsListView.ItemsSource = Clients;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Произошла ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void saveButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (CurrentLesson == null)
+                {
+                    CurrentLesson = new Lesson()
+                    {
+                        Teacher = teacherComboBox.SelectedItem as Teacher,
+                        Time = Properties.Settings.Default.timeStart,
+                        Date = Convert.ToDateTime(Properties.Settings.Default.dateStart),
+                        Day = Properties.Settings.Default.dayStart,
+                        Groups = groupComboBox.SelectedItem as Groups,
+                    };
+
+                    foreach (var item in Clients)
+                    {
+                        CurrentLesson.ClientLesson.Add(
+                            new ClientLesson
+                            {
+                                Client = item
+                            });
+                    }
+                    AppData.Context.Lesson.Add(CurrentLesson);
+                    AppData.Context.SaveChanges();
+                    MessageBox.Show("Запись добавлена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+                    NavigationService.GoBack();
+                }
+                else
+                {
+                    CurrentLesson.Teacher = teacherComboBox.SelectedItem as Teacher;
+                    CurrentLesson.Groups = groupComboBox.SelectedItem as Groups;
+                    if (Clients.Count() > 0)
+                    {
+                        AppData.Context.ClientLesson.RemoveRange(AppData.Context.ClientLesson.ToList().Where(p => p.IdLesson == CurrentLesson.Id));
+                        foreach (var item in Clients)
+                        {
+                            CurrentLesson.ClientLesson.Add(
+                                new ClientLesson
+                                {
+                                    Client = item
+                                }
+                            );
+                        }
+                        AppData.Context.SaveChanges();
+                        MessageBox.Show("Запись изменена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+                        NavigationService.GoBack();
+                    }
+                    else
+                    {
+                        MessageBox.Show("На занятии должен присутствовать минимум 1 человек!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+
+                }
             }
             catch (Exception ex)
             {
