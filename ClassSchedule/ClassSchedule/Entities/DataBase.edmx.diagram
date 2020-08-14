@@ -5,23 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="43a85a0dbbb8450d9cd9b327f7297a58" Name="Diagram1">
-        <EntityTypeShape EntityType="ClassScheduleModel.Calendar" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassScheduleModel.Client" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassScheduleModel.ClientLesson" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassScheduleModel.Group" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassScheduleModel.Lesson" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassScheduleModel.Schedule" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassScheduleModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassScheduleModel.Teacher" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassScheduleModel.TeacherLesson" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassScheduleModel.User" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
-        <AssociationConnector Association="ClassScheduleModel.FK_Client_User" ManuallyRouted="false" />
-        <AssociationConnector Association="ClassScheduleModel.FK_ClientLesson_Client" ManuallyRouted="false" />
-        <AssociationConnector Association="ClassScheduleModel.FK_ClientLesson_Lesson" ManuallyRouted="false" />
-        <AssociationConnector Association="ClassScheduleModel.FK_Lesson_Group" ManuallyRouted="false" />
-        <AssociationConnector Association="ClassScheduleModel.FK_TeacherLesson_Lesson" ManuallyRouted="false" />
-        <AssociationConnector Association="ClassScheduleModel.FK_Teacher_User" ManuallyRouted="false" />
-        <AssociationConnector Association="ClassScheduleModel.FK_TeacherLesson_Teacher" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ClassScheduleModel.Calendar" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ClassScheduleModel.Client" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="ClassScheduleModel.ClientLesson" Width="1.5" PointX="5.25" PointY="1.375" />
+        <EntityTypeShape EntityType="ClassScheduleModel.Groups" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="ClassScheduleModel.Lesson" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="ClassScheduleModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClassScheduleModel.Teacher" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="ClassScheduleModel.User" Width="1.5" PointX="7.75" PointY="3.75" />
+        <AssociationConnector Association="ClassScheduleModel.FK_ClientLesson_Client" />
+        <AssociationConnector Association="ClassScheduleModel.FK_ClientLesson_Lesson" />
+        <AssociationConnector Association="ClassScheduleModel.FK_Lesson_Group" />
+        <AssociationConnector Association="ClassScheduleModel.FK_Lesson_Teacher" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

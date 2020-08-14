@@ -28,6 +28,11 @@ namespace ClassSchedule.Pages
         private void scheduleButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new schedulePage());
+            
+        }
+
+        private void groupButton_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

@@ -17,7 +17,7 @@ namespace ClassSchedule.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Teacher()
         {
-            this.TeacherLesson = new HashSet<TeacherLesson>();
+            this.Lesson = new HashSet<Lesson>();
         }
     
         public int Id { get; set; }
@@ -27,10 +27,9 @@ namespace ClassSchedule.Entities
         public string PhoneNumber { get; set; }
         public string Zoom { get; set; }
         public string Skype { get; set; }
-        public Nullable<int> IdUser { get; set; }
+        public string FavoriteTime { get; set; }
     
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TeacherLesson> TeacherLesson { get; set; }
+        public virtual ICollection<Lesson> Lesson { get; set; }
     }
 }

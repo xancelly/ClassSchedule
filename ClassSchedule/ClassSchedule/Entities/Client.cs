@@ -27,9 +27,8 @@ namespace ClassSchedule.Entities
         public string PhoneNumber { get; set; }
         public string Zoom { get; set; }
         public string Skype { get; set; }
-        public Nullable<int> IdUser { get; set; }
+        public string FavoriteTime { get; set; }
     
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientLesson> ClientLesson { get; set; }
     }

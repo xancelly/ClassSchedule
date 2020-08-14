@@ -32,6 +32,7 @@
 
             <Button x:Name="enterButton" 
                     Content="Войти"
+                    Style="{StaticResource normalButton}"
                     Margin="5"
                     Click="enterButton_Click" />
         </StackPanel>

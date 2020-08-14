@@ -66,6 +66,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfMessageBox, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfMessageBox.1.2.0\lib\net40-client\WpfMessageBox.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -105,22 +108,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataBase.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Group.cs">
+    <Compile Include="Entities\getFullnameClient.cs" />
+    <Compile Include="Entities\getFullnameTeacher.cs" />
+    <Compile Include="Entities\Groups.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Lesson.cs">
-      <DependentUpon>DataBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Schedule.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\sysdiagrams.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Teacher.cs">
-      <DependentUpon>DataBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\TeacherLesson.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\User.cs">
@@ -131,6 +130,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\authorizationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\editSchedulePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -150,6 +153,9 @@
   <ItemGroup>
     <Compile Include="Pages\authorizationPage.xaml.cs">
       <DependentUpon>authorizationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\editSchedulePage.xaml.cs">
+      <DependentUpon>editSchedulePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\groupPage.xaml.cs">
       <DependentUpon>groupPage.xaml</DependentUpon>

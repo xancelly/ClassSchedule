@@ -18,19 +18,18 @@ namespace ClassSchedule.Entities
         public Lesson()
         {
             this.ClientLesson = new HashSet<ClientLesson>();
-            this.TeacherLesson = new HashSet<TeacherLesson>();
         }
     
         public int Id { get; set; }
-        public Nullable<int> IdGroup { get; set; }
-        public Nullable<int> MaxPeople { get; set; }
-        public Nullable<int> Time { get; set; }
+        public Nullable<int> IdTeacher { get; set; }
+        public Nullable<int> IdGroups { get; set; }
+        public string Time { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
+        public string Day { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientLesson> ClientLesson { get; set; }
-        public virtual Group Group { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TeacherLesson> TeacherLesson { get; set; }
+        public virtual Groups Groups { get; set; }
+        public virtual Teacher Teacher { get; set; }
     }
 }

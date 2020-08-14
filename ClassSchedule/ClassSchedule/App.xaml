@@ -14,6 +14,7 @@
             <Setter Property="FontWeight"
                     Value="Bold" />
         </Style>
+        
 
         <Style TargetType="TextBlock"
                x:Key="otherText">
@@ -28,8 +29,16 @@
             <Setter Property="Height"
                     Value="30" />
         </Style>
-
-        <Style TargetType="Button">
+        
+        <Style TargetType="GroupBox">
+            <Setter Property="FontSize"
+                    Value="25" />
+            <Setter Property="FontFamily"
+                    Value="/ClassSchedule;component/Fonts/#Neucha" />
+        </Style>
+        
+        <Style TargetType="Button"
+               x:Key="normalButton">
             <Setter Property="Width"
                     Value="230" />
             <Setter Property="Height"
@@ -46,7 +55,35 @@
                     Value="#215d9c" />
         </Style>
 
+        <Style TargetType="Button">
+            <Setter Property="Width"
+                    Value="100" />
+            <Setter Property="Height"
+                    Value="24" />
+            <Setter Property="FontFamily"
+                    Value="/ClassSchedule;component/Fonts/#Neucha" />
+            <Setter Property="FontSize"
+                    Value="18" />
+            <Setter Property="FontWeight"
+                    Value="Bold" />
+            <Setter Property="Foreground"
+                    Value="White" />
+            <Setter Property="Background"
+                    Value="#215d9c" />
+        </Style>
+
         <Style TargetType="TextBox">
+            <Setter Property="FontFamily"
+                    Value="/ClassSchedule;component/Fonts/#Neucha" />
+            <Setter Property="FontSize"
+                    Value="25" />
+            <Setter Property="Width"
+                    Value="230" />
+            <Setter Property="Height"
+                    Value="30" />
+        </Style>
+
+        <Style TargetType="ComboBox">
             <Setter Property="FontFamily"
                     Value="/ClassSchedule;component/Fonts/#Neucha" />
             <Setter Property="FontSize"
