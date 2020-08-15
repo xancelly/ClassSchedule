@@ -24,6 +24,7 @@
             <TextBlock Text="Поиск"
                        Style="{StaticResource otherText}" />
             <TextBox x:Name="searchTextBox"
+                     Style="{StaticResource normalTextBox}"
                      SelectionChanged="searchTextBox_SelectionChanged"/>
         </StackPanel>
 

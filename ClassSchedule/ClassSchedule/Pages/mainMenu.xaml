@@ -25,7 +25,8 @@
             <Button x:Name="teacherButton"
                     Margin="5"
                     Style="{StaticResource normalButton}"
-                    Content="Преподаватели" />
+                    Content="Преподаватели"
+                    Click="teacherButton_Click" />
             <Button x:Name="groupButton"
                     Margin="5"
                     Style="{StaticResource normalButton}"

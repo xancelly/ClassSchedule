@@ -73,7 +73,8 @@
                     Value="#215d9c" />
         </Style>
 
-        <Style TargetType="TextBox">
+        <Style TargetType="TextBox"
+               x:Key="normalTextBox">
             <Setter Property="FontFamily"
                     Value="/ClassSchedule;component/Fonts/#Neucha" />
             <Setter Property="FontSize"
@@ -82,6 +83,13 @@
                     Value="230" />
             <Setter Property="Height"
                     Value="30" />
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily"
+                    Value="/ClassSchedule;component/Fonts/#Neucha" />
+            <Setter Property="FontSize"
+                    Value="18" />
         </Style>
 
         <Style TargetType="ComboBox">
@@ -148,7 +156,7 @@
 
         <Style TargetType="DatePickerTextBox">
             <Setter Property="FontSize"
-                    Value="18" />
+                    Value="20" />
         </Style>
     </Application.Resources>
 </Application>

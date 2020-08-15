@@ -957,7 +957,7 @@ namespace ClassSchedule.Pages
             MessageBoxResult resultTime = WpfMessageBox.Show(ref timeMsg);
 
             Properties.Settings.Default.timeStart = timeMsg.TextBoxText;
-            Properties.Settings.Default.dateStart = scheduleCalendar.SelectedDate.ToString();
+            Properties.Settings.Default.dateStart = scheduleCalendar.SelectedDate.Value.ToShortDateString();
 
             if (resultTime == MessageBoxResult.OK)
             {
@@ -967,10 +967,13 @@ namespace ClassSchedule.Pages
                         NavigationService.Navigate(new editSchedulePage(null));
                     } else
                     {
-                        Lesson CurrentLesson = AppData.Context.Lesson.Where(c => c.Date == scheduleCalendar.SelectedDate && c.Time == timeMsg.TextBoxText).FirstOrDefault();
-                        if (CurrentLesson != null)
+                        if (MessageBox.Show("В данное время уже сушествет занятие,\nхотите его редактировать?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                         {
-                            NavigationService.Navigate(new editSchedulePage(CurrentLesson));
+                            Lesson CurrentLesson = AppData.Context.Lesson.Where(c => c.Date == scheduleCalendar.SelectedDate && c.Time == timeMsg.TextBoxText).FirstOrDefault();
+                            if (CurrentLesson != null)
+                            {
+                                NavigationService.Navigate(new editSchedulePage(CurrentLesson));
+                            }
                         }
                     }
                 }

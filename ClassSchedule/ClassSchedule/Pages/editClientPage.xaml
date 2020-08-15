@@ -19,6 +19,7 @@
                            Text="Фамилия"
                            Margin="5" />
                 <TextBox x:Name="lastNameTextBox"
+                         Style="{StaticResource normalTextBox}"
                          Margin="5" />
             </StackPanel>
 
@@ -28,6 +29,7 @@
                            Text="Имя"
                            Margin="5" />
                 <TextBox x:Name="firstNameTextBox"
+                         Style="{StaticResource normalTextBox}"
                          Margin="5" />
             </StackPanel>
 
@@ -37,6 +39,7 @@
                            Text="Отчетсво*"
                            Margin="5" />
                 <TextBox x:Name="middleNameTextBox"
+                         Style="{StaticResource normalTextBox}"
                          Margin="5" />
             </StackPanel>
 
@@ -101,6 +104,7 @@
                            Text="Zoom"
                            Margin="5" />
                 <TextBox x:Name="zoomTextBox"
+                         Style="{StaticResource normalTextBox}"
                          Margin="5"
                          TextWrapping="Wrap"
                          Height="Auto" />
@@ -114,6 +118,7 @@
                 <TextBox x:Name="skypeTextBox"
                          Margin="5"
                          TextWrapping="Wrap"
+                         Style="{StaticResource normalTextBox}"
                          Height="Auto" />
             </StackPanel>
             <StackPanel Orientation="Horizontal"

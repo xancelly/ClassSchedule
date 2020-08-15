@@ -17,7 +17,8 @@
                 <TextBlock Style="{StaticResource otherText}"
                            Text="Наименование группы"
                            Margin="5"/>
-                <TextBox x:Name="nameGroupTextBox" 
+                <TextBox x:Name="nameGroupTextBox"
+                         Style="{StaticResource normalTextBox}"
                          Margin="5"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"

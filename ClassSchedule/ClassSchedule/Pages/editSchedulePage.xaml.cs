@@ -33,7 +33,7 @@ namespace ClassSchedule.Pages
 
             if (CurrentLesson != null)
             {
-                this.Title = "Редактирование занятия";
+                this.Title = $"Редактирование занятия \n на {Properties.Settings.Default.dateStart} в {Properties.Settings.Default.timeStart}";
                 groupComboBox.SelectedItem = CurrentLesson.Groups as Groups;
                 teacherComboBox.SelectedItem = CurrentLesson.Teacher as Teacher;
                 var lessonClient = AppData.Context.ClientLesson.Where(c => c.IdLesson == CurrentLesson.Id).ToList().Select(c => c.Client).ToList();
@@ -49,6 +49,9 @@ namespace ClassSchedule.Pages
                     }
                     lessonClientsListView.ItemsSource = Clients;
                 }
+            } else
+            {
+                this.Title = $"Добавление занятия на {Properties.Settings.Default.dateStart} \n в {Properties.Settings.Default.timeStart}";
             }
         }
 

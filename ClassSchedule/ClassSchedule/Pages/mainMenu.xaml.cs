@@ -40,5 +40,10 @@ namespace ClassSchedule.Pages
         {
             NavigationService.Navigate(new clientPage());
         }
+
+        private void teacherButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new teacherPage());
+        }
     }
 }

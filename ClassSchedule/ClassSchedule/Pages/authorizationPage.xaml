@@ -18,6 +18,7 @@
                            Style="{StaticResource otherText}"
                            Margin="5" />
                 <TextBox x:Name="loginTextBox"
+                         Style="{StaticResource normalTextBox}"
                          Margin="5"/>
             </StackPanel>
 
