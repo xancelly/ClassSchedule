@@ -24,10 +24,12 @@ namespace ClassSchedule.Entities
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
+        public Nullable<System.DateTime> DateOfBirth { get; set; }
         public string PhoneNumber { get; set; }
         public string Zoom { get; set; }
         public string Skype { get; set; }
         public string FavoriteTime { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientLesson> ClientLesson { get; set; }

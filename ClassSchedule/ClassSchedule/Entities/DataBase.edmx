@@ -20,10 +20,12 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
-          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="17" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="18" />
           <Property Name="Zoom" Type="nvarchar(max)" />
           <Property Name="Skype" Type="nvarchar(max)" />
           <Property Name="FavoriteTime" Type="nvarchar" MaxLength="5" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="ClientLesson">
           <Key>
@@ -39,6 +41,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="Lesson">
           <Key>
@@ -69,10 +72,12 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
-          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="17" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="18" />
           <Property Name="Zoom" Type="nvarchar(max)" />
           <Property Name="Skype" Type="nvarchar(max)" />
           <Property Name="FavoriteTime" Type="nvarchar" MaxLength="5" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -201,10 +206,12 @@
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
           <Property Name="Zoom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Skype" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FavoriteTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="ClientLesson" Relationship="ClassScheduleModel.FK_ClientLesson_Client" FromRole="Client" ToRole="ClientLesson" />
         </EntityType>
         <EntityType Name="ClientLesson">
@@ -223,6 +230,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="Lesson" Relationship="ClassScheduleModel.FK_Lesson_Group" FromRole="Groups" ToRole="Lesson" />
         </EntityType>
         <EntityType Name="Lesson">
@@ -257,10 +265,12 @@
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
           <Property Name="Zoom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Skype" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FavoriteTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="Lesson" Relationship="ClassScheduleModel.FK_Lesson_Teacher" FromRole="Teacher" ToRole="Lesson" />
         </EntityType>
         <EntityType Name="User">
@@ -336,10 +346,12 @@
           <EntitySetMapping Name="Client">
             <EntityTypeMapping TypeName="ClassScheduleModel.Client">
               <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="FavoriteTime" ColumnName="FavoriteTime" />
                 <ScalarProperty Name="Skype" ColumnName="Skype" />
                 <ScalarProperty Name="Zoom" ColumnName="Zoom" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -359,6 +371,7 @@
           <EntitySetMapping Name="Groups">
             <EntityTypeMapping TypeName="ClassScheduleModel.Groups">
               <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -390,10 +403,12 @@
           <EntitySetMapping Name="Teacher">
             <EntityTypeMapping TypeName="ClassScheduleModel.Teacher">
               <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="FavoriteTime" ColumnName="FavoriteTime" />
                 <ScalarProperty Name="Skype" ColumnName="Skype" />
                 <ScalarProperty Name="Zoom" ColumnName="Zoom" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />

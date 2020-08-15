@@ -20,7 +20,8 @@
             <Button x:Name="clientButton"
                     Margin="5"
                     Style="{StaticResource normalButton}"
-                    Content="Клиенты" />
+                    Content="Обучающиеся"
+                    Click="clientButton_Click" />
             <Button x:Name="teacherButton"
                     Margin="5"
                     Style="{StaticResource normalButton}"

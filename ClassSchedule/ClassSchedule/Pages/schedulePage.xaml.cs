@@ -260,7 +260,13 @@ namespace ClassSchedule.Pages
                 endDate = selectedDate;
                 Properties.Settings.Default.dayStart = "Sunday";
             }
-
+            oneDate.Text = $"Понедельник {startDate.ToShortDateString()}";
+            twoDate.Text = $"Вторник {startDate.AddDays(1).ToShortDateString()}";
+            threeDate.Text = $"Среда {startDate.AddDays(2).ToShortDateString()}";
+            fourDate.Text = $"Четверг {startDate.AddDays(3).ToShortDateString()}";
+            fiveDate.Text = $"Пятница {startDate.AddDays(4).ToShortDateString()}";
+            sixDate.Text = $"Суббота {startDate.AddDays(5).ToShortDateString()}";
+            sevenDate.Text = $"Воскресенье {startDate.AddDays(6).ToShortDateString()}";
             //понедельник 9:00
             var mondayNine = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:00") && c.Day == "Monday");
             var mondayNineClients = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:00") && c.Lesson.Day == "Monday");
@@ -1023,6 +1029,13 @@ namespace ClassSchedule.Pages
                 startDate = selectedDate.AddDays(-6);
                 endDate = selectedDate;
             }
+            oneDate.Text = $"Понедельник {startDate.ToShortDateString()}";
+            twoDate.Text = $"Вторник {startDate.AddDays(1).ToShortDateString()}";
+            threeDate.Text = $"Среда {startDate.AddDays(2).ToShortDateString()}";
+            fourDate.Text = $"Четверг {startDate.AddDays(3).ToShortDateString()}";
+            fiveDate.Text = $"Пятница {startDate.AddDays(4).ToShortDateString()}";
+            sixDate.Text = $"Суббота {startDate.AddDays(5).ToShortDateString()}";
+            sevenDate.Text = $"Воскресенье {startDate.AddDays(6).ToShortDateString()}";
             //понедельник 9:00
             var mondayNine = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:00") && c.Day == "Monday");
             var mondayNineClients = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:00") && c.Lesson.Day == "Monday");

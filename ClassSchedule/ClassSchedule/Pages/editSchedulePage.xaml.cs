@@ -26,13 +26,14 @@ namespace ClassSchedule.Pages
         public editSchedulePage(Lesson lesson)
         {
             InitializeComponent();
-            teacherComboBox.ItemsSource = AppData.Context.Teacher.Where(c => c.FavoriteTime == Properties.Settings.Default.timeStart).ToList();
-            groupComboBox.ItemsSource = AppData.Context.Groups.ToList();
-            freeClientsListView.ItemsSource = AppData.Context.Client.Where(c => c.FavoriteTime == Properties.Settings.Default.timeStart).ToList();
+            teacherComboBox.ItemsSource = AppData.Context.Teacher.Where(c => c.FavoriteTime == Properties.Settings.Default.timeStart && c.IsDeleted == false).ToList();
+            groupComboBox.ItemsSource = AppData.Context.Groups.Where(c => c.IsDeleted == false).ToList();
+            freeClientsListView.ItemsSource = AppData.Context.Client.Where(c => c.FavoriteTime == Properties.Settings.Default.timeStart && c.IsDeleted == false).ToList();
             CurrentLesson = lesson;
 
             if (CurrentLesson != null)
             {
+                this.Title = "Редактирование занятия";
                 groupComboBox.SelectedItem = CurrentLesson.Groups as Groups;
                 teacherComboBox.SelectedItem = CurrentLesson.Teacher as Teacher;
                 var lessonClient = AppData.Context.ClientLesson.Where(c => c.IdLesson == CurrentLesson.Id).ToList().Select(c => c.Client).ToList();
@@ -91,51 +92,77 @@ namespace ClassSchedule.Pages
             {
                 if (CurrentLesson == null)
                 {
-                    CurrentLesson = new Lesson()
+                    if (teacherComboBox.SelectedItem != null)
                     {
-                        Teacher = teacherComboBox.SelectedItem as Teacher,
-                        Time = Properties.Settings.Default.timeStart,
-                        Date = Convert.ToDateTime(Properties.Settings.Default.dateStart),
-                        Day = Properties.Settings.Default.dayStart,
-                        Groups = groupComboBox.SelectedItem as Groups,
-                    };
-
-                    foreach (var item in Clients)
-                    {
-                        CurrentLesson.ClientLesson.Add(
-                            new ClientLesson
+                        if (groupComboBox.SelectedItem != null)
+                        {
+                            CurrentLesson = new Lesson()
                             {
-                                Client = item
-                            });
+                                Teacher = teacherComboBox.SelectedItem as Teacher,
+                                Time = Properties.Settings.Default.timeStart,
+                                Date = Convert.ToDateTime(Properties.Settings.Default.dateStart),
+                                Day = Properties.Settings.Default.dayStart,
+                                Groups = groupComboBox.SelectedItem as Groups,
+                            };
+
+                            foreach (var item in Clients)
+                            {
+                                CurrentLesson.ClientLesson.Add(
+                                    new ClientLesson
+                                    {
+                                        Client = item
+                                    });
+                            }
+                            AppData.Context.Lesson.Add(CurrentLesson);
+                            AppData.Context.SaveChanges();
+                            MessageBox.Show("Запись добавлена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+                            NavigationService.GoBack();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Поле с группой обязательно должно быть заполнено!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    } else
+                    {
+                        MessageBox.Show("Поле с преподавателем обязательно должно быть заполнено!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                    AppData.Context.Lesson.Add(CurrentLesson);
-                    AppData.Context.SaveChanges();
-                    MessageBox.Show("Запись добавлена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
-                    NavigationService.GoBack();
                 }
                 else
                 {
-                    CurrentLesson.Teacher = teacherComboBox.SelectedItem as Teacher;
-                    CurrentLesson.Groups = groupComboBox.SelectedItem as Groups;
-                    if (Clients.Count() > 0)
+                    if (teacherComboBox.SelectedItem != null)
                     {
-                        AppData.Context.ClientLesson.RemoveRange(AppData.Context.ClientLesson.ToList().Where(p => p.IdLesson == CurrentLesson.Id));
-                        foreach (var item in Clients)
+                        if (groupComboBox.SelectedItem != null)
                         {
-                            CurrentLesson.ClientLesson.Add(
-                                new ClientLesson
+                            CurrentLesson.Teacher = teacherComboBox.SelectedItem as Teacher;
+                            CurrentLesson.Groups = groupComboBox.SelectedItem as Groups;
+                            if (Clients.Count() > 0)
+                            {
+                                AppData.Context.ClientLesson.RemoveRange(AppData.Context.ClientLesson.ToList().Where(p => p.IdLesson == CurrentLesson.Id));
+                                foreach (var item in Clients)
                                 {
-                                    Client = item
+                                    CurrentLesson.ClientLesson.Add(
+                                        new ClientLesson
+                                        {
+                                            Client = item
+                                        }
+                                    );
                                 }
-                            );
+                                AppData.Context.SaveChanges();
+                                MessageBox.Show("Запись изменена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+                                NavigationService.GoBack();
+                            }
+                            else
+                            {
+                                MessageBox.Show("На занятии должен присутствовать минимум 1 человек!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            }
                         }
-                        AppData.Context.SaveChanges();
-                        MessageBox.Show("Запись изменена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
-                        NavigationService.GoBack();
-                    }
-                    else
+                        else
+                        {
+                            MessageBox.Show("Поле с группой обязательно должно быть заполнено!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    } else
                     {
-                        MessageBox.Show("На занятии должен присутствовать минимум 1 человек!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        MessageBox.Show("Поле с преподавателем обязательно должно быть заполнено!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
                 }
@@ -144,6 +171,42 @@ namespace ClassSchedule.Pages
             {
                 MessageBox.Show(ex.Message, "Произошла ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void showAllClients_Checked(object sender, RoutedEventArgs e)
+        {
+            if (showAllClients.IsChecked == true)
+            {
+                freeClientsListView.ItemsSource = null;
+                freeClientsListView.Items.Clear();
+                freeClientsListView.ItemsSource = AppData.Context.Client.Where(c => c.IsDeleted == false).ToList();
+            } else
+            {
+                freeClientsListView.ItemsSource = null;
+                freeClientsListView.Items.Clear();
+                freeClientsListView.ItemsSource = AppData.Context.Client.Where(c => c.FavoriteTime == Properties.Settings.Default.timeStart && c.IsDeleted == false).ToList();
+            }
+        }
+
+        private void showAllTeachers_Checked(object sender, RoutedEventArgs e)
+        {
+            if (showAllTeachers.IsChecked == true)
+            {
+                teacherComboBox.ItemsSource = null;
+                teacherComboBox.Items.Clear();
+                teacherComboBox.ItemsSource = AppData.Context.Teacher.Where(c => c.IsDeleted == false).ToList();
+            }
+            else
+            {
+                teacherComboBox.ItemsSource = null;
+                teacherComboBox.Items.Clear();
+                teacherComboBox.ItemsSource = AppData.Context.Teacher.Where(c => c.FavoriteTime == Properties.Settings.Default.timeStart && c.IsDeleted == false).ToList();
+            }
+        }
+
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

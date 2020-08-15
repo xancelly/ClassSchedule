@@ -1,0 +1,38 @@
+﻿<Page x:Class="ClassSchedule.Pages.editGroupPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClassSchedule.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="Добавление учебной группы">
+
+    <Grid>
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal"
+                        Margin="5">
+                <TextBlock Style="{StaticResource otherText}"
+                           Text="Наименование группы"
+                           Margin="5"/>
+                <TextBox x:Name="nameGroupTextBox" 
+                         Margin="5"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="5">
+                <Button x:Name="saveButton"
+                        Content="Сохранить"
+                        Margin="5"
+                        Style="{StaticResource normalButton}"
+                        Click="saveButton_Click" />
+                <Button x:Name="cancelButton"
+                        Content="Отмена"
+                        Margin="5"
+                        Style="{StaticResource normalButton}"
+                        Click="cancelButton_Click" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

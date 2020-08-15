@@ -33,6 +33,12 @@ namespace ClassSchedule.Pages
 
         private void groupButton_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new groupPage());
+        }
+
+        private void clientButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new clientPage());
         }
     }
 }

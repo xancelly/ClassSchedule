@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ClassSchedule.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1200"
-      Title="Добавление урока">
+      Title="Добавление занятия">
 
     <Grid>
         <StackPanel Orientation="Vertical"
@@ -14,6 +14,7 @@
                     VerticalAlignment="Center">
             <GroupBox Header="Свободные обучающиеся">
             <StackPanel Orientation="Horizontal">
+
                     <StackPanel Orientation="Vertical"
                             Margin="5">
                     <TextBlock Text="Список обучающихся"
@@ -30,19 +31,35 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                    </StackPanel>
+                        <CheckBox Content="Показать всех обучающихся"
+                                  Checked="showAllClients_Checked"
+                                  Unchecked="showAllClients_Checked"
+                                  x:Name="showAllClients"/>
+                        </StackPanel>
             </StackPanel>
             </GroupBox>
             <GroupBox Header="Занятие">
             <StackPanel Orientation="Horizontal">
+                
                     <StackPanel Orientation="Vertical"
                                 Margin="5">
+                        
                         <TextBlock Text="Преподаватель"
                                    Style="{StaticResource otherText}" />
                         <ComboBox x:Name="teacherComboBox"
                                   Height="40"
                                   DisplayMemberPath="fullnameTeacher"
                                   Width="230" />
+                        <CheckBox x:Name="showAllTeachers"
+                                  Unchecked="showAllTeachers_Checked"
+                                  Checked="showAllTeachers_Checked">
+                            <TextBlock Margin="5"
+                                       Height="Auto">
+                                Показать всех
+                                <LineBreak />
+                                преподавателей
+                            </TextBlock>
+                        </CheckBox>
                         <TextBlock Text="Группа"
                                    Style="{StaticResource otherText}" />
                         <ComboBox x:Name="groupComboBox"
@@ -67,6 +84,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
@@ -81,7 +99,8 @@
             <Button x:Name="cancelButton"
                     Style="{StaticResource normalButton}"
                     Content="Отмена"
-                    Margin="5"/>
+                    Margin="5"
+                        Click="cancelButton_Click" />
             </StackPanel>
         </StackPanel>
     </Grid>
