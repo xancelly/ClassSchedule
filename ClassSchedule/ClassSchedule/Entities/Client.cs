@@ -29,6 +29,7 @@ namespace ClassSchedule.Entities
         public string Zoom { get; set; }
         public string Skype { get; set; }
         public string FavoriteTime { get; set; }
+        public Nullable<decimal> Balance { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

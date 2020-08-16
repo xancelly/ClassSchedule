@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassSchedule.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,6 +45,18 @@ namespace ClassSchedule.Pages
         private void teacherButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new teacherPage());
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Client client = null;
+            DateTime todayDate = DateTime.Today;
+            foreach (var item in AppData.Context.ClientLesson.Where(c => c.Lesson.Date < todayDate))
+            {
+                client = AppData.Context.Client.Where(c => c.Id == item.Client.Id).FirstOrDefault();
+                client.Balance -= Convert.ToDecimal("1200");
+            }
+            AppData.Context.SaveChanges();
         }
     }
 }

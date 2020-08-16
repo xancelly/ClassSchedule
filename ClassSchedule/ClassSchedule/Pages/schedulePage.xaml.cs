@@ -223,6 +223,7 @@ namespace ClassSchedule.Pages
                 startDate = selectedDate;
                 endDate = selectedDate.AddDays(6);
                 Properties.Settings.Default.dayStart = "Monday";
+
             }
             else if (nameDate == "Tuesday")
             {
@@ -267,6 +268,7 @@ namespace ClassSchedule.Pages
             fiveDate.Text = $"Пятница {startDate.AddDays(4).ToShortDateString()}";
             sixDate.Text = $"Суббота {startDate.AddDays(5).ToShortDateString()}";
             sevenDate.Text = $"Воскресенье {startDate.AddDays(6).ToShortDateString()}";
+
             //понедельник 9:00
             var mondayNine = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:00") && c.Day == "Monday");
             var mondayNineClients = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:00") && c.Lesson.Day == "Monday");

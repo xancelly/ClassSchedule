@@ -25,6 +25,7 @@
           <Property Name="Zoom" Type="nvarchar(max)" />
           <Property Name="Skype" Type="nvarchar(max)" />
           <Property Name="FavoriteTime" Type="nvarchar" MaxLength="5" />
+          <Property Name="Balance" Type="money" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="ClientLesson">
@@ -211,6 +212,7 @@
           <Property Name="Zoom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Skype" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FavoriteTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Balance" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="ClientLesson" Relationship="ClassScheduleModel.FK_ClientLesson_Client" FromRole="Client" ToRole="ClientLesson" />
         </EntityType>
@@ -347,6 +349,7 @@
             <EntityTypeMapping TypeName="ClassScheduleModel.Client">
               <MappingFragment StoreEntitySet="Client">
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
                 <ScalarProperty Name="FavoriteTime" ColumnName="FavoriteTime" />
                 <ScalarProperty Name="Skype" ColumnName="Skype" />
                 <ScalarProperty Name="Zoom" ColumnName="Zoom" />
