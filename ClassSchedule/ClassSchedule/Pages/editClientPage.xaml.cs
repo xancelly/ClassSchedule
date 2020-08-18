@@ -45,7 +45,7 @@ namespace ClassSchedule.Pages
         {
             string letterList = "ABCDEFGHIJKLMNOPRSTUVWXYZabcdefghijklmnoprstuvwxyzАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя";
             string numList = "1234567890";
-            if (!String.IsNullOrWhiteSpace(lastNameTextBox.Text) && !String.IsNullOrWhiteSpace(firstNameTextBox.Text) && !String.IsNullOrWhiteSpace(phoneNumberTextBox.Text) && !String.IsNullOrWhiteSpace(zoomTextBox.Text) && !String.IsNullOrWhiteSpace(skypeTextBox.Text) && dateOfBirthDatePicker.SelectedDate != null && timeComboBox.SelectedItem != null && !String.IsNullOrWhiteSpace(balanceTextBox.Text))
+            if (!String.IsNullOrWhiteSpace(lastNameTextBox.Text) && !String.IsNullOrWhiteSpace(firstNameTextBox.Text) && !String.IsNullOrWhiteSpace(phoneNumberTextBox.Text) && !String.IsNullOrWhiteSpace(zoomTextBox.Text) && dateOfBirthDatePicker.SelectedDate != null && timeComboBox.SelectedItem != null && !String.IsNullOrWhiteSpace(balanceTextBox.Text))
             {
                 if (lastNameTextBox.Text.IndexOfAny(numList.ToCharArray()) <= -1)
                 {

@@ -18,6 +18,7 @@ namespace ClassSchedule.Entities
         public Teacher()
         {
             this.Lesson = new HashSet<Lesson>();
+            this.TeacherDayOfWeek = new HashSet<TeacherDayOfWeek>();
         }
     
         public int Id { get; set; }
@@ -33,5 +34,7 @@ namespace ClassSchedule.Entities
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Lesson> Lesson { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TeacherDayOfWeek> TeacherDayOfWeek { get; set; }
     }
 }

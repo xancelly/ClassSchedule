@@ -25,13 +25,13 @@ namespace ClassSchedule.Entities
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Calendar> Calendar { get; set; }
         public virtual DbSet<Client> Client { get; set; }
         public virtual DbSet<ClientLesson> ClientLesson { get; set; }
+        public virtual DbSet<DayOfWeek> DayOfWeek { get; set; }
         public virtual DbSet<Groups> Groups { get; set; }
         public virtual DbSet<Lesson> Lesson { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Teacher> Teacher { get; set; }
-        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<TeacherDayOfWeek> TeacherDayOfWeek { get; set; }
     }
 }

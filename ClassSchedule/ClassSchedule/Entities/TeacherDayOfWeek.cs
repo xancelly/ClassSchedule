@@ -12,10 +12,15 @@ namespace ClassSchedule.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class TeacherDayOfWeek
     {
         public int Id { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
+        public Nullable<int> IdTeacher { get; set; }
+        public Nullable<int> IdDayOfWeek { get; set; }
+        public string StartTimeWork { get; set; }
+        public string EndTimeWork { get; set; }
+    
+        public virtual DayOfWeek DayOfWeek { get; set; }
+        public virtual Teacher Teacher { get; set; }
     }
 }
