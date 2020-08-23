@@ -17,8 +17,8 @@ namespace ClassSchedule.Entities
         public int Id { get; set; }
         public Nullable<int> IdTeacher { get; set; }
         public Nullable<int> IdDayOfWeek { get; set; }
-        public string StartTimeWork { get; set; }
-        public string EndTimeWork { get; set; }
+        public Nullable<System.TimeSpan> StartTimeWork { get; set; }
+        public Nullable<System.TimeSpan> EndTimeWork { get; set; }
     
         public virtual DayOfWeek DayOfWeek { get; set; }
         public virtual Teacher Teacher { get; set; }

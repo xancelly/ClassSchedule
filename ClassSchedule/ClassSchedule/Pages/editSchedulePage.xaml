@@ -48,7 +48,7 @@
                                    Style="{StaticResource otherText}" />
                         <ComboBox x:Name="teacherComboBox"
                                   Height="40"
-                                  DisplayMemberPath="fullnameTeacher"
+                                  DisplayMemberPath="Teacher.fullnameTeacher"
                                   Width="230" />
                         <CheckBox x:Name="showAllTeachers"
                                   Unchecked="showAllTeachers_Checked"
@@ -66,6 +66,18 @@
                                   Height="40"
                                   DisplayMemberPath="Name"
                                   Width="230" />
+                        <TextBlock Text="Продолжительность"
+                                   Style="{StaticResource otherText}" />
+                        <ComboBox x:Name="lessonTimeComboBox"
+                                  Height="40"
+                                  Width="230">
+                            <TextBlock Style="{StaticResource otherText}"
+                                       Text="30 минут"/>
+                            <TextBlock Style="{StaticResource otherText}"
+                                       Text="1 час" />
+                            <TextBlock Style="{StaticResource otherText}"
+                                       Text="1 час 30 минут" />
+                        </ComboBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical"
                                 Margin="5">

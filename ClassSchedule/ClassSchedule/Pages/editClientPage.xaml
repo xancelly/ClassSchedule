@@ -124,17 +124,6 @@
 
             <StackPanel Orientation="Horizontal"
                         Margin="5">
-                <TextBlock Style="{StaticResource otherText}"
-                           Text="Баланс"
-                           Margin="5" />
-                <TextBox x:Name="balanceTextBox"
-                         Margin="5"
-                         Style="{StaticResource normalTextBox}"
-                         Height="Auto" />
-            </StackPanel>
-            
-            <StackPanel Orientation="Horizontal"
-                        Margin="5">
                 <Button x:Name="saveButton"
                         Content="Сохранить"
                         Margin="5"

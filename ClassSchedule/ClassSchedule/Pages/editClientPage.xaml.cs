@@ -37,7 +37,6 @@ namespace ClassSchedule.Pages
                 zoomTextBox.Text = CurrentClient.Zoom;
                 skypeTextBox.Text = CurrentClient.Skype;
                 timeComboBox.Text = CurrentClient.FavoriteTime;
-                balanceTextBox.Text = CurrentClient.Balance.ToString();
             }
         }
 
@@ -45,7 +44,7 @@ namespace ClassSchedule.Pages
         {
             string letterList = "ABCDEFGHIJKLMNOPRSTUVWXYZabcdefghijklmnoprstuvwxyzАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя";
             string numList = "1234567890";
-            if (!String.IsNullOrWhiteSpace(lastNameTextBox.Text) && !String.IsNullOrWhiteSpace(firstNameTextBox.Text) && !String.IsNullOrWhiteSpace(phoneNumberTextBox.Text) && !String.IsNullOrWhiteSpace(zoomTextBox.Text) && dateOfBirthDatePicker.SelectedDate != null && timeComboBox.SelectedItem != null && !String.IsNullOrWhiteSpace(balanceTextBox.Text))
+            if (!String.IsNullOrWhiteSpace(lastNameTextBox.Text) && !String.IsNullOrWhiteSpace(firstNameTextBox.Text) && !String.IsNullOrWhiteSpace(phoneNumberTextBox.Text) && !String.IsNullOrWhiteSpace(zoomTextBox.Text) && dateOfBirthDatePicker.SelectedDate != null && timeComboBox.SelectedItem != null)
             {
                 if (lastNameTextBox.Text.IndexOfAny(numList.ToCharArray()) <= -1)
                 {
@@ -59,49 +58,42 @@ namespace ClassSchedule.Pages
                                 {
                                     if (timeComboBox.SelectedItem.ToString() != "Не выбрано")
                                     {
-                                        if (balanceTextBox.Text.IndexOfAny(letterList.ToCharArray()) <= -1)
+                                        if (CurrentClient == null)
                                         {
-                                            if (CurrentClient == null)
+                                            CurrentClient = new Client()
                                             {
-                                                CurrentClient = new Client()
-                                                {
-                                                    LastName = lastNameTextBox.Text.Substring(0, 1).ToUpper() + lastNameTextBox.Text.Substring(1, lastNameTextBox.Text.Length - 1),
-                                                    FirstName = firstNameTextBox.Text.Substring(0, 1).ToUpper() + firstNameTextBox.Text.Substring(1, firstNameTextBox.Text.Length - 1),
-                                                    MiddleName = middleNameTextBox.Text.Substring(0, 1).ToUpper() + middleNameTextBox.Text.Substring(1, middleNameTextBox.Text.Length - 1),
-                                                    DateOfBirth = Convert.ToDateTime(dateOfBirthDatePicker.SelectedDate.Value.ToShortDateString()),
-                                                    PhoneNumber = phoneNumberTextBox.Text,
-                                                    FavoriteTime = timeComboBox.Text,
-                                                    Skype = skypeTextBox.Text,
-                                                    Zoom = zoomTextBox.Text,
-                                                    Balance = Convert.ToDecimal(balanceTextBox.Text),
-                                                    IsDeleted = false,
-                                                };
-                                                AppData.Context.Client.Add(CurrentClient);
-                                                AppData.Context.SaveChanges();
-                                                MessageBox.Show("Обучающийся успешно добавлен!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
-                                                NavigationService.GoBack();
-                                            }
-                                            else
-                                            {
-                                                CurrentClient.LastName = lastNameTextBox.Text.Substring(0, 1).ToUpper() + lastNameTextBox.Text.Substring(1, lastNameTextBox.Text.Length - 1);
-                                                CurrentClient.FirstName = firstNameTextBox.Text.Substring(0, 1).ToUpper() + firstNameTextBox.Text.Substring(1, firstNameTextBox.Text.Length - 1);
-                                                CurrentClient.MiddleName = middleNameTextBox.Text.Substring(0, 1).ToUpper() + middleNameTextBox.Text.Substring(1, middleNameTextBox.Text.Length - 1);
-                                                CurrentClient.DateOfBirth = Convert.ToDateTime(dateOfBirthDatePicker.SelectedDate.Value.ToShortDateString());
-                                                CurrentClient.PhoneNumber = phoneNumberTextBox.Text;
-                                                CurrentClient.Zoom = zoomTextBox.Text;
-                                                CurrentClient.Skype = skypeTextBox.Text;
-                                                CurrentClient.FavoriteTime = timeComboBox.Text;
-                                                CurrentClient.Balance = Convert.ToDecimal(balanceTextBox.Text);
-                                                CurrentClient.IsDeleted = false;
-                                                AppData.Context.SaveChanges();
-                                                MessageBox.Show("Информация обновлена!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
-                                                NavigationService.GoBack();
-                                            }
-                                        } else
-                                        {
-                                            MessageBox.Show("Баланс указан некорректно!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                                                LastName = lastNameTextBox.Text.Substring(0, 1).ToUpper() + lastNameTextBox.Text.Substring(1, lastNameTextBox.Text.Length - 1),
+                                                FirstName = firstNameTextBox.Text.Substring(0, 1).ToUpper() + firstNameTextBox.Text.Substring(1, firstNameTextBox.Text.Length - 1),
+                                                MiddleName = middleNameTextBox.Text.Substring(0, 1).ToUpper() + middleNameTextBox.Text.Substring(1, middleNameTextBox.Text.Length - 1),
+                                                DateOfBirth = Convert.ToDateTime(dateOfBirthDatePicker.SelectedDate.Value.ToShortDateString()),
+                                                PhoneNumber = phoneNumberTextBox.Text,
+                                                FavoriteTime = timeComboBox.Text,
+                                                Skype = skypeTextBox.Text,
+                                                Zoom = zoomTextBox.Text,
+                                                IsDeleted = false,
+                                            };
+                                            AppData.Context.Client.Add(CurrentClient);
+                                            AppData.Context.SaveChanges();
+                                            MessageBox.Show("Обучающийся успешно добавлен!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
+                                            NavigationService.GoBack();
                                         }
-                                    } else
+                                        else
+                                        {
+                                            CurrentClient.LastName = lastNameTextBox.Text.Substring(0, 1).ToUpper() + lastNameTextBox.Text.Substring(1, lastNameTextBox.Text.Length - 1);
+                                            CurrentClient.FirstName = firstNameTextBox.Text.Substring(0, 1).ToUpper() + firstNameTextBox.Text.Substring(1, firstNameTextBox.Text.Length - 1);
+                                            CurrentClient.MiddleName = middleNameTextBox.Text.Substring(0, 1).ToUpper() + middleNameTextBox.Text.Substring(1, middleNameTextBox.Text.Length - 1);
+                                            CurrentClient.DateOfBirth = Convert.ToDateTime(dateOfBirthDatePicker.SelectedDate.Value.ToShortDateString());
+                                            CurrentClient.PhoneNumber = phoneNumberTextBox.Text;
+                                            CurrentClient.Zoom = zoomTextBox.Text;
+                                            CurrentClient.Skype = skypeTextBox.Text;
+                                            CurrentClient.FavoriteTime = timeComboBox.Text;
+                                            CurrentClient.IsDeleted = false;
+                                            AppData.Context.SaveChanges();
+                                            MessageBox.Show("Информация обновлена!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
+                                            NavigationService.GoBack();
+                                        }
+                                    }
+                                    else
                                     {
                                         MessageBox.Show("Выберите время обучения!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                                     }

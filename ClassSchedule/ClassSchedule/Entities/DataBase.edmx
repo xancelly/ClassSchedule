@@ -54,6 +54,7 @@
           <Property Name="Time" Type="nvarchar" MaxLength="5" />
           <Property Name="Date" Type="date" />
           <Property Name="Day" Type="nvarchar" MaxLength="8" />
+          <Property Name="LessonTime" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -77,7 +78,6 @@
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="18" />
           <Property Name="Zoom" Type="nvarchar(max)" />
           <Property Name="Skype" Type="nvarchar(max)" />
-          <Property Name="FavoriteTime" Type="nvarchar" MaxLength="5" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="TeacherDayOfWeek">
@@ -87,8 +87,8 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdTeacher" Type="int" />
           <Property Name="IdDayOfWeek" Type="int" />
-          <Property Name="StartTimeWork" Type="nvarchar" MaxLength="5" />
-          <Property Name="EndTimeWork" Type="nvarchar" MaxLength="5" />
+          <Property Name="StartTimeWork" Type="time" Precision="0" />
+          <Property Name="EndTimeWork" Type="time" Precision="0" />
         </EntityType>
         <Association Name="FK_ClientLesson_Client">
           <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
@@ -288,6 +288,7 @@
           <Property Name="Time" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="Day" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="LessonTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ClientLesson" Relationship="ClassScheduleModel.FK_ClientLesson_Lesson" FromRole="Lesson" ToRole="ClientLesson" />
           <NavigationProperty Name="Groups" Relationship="ClassScheduleModel.FK_Lesson_Group" FromRole="Lesson" ToRole="Groups" />
           <NavigationProperty Name="Teacher" Relationship="ClassScheduleModel.FK_Lesson_Teacher" FromRole="Lesson" ToRole="Teacher" />
@@ -314,7 +315,6 @@
           <Property Name="PhoneNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
           <Property Name="Zoom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Skype" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="FavoriteTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="Lesson" Relationship="ClassScheduleModel.FK_Lesson_Teacher" FromRole="Teacher" ToRole="Lesson" />
           <NavigationProperty Name="TeacherDayOfWeek" Relationship="ClassScheduleModel.FK_TeacherDayOfWeek_Teacher" FromRole="Teacher" ToRole="TeacherDayOfWeek" />
@@ -326,8 +326,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdTeacher" Type="Int32" />
           <Property Name="IdDayOfWeek" Type="Int32" />
-          <Property Name="StartTimeWork" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="EndTimeWork" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="StartTimeWork" Type="Time" Precision="0" />
+          <Property Name="EndTimeWork" Type="Time" Precision="0" />
           <NavigationProperty Name="DayOfWeek" Relationship="ClassScheduleModel.FK_TeacherDayOfWeek_DayOfWeek" FromRole="TeacherDayOfWeek" ToRole="DayOfWeek" />
           <NavigationProperty Name="Teacher" Relationship="ClassScheduleModel.FK_TeacherDayOfWeek_Teacher" FromRole="TeacherDayOfWeek" ToRole="Teacher" />
         </EntityType>
@@ -455,6 +455,7 @@
           <EntitySetMapping Name="Lesson">
             <EntityTypeMapping TypeName="ClassScheduleModel.Lesson">
               <MappingFragment StoreEntitySet="Lesson">
+                <ScalarProperty Name="LessonTime" ColumnName="LessonTime" />
                 <ScalarProperty Name="Day" ColumnName="Day" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
@@ -479,7 +480,6 @@
             <EntityTypeMapping TypeName="ClassScheduleModel.Teacher">
               <MappingFragment StoreEntitySet="Teacher">
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="FavoriteTime" ColumnName="FavoriteTime" />
                 <ScalarProperty Name="Skype" ColumnName="Skype" />
                 <ScalarProperty Name="Zoom" ColumnName="Zoom" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
