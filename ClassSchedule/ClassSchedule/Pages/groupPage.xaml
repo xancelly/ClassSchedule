@@ -27,10 +27,16 @@
                      Style="{StaticResource normalTextBox}"
                      SelectionChanged="searchTextBox_SelectionChanged"/>
         </StackPanel>
+        
+        
 
         <DataGrid Grid.Row="1"
                   Margin="5"
                   AutoGenerateColumns="False"
+                  
+                  EnableColumnVirtualization="True"
+                  EnableRowVirtualization="True"
+                  VirtualizingPanel.VirtualizationMode="Recycling"
                   CanUserAddRows="False"
                   x:Name="groupsDataGrid"
                   IsReadOnly="True">

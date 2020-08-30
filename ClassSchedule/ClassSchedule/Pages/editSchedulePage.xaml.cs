@@ -136,7 +136,7 @@ namespace ClassSchedule.Pages
                             }
                         } else
                         {
-                            MessageBox.Show("Выберите продолжительность урока!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show("Выберите продолжительность занятия!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     } else
                     {
@@ -149,28 +149,34 @@ namespace ClassSchedule.Pages
                     {
                         if (groupComboBox.SelectedItem != null)
                         {
-                            CurrentTeacherDayOfWeek = teacherComboBox.SelectedItem as TeacherDayOfWeek;
-                            CurrentLesson.Teacher = CurrentTeacherDayOfWeek.Teacher;
-                            CurrentLesson.Groups = groupComboBox.SelectedItem as Groups;
-                            if (Clients.Count() > 0)
+                            if (lessonTimeComboBox.SelectedItem != null)
                             {
-                                AppData.Context.ClientLesson.RemoveRange(AppData.Context.ClientLesson.ToList().Where(p => p.IdLesson == CurrentLesson.Id));
-                                foreach (var item in Clients)
+                                CurrentTeacherDayOfWeek = teacherComboBox.SelectedItem as TeacherDayOfWeek;
+                                CurrentLesson.Teacher = CurrentTeacherDayOfWeek.Teacher;
+                                CurrentLesson.Groups = groupComboBox.SelectedItem as Groups;
+                                if (Clients.Count() > 0)
                                 {
-                                    CurrentLesson.ClientLesson.Add(
-                                        new ClientLesson
-                                        {
-                                            Client = item
-                                        }
-                                    );
+                                    AppData.Context.ClientLesson.RemoveRange(AppData.Context.ClientLesson.ToList().Where(p => p.IdLesson == CurrentLesson.Id));
+                                    foreach (var item in Clients)
+                                    {
+                                        CurrentLesson.ClientLesson.Add(
+                                            new ClientLesson
+                                            {
+                                                Client = item
+                                            }
+                                        );
+                                    }
+                                    AppData.Context.SaveChanges();
+                                    MessageBox.Show("Запись изменена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+                                    NavigationService.GoBack();
                                 }
-                                AppData.Context.SaveChanges();
-                                MessageBox.Show("Запись изменена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
-                                NavigationService.GoBack();
-                            }
-                            else
+                                else
+                                {
+                                    MessageBox.Show("На занятии должен присутствовать минимум 1 человек!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                }
+                            } else
                             {
-                                MessageBox.Show("На занятии должен присутствовать минимум 1 человек!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                MessageBox.Show("Выберите продолжительность занятия!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                             }
                         }
                         else

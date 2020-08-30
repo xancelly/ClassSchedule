@@ -24,7 +24,7 @@ namespace ClassSchedule
         public MainWindow()
         {
             InitializeComponent();
-            mainFrame.Navigate(new authorizationPage());
+            mainFrame.Navigate(new mainMenu());
         }
 
         private void mainFrame_ContentRendered(object sender, EventArgs e)

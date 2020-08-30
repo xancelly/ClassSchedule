@@ -49,14 +49,14 @@ namespace ClassSchedule.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Client client = null;
-            DateTime todayDate = DateTime.Today;
-            foreach (var item in AppData.Context.ClientLesson.Where(c => c.Lesson.Date < todayDate))
-            {
-                client = AppData.Context.Client.Where(c => c.Id == item.Client.Id).FirstOrDefault();
-                client.Balance -= Convert.ToDecimal("1200");
-            }
-            AppData.Context.SaveChanges();
+            //Client client = null;
+            //DateTime todayDate = DateTime.Today;
+            //foreach (var item in AppData.Context.ClientLesson.Where(c => c.Lesson.Date < todayDate))
+            //{
+            //    client = AppData.Context.Client.Where(c => c.Id == item.Client.Id).FirstOrDefault();
+            //    client.Balance -= Convert.ToDecimal("1200");
+            //}
+            //AppData.Context.SaveChanges();
         }
     }
 }

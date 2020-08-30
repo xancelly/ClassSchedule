@@ -29,6 +29,7 @@
 
         <DataGrid Grid.Row="1"
                   Margin="5"
+                  
                   AutoGenerateColumns="False"
                   CanUserAddRows="False"
                   x:Name="teacherDataGrid"
@@ -50,9 +51,6 @@
                 <DataGridTextColumn Header="Номер телефона"
                                     Width="*"
                                     Binding="{Binding PhoneNumber}" />
-                <DataGridTextColumn Header="Время для преподавания"
-                                    Width="*"
-                                    Binding="{Binding FavoriteTime}" />
                 <DataGridTextColumn Header="Zoom"
                                     Width="*"
                                     Binding="{Binding Zoom}" />

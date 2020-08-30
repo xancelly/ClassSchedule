@@ -158,5 +158,29 @@
             <Setter Property="FontSize"
                     Value="20" />
         </Style>
+
+        <Style TargetType="ListView">
+            <Setter Property="FontFamily"
+                    Value="/ClassSchedule;component/Fonts/#Neucha" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="Background"
+                    Value="#87d1f4" />
+            <Setter Property="BorderBrush"
+                    Value="#87d1f4" />
+        </Style>
+
+        <Style TargetType="ListViewItem">
+            <Setter Property="FontFamily"
+                    Value="/ClassSchedule;component/Fonts/#Neucha" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="Background"
+                    Value="White" />
+            <Setter Property="Foreground"
+                    Value="Black" />
+            <Setter Property="BorderBrush"
+                    Value="#87d1f4" />
+        </Style>
     </Application.Resources>
 </Application>
