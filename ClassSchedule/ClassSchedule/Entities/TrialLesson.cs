@@ -12,29 +12,19 @@ namespace ClassSchedule.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Client
+    public partial class TrialLesson
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Client()
-        {
-            this.ClientLesson = new HashSet<ClientLesson>();
-        }
-    
         public int Id { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
-        public Nullable<System.DateTime> DateOfBirth { get; set; }
         public string PhoneNumber { get; set; }
-        public string Zoom { get; set; }
-        public string Skype { get; set; }
-        public string FavoriteTime { get; set; }
-        public Nullable<decimal> Balance { get; set; }
-        public Nullable<bool> IsDeleted { get; set; }
+        public string Email { get; set; }
         public Nullable<int> IdLanguageLevel { get; set; }
+        public string Comment { get; set; }
+        public string Time { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
     
         public virtual LanguageLevel LanguageLevel { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ClientLesson> ClientLesson { get; set; }
     }
 }

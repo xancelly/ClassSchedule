@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ClassSchedule.Pages"
       mc:Ignorable="d" 
       Loaded="Page_Loaded"
-      d:DesignHeight="800" d:DesignWidth="1200"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="Главное меню">
 
     <Grid>
@@ -18,6 +18,11 @@
                     Style="{StaticResource normalButton}"
                     Content="Расписание"
                     Click="scheduleButton_Click" />
+            <Button x:Name="trialButton"
+                    Margin="5"
+                    Style="{StaticResource normalButton}"
+                    Content="Пробные занятия"
+                    Click="trialButton_Click" />
             <Button x:Name="clientButton"
                     Margin="5"
                     Style="{StaticResource normalButton}"

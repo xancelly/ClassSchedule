@@ -6,10 +6,12 @@
         xmlns:local="clr-namespace:ClassSchedule"
         mc:Ignorable="d"
         Title="Расписание занятий"
-        Height="800"
-        Width="1200"
+        Height="1080"
+        Width="1920"
         Background="#87d1f4"
-        Icon="Source/logo.png">
+        Icon="Source/logo.png"
+        WindowStartupLocation="CenterOwner"
+        WindowState="Minimized">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120" />

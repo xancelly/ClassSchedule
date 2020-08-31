@@ -4,116 +4,119 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ClassSchedule.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1200"
+      mc:Ignorable="d"
+      d:DesignHeight="1080"
+      d:DesignWidth="1920"
       Title="Добавление занятия">
 
     <Grid>
-        <StackPanel Orientation="Vertical"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
-            <GroupBox Header="Свободные обучающиеся">
-            <StackPanel Orientation="Horizontal">
+        <ScrollViewer VerticalScrollBarVisibility="Visible">
+            <StackPanel Orientation="Vertical"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <GroupBox Header="Свободные обучающиеся">
+                    <StackPanel Orientation="Horizontal">
 
-                    <StackPanel Orientation="Vertical"
-                            Margin="5">
-                    <TextBlock Text="Список обучающихся"
-                               HorizontalAlignment="Left"
-                               Style="{StaticResource otherText}" />
-                        <ListView x:Name="freeClientsListView"
-                                  Height="150"
-                                  Width="500">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock x:Name="ClientText"
-                                               MouseDown="ClientText_MouseDown"
-                                               Text="{Binding fullnameClient}"></TextBlock>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <CheckBox Content="Показать всех обучающихся"
-                                  Checked="showAllClients_Checked"
-                                  Unchecked="showAllClients_Checked"
-                                  x:Name="showAllClients"/>
+                        <StackPanel Orientation="Vertical"
+                                    Margin="5">
+                            <TextBlock Text="Список обучающихся"
+                                       HorizontalAlignment="Left"
+                                       Style="{StaticResource otherText}" />
+                            <ListView x:Name="freeClientsListView"
+                                      Height="150"
+                                      Width="500">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock x:Name="ClientText"
+                                                   MouseDown="ClientText_MouseDown"
+                                                   Text="{Binding fullnameClient}"></TextBlock>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <CheckBox Content="Показать всех обучающихся"
+                                      Checked="showAllClients_Checked"
+                                      Unchecked="showAllClients_Checked"
+                                      x:Name="showAllClients" />
                         </StackPanel>
-            </StackPanel>
-            </GroupBox>
-            <GroupBox Header="Занятие">
-            <StackPanel Orientation="Horizontal">
-                
-                    <StackPanel Orientation="Vertical"
-                                Margin="5">
-                        
-                        <TextBlock Text="Преподаватель"
-                                   Style="{StaticResource otherText}" />
-                        <ComboBox x:Name="teacherComboBox"
-                                  Height="40"
-                                  DisplayMemberPath="Teacher.fullnameTeacher"
-                                  Width="230" />
-                        <CheckBox x:Name="showAllTeachers"
-                                  Unchecked="showAllTeachers_Checked"
-                                  Checked="showAllTeachers_Checked">
-                            <TextBlock Margin="5"
-                                       Height="Auto">
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Занятие">
+                    <StackPanel Orientation="Horizontal">
+
+                        <StackPanel Orientation="Vertical"
+                                    Margin="5">
+
+                            <TextBlock Text="Преподаватель"
+                                       Style="{StaticResource otherText}" />
+                            <ComboBox x:Name="teacherComboBox"
+                                      Height="40"
+                                      DisplayMemberPath="Teacher.fullnameTeacher"
+                                      Width="230" />
+                            <CheckBox x:Name="showAllTeachers"
+                                      Unchecked="showAllTeachers_Checked"
+                                      Checked="showAllTeachers_Checked">
+                                <TextBlock Margin="5"
+                                           Height="Auto">
                                 Показать всех
                                 <LineBreak />
                                 преподавателей
-                            </TextBlock>
-                        </CheckBox>
-                        <TextBlock Text="Группа"
-                                   Style="{StaticResource otherText}" />
-                        <ComboBox x:Name="groupComboBox"
-                                  Height="40"
-                                  DisplayMemberPath="Name"
-                                  Width="230" />
-                        <TextBlock Text="Продолжительность"
-                                   Style="{StaticResource otherText}" />
-                        <ComboBox x:Name="lessonTimeComboBox"
-                                  Height="40"
-                                  Width="230">
-                            <TextBlock Style="{StaticResource otherText}"
-                                       Text="30 минут"/>
-                            <TextBlock Style="{StaticResource otherText}"
-                                       Text="1 час" />
-                            <TextBlock Style="{StaticResource otherText}"
-                                       Text="1 час 30 минут" />
-                        </ComboBox>
+                                </TextBlock>
+                            </CheckBox>
+                            <TextBlock Text="Группа"
+                                       Style="{StaticResource otherText}" />
+                            <ComboBox x:Name="groupComboBox"
+                                      Height="40"
+                                      DisplayMemberPath="Name"
+                                      Width="230" />
+                            <TextBlock Text="Продолжительность"
+                                       Style="{StaticResource otherText}" />
+                            <ComboBox x:Name="lessonTimeComboBox"
+                                      Height="40"
+                                      Width="230">
+                                <TextBlock Style="{StaticResource otherText}"
+                                           Text="30 минут" />
+                                <TextBlock Style="{StaticResource otherText}"
+                                           Text="1 час" />
+                                <TextBlock Style="{StaticResource otherText}"
+                                           Text="1 час 30 минут" />
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical"
+                                    Margin="5">
+                            <TextBlock Text="Обучающиеся"
+                                       Style="{StaticResource otherText}" />
+                            <ListView x:Name="lessonClientsListView"
+                                      Height="150"
+                                      Drop="lessonClientsListView_Drop"
+                                      AllowDrop="True"
+                                      MouseDoubleClick="lessonClientsListView_MouseDoubleClick"
+                                      Width="260">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock x:Name="ClientText"
+                                                   Text="{Binding fullnameClient}"></TextBlock>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                        </StackPanel>
                     </StackPanel>
-                    <StackPanel Orientation="Vertical"
-                                Margin="5">
-                        <TextBlock Text="Обучающиеся"
-                                   Style="{StaticResource otherText}" />
-                        <ListView x:Name="lessonClientsListView"
-                                  Height="150"
-                                  Drop="lessonClientsListView_Drop"
-                                  AllowDrop="True"
-                                  MouseDoubleClick="lessonClientsListView_MouseDoubleClick"
-                                  Width="260">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock x:Name="ClientText"
-                                               Text="{Binding fullnameClient}"></TextBlock>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        
-                    </StackPanel>
+                </GroupBox>
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                    <Button x:Name="saveButton"
+                            Style="{StaticResource normalButton}"
+                            Content="Сохранить"
+                            Margin="5"
+                            Click="saveButton_Click" />
+                    <Button x:Name="cancelButton"
+                            Style="{StaticResource normalButton}"
+                            Content="Отмена"
+                            Margin="5"
+                            Click="cancelButton_Click" />
                 </StackPanel>
-            </GroupBox>
-            <StackPanel Orientation="Horizontal"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
-            <Button x:Name="saveButton"
-                    Style="{StaticResource normalButton}"
-                    Content="Сохранить"
-                    Margin="5"
-                        Click="saveButton_Click" />
-            <Button x:Name="cancelButton"
-                    Style="{StaticResource normalButton}"
-                    Content="Отмена"
-                    Margin="5"
-                        Click="cancelButton_Click" />
             </StackPanel>
-        </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

@@ -182,5 +182,11 @@
             <Setter Property="BorderBrush"
                     Value="#87d1f4" />
         </Style>
+
+        <Style TargetType="{x:Type TextBlock}"
+               x:Key="DataGridCellTextWrap">
+            <Setter Property="TextBlock.TextWrapping"
+                    Value="Wrap"></Setter>
+        </Style>
     </Application.Resources>
 </Application>

@@ -29,9 +29,11 @@ namespace ClassSchedule.Entities
         public virtual DbSet<ClientLesson> ClientLesson { get; set; }
         public virtual DbSet<DayOfWeek> DayOfWeek { get; set; }
         public virtual DbSet<Groups> Groups { get; set; }
+        public virtual DbSet<LanguageLevel> LanguageLevel { get; set; }
         public virtual DbSet<Lesson> Lesson { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Teacher> Teacher { get; set; }
         public virtual DbSet<TeacherDayOfWeek> TeacherDayOfWeek { get; set; }
+        public virtual DbSet<TrialLesson> TrialLesson { get; set; }
     }
 }

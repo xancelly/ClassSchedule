@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ClassSchedule.Pages"
       mc:Ignorable="d"
-      d:DesignHeight="800"
-      d:DesignWidth="1200"
+      d:DesignHeight="1080"
+      d:DesignWidth="1920"
       Title="Расписание"
       Loaded="Page_Loaded">
 
@@ -309,8 +309,10 @@
         <ScrollViewer x:Name="secondScrollView"
                       Grid.Column="1"
                       Grid.Row="1"
-                      MaxHeight="800"
-                      MaxWidth="1200"
+                      MaxHeight="1080"
+                      MaxWidth="1920"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Top"
                       ScrollChanged="secondScrollView_ScrollChanged"
                       VirtualizingPanel.ScrollUnit="Pixel"
                       VirtualizingPanel.IsVirtualizing="True"

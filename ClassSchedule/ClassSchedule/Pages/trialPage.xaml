@@ -1,0 +1,685 @@
+﻿<Page x:Class="ClassSchedule.Pages.trialPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:ClassSchedule.Pages"
+      mc:Ignorable="d"
+      Loaded="Page_Loaded"
+      d:DesignHeight="1080"
+      d:DesignWidth="1920"
+      Title="Пробные занятия">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="170" />
+            <RowDefinition Height="837*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="185" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Calendar x:Name="trialCalendar"
+                  SelectedDatesChanged="trialCalendar_SelectedDatesChanged"
+                  MouseDoubleClick="trialCalendar_MouseDoubleClick"/>
+
+        <TextBlock x:Name="dateTextBlock"
+                   Grid.Column="1"
+                   Margin="5,0,0,5"
+                   Grid.Row="0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Bottom"
+                   Style="{StaticResource otherText}" />
+
+        <ListView x:Name="mainListView"
+                  VirtualizingPanel.IsVirtualizing="True"
+                  VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                  VirtualizingPanel.ScrollUnit="Pixel"
+                  ScrollViewer.CanContentScroll="True"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  VirtualizingPanel.VirtualizationMode="Recycling"
+                  VirtualizingPanel.IsContainerVirtualizable="True"
+                  Grid.Row="1"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="2">
+            <!--09:00-->
+            <ListViewItem VirtualizingPanel.IsVirtualizing="True"
+                          VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                          VirtualizingPanel.ScrollUnit="Pixel"
+                          VirtualizingPanel.VirtualizationMode="Recycling"
+                          VirtualizingPanel.IsContainerVirtualizable="True">
+                <DockPanel>
+                    <TextBlock Text="09:00"
+                               Style="{StaticResource otherText}"
+                               Width="55"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" />
+                    <DataGrid x:Name="trialNineDataGrid"
+                              Height="150"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              VirtualizingPanel.IsVirtualizing="True"
+                              VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                              VirtualizingPanel.ScrollUnit="Pixel"
+                              VirtualizingPanel.VirtualizationMode="Recycling"
+                              VirtualizingPanel.IsContainerVirtualizable="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО"
+                                                Width="*"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding  StringFormat="{} {0} {1} {2}">
+                                        <Binding Path="FirstName" />
+                                        <Binding Path="LastName" />
+                                        <Binding Path="MiddleName" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Номер телефона"
+                                                Width="*"
+                                                Binding="{Binding PhoneNumber}" />
+                            <DataGridTextColumn Header="E-Mail"
+                                                Width="*"
+                                                Binding="{Binding Email}" />
+                            <DataGridTextColumn Header="Уровень знания"
+                                                Width="*"
+                                                Binding="{Binding LanguageLevel.Name}" />
+                            <DataGridTextColumn Header="Комментарий преподавателя"
+                                                Width="*"
+                                                Binding="{Binding Comment}"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </ListViewItem>
+
+            <!--10:00-->
+            <ListViewItem VirtualizingPanel.IsVirtualizing="True"
+                          VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                          VirtualizingPanel.ScrollUnit="Pixel"
+                          Margin="0,5,0,0"
+                          VirtualizingPanel.VirtualizationMode="Recycling"
+                          VirtualizingPanel.IsContainerVirtualizable="True">
+                <DockPanel>
+                    <TextBlock Text="10:00"
+                               Style="{StaticResource otherText}"
+                               Width="55"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" />
+                    <DataGrid x:Name="trialTenDataGrid"
+                              Height="150"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              VirtualizingPanel.IsVirtualizing="True"
+                              VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                              VirtualizingPanel.ScrollUnit="Pixel"
+                              VirtualizingPanel.VirtualizationMode="Recycling"
+                              VirtualizingPanel.IsContainerVirtualizable="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding  StringFormat="{} {0} {1} {2}">
+                                        <Binding Path="FirstName" />
+                                        <Binding Path="LastName" />
+                                        <Binding Path="MiddleName" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Номер телефона"
+                                                Width="*"
+                                                Binding="{Binding PhoneNumber}" />
+                            <DataGridTextColumn Header="E-Mail"
+                                                Width="*"
+                                                Binding="{Binding Email}" />
+                            <DataGridTextColumn Header="Уровень знания"
+                                                Width="*"
+                                                Binding="{Binding LanguageLevel.Name}" />
+                            <DataGridTextColumn Header="Комментарий преподавателя"
+                                                Width="*"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Binding="{Binding Comment}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </ListViewItem>
+
+            <!--11:00-->
+            <ListViewItem VirtualizingPanel.IsVirtualizing="True"
+                          VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                          VirtualizingPanel.ScrollUnit="Pixel"
+                          Margin="0,5,0,0"
+                          VirtualizingPanel.VirtualizationMode="Recycling"
+                          VirtualizingPanel.IsContainerVirtualizable="True">
+                <DockPanel>
+                    <TextBlock Text="11:00"
+                               Style="{StaticResource otherText}"
+                               Width="55"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" />
+                    <DataGrid x:Name="trialElevenDataGrid"
+                              Height="150"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              VirtualizingPanel.IsVirtualizing="True"
+                              VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                              VirtualizingPanel.ScrollUnit="Pixel"
+                              VirtualizingPanel.VirtualizationMode="Recycling"
+                              VirtualizingPanel.IsContainerVirtualizable="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding  StringFormat="{} {0} {1} {2}">
+                                        <Binding Path="FirstName" />
+                                        <Binding Path="LastName" />
+                                        <Binding Path="MiddleName" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Номер телефона"
+                                                Width="*"
+                                                Binding="{Binding PhoneNumber}" />
+                            <DataGridTextColumn Header="E-Mail"
+                                                Width="*"
+                                                Binding="{Binding Email}" />
+                            <DataGridTextColumn Header="Уровень знания"
+                                                Width="*"
+                                                Binding="{Binding LanguageLevel.Name}" />
+                            <DataGridTextColumn Header="Комментарий преподавателя"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*"
+                                                Binding="{Binding Comment}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </ListViewItem>
+
+            <!--12:00-->
+            <ListViewItem VirtualizingPanel.IsVirtualizing="True"
+                          VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                          VirtualizingPanel.ScrollUnit="Pixel"
+                          Margin="0,5,0,0"
+                          VirtualizingPanel.VirtualizationMode="Recycling"
+                          VirtualizingPanel.IsContainerVirtualizable="True">
+                <DockPanel>
+                    <TextBlock Text="12:00"
+                               Style="{StaticResource otherText}"
+                               Width="55"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" />
+                    <DataGrid x:Name="trialTwelveDataGrid"
+                              Height="150"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              VirtualizingPanel.IsVirtualizing="True"
+                              VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                              VirtualizingPanel.ScrollUnit="Pixel"
+                              VirtualizingPanel.VirtualizationMode="Recycling"
+                              VirtualizingPanel.IsContainerVirtualizable="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding  StringFormat="{} {0} {1} {2}">
+                                        <Binding Path="FirstName" />
+                                        <Binding Path="LastName" />
+                                        <Binding Path="MiddleName" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Номер телефона"
+                                                Width="*"
+                                                Binding="{Binding PhoneNumber}" />
+                            <DataGridTextColumn Header="E-Mail"
+                                                Width="*"
+                                                Binding="{Binding Email}" />
+                            <DataGridTextColumn Header="Уровень знания"
+                                                Width="*"
+                                                Binding="{Binding LanguageLevel.Name}" />
+                            <DataGridTextColumn Header="Комментарий преподавателя"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*"
+                                                Binding="{Binding Comment}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </ListViewItem>
+
+            <!--13:00-->
+            <ListViewItem VirtualizingPanel.IsVirtualizing="True"
+                          VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                          VirtualizingPanel.ScrollUnit="Pixel"
+                          Margin="0,5,0,0"
+                          VirtualizingPanel.VirtualizationMode="Recycling"
+                          VirtualizingPanel.IsContainerVirtualizable="True">
+                <DockPanel>
+                    <TextBlock Text="13:00"
+                               Style="{StaticResource otherText}"
+                               Width="55"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" />
+                    <DataGrid x:Name="trialThirteenDataGrid"
+                              Height="150"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              VirtualizingPanel.IsVirtualizing="True"
+                              VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                              VirtualizingPanel.ScrollUnit="Pixel"
+                              VirtualizingPanel.VirtualizationMode="Recycling"
+                              VirtualizingPanel.IsContainerVirtualizable="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding  StringFormat="{} {0} {1} {2}">
+                                        <Binding Path="FirstName" />
+                                        <Binding Path="LastName" />
+                                        <Binding Path="MiddleName" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Номер телефона"
+                                                Width="*"
+                                                Binding="{Binding PhoneNumber}" />
+                            <DataGridTextColumn Header="E-Mail"
+                                                Width="*"
+                                                Binding="{Binding Email}" />
+                            <DataGridTextColumn Header="Уровень знания"
+                                                Width="*"
+                                                Binding="{Binding LanguageLevel.Name}" />
+                            <DataGridTextColumn Header="Комментарий преподавателя"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*"
+                                                Binding="{Binding Comment}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </ListViewItem>
+
+            <!--14:00-->
+            <ListViewItem VirtualizingPanel.IsVirtualizing="True"
+                          VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                          VirtualizingPanel.ScrollUnit="Pixel"
+                          Margin="0,5,0,0"
+                          VirtualizingPanel.VirtualizationMode="Recycling"
+                          VirtualizingPanel.IsContainerVirtualizable="True">
+                <DockPanel>
+                    <TextBlock Text="14:00"
+                               Style="{StaticResource otherText}"
+                               Width="55"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" />
+                    <DataGrid x:Name="trialFourteenDataGrid"
+                              Height="150"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              VirtualizingPanel.IsVirtualizing="True"
+                              VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                              VirtualizingPanel.ScrollUnit="Pixel"
+                              VirtualizingPanel.VirtualizationMode="Recycling"
+                              VirtualizingPanel.IsContainerVirtualizable="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding  StringFormat="{} {0} {1} {2}">
+                                        <Binding Path="FirstName" />
+                                        <Binding Path="LastName" />
+                                        <Binding Path="MiddleName" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Номер телефона"
+                                                Width="*"
+                                                Binding="{Binding PhoneNumber}" />
+                            <DataGridTextColumn Header="E-Mail"
+                                                Width="*"
+                                                Binding="{Binding Email}" />
+                            <DataGridTextColumn Header="Уровень знания"
+                                                Width="*"
+                                                Binding="{Binding LanguageLevel.Name}" />
+                            <DataGridTextColumn Header="Комментарий преподавателя"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*"
+                                                Binding="{Binding Comment}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </ListViewItem>
+
+            <!--15:00-->
+            <ListViewItem VirtualizingPanel.IsVirtualizing="True"
+                          VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                          VirtualizingPanel.ScrollUnit="Pixel"
+                          Margin="0,5,0,0"
+                          VirtualizingPanel.VirtualizationMode="Recycling"
+                          VirtualizingPanel.IsContainerVirtualizable="True">
+                <DockPanel>
+                    <TextBlock Text="15:00"
+                               Style="{StaticResource otherText}"
+                               Width="55"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" />
+                    <DataGrid x:Name="trialFifteenDataGrid"
+                              Height="150"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              VirtualizingPanel.IsVirtualizing="True"
+                              VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                              VirtualizingPanel.ScrollUnit="Pixel"
+                              VirtualizingPanel.VirtualizationMode="Recycling"
+                              VirtualizingPanel.IsContainerVirtualizable="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding  StringFormat="{} {0} {1} {2}">
+                                        <Binding Path="FirstName" />
+                                        <Binding Path="LastName" />
+                                        <Binding Path="MiddleName" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Номер телефона"
+                                                Width="*"
+                                                Binding="{Binding PhoneNumber}" />
+                            <DataGridTextColumn Header="E-Mail"
+                                                Width="*"
+                                                Binding="{Binding Email}" />
+                            <DataGridTextColumn Header="Уровень знания"
+                                                Width="*"
+                                                Binding="{Binding LanguageLevel.Name}" />
+                            <DataGridTextColumn Header="Комментарий преподавателя"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*"
+                                                Binding="{Binding Comment}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </ListViewItem>
+
+            <!--16:00-->
+            <ListViewItem VirtualizingPanel.IsVirtualizing="True"
+                          VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                          VirtualizingPanel.ScrollUnit="Pixel"
+                          Margin="0,5,0,0"
+                          VirtualizingPanel.VirtualizationMode="Recycling"
+                          VirtualizingPanel.IsContainerVirtualizable="True">
+                <DockPanel>
+                    <TextBlock Text="16:00"
+                               Style="{StaticResource otherText}"
+                               Width="55"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" />
+                    <DataGrid x:Name="trialSixteenDataGrid"
+                              Height="150"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              VirtualizingPanel.IsVirtualizing="True"
+                              VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                              VirtualizingPanel.ScrollUnit="Pixel"
+                              VirtualizingPanel.VirtualizationMode="Recycling"
+                              VirtualizingPanel.IsContainerVirtualizable="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding  StringFormat="{} {0} {1} {2}">
+                                        <Binding Path="FirstName" />
+                                        <Binding Path="LastName" />
+                                        <Binding Path="MiddleName" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Номер телефона"
+                                                Width="*"
+                                                Binding="{Binding PhoneNumber}" />
+                            <DataGridTextColumn Header="E-Mail"
+                                                Width="*"
+                                                Binding="{Binding Email}" />
+                            <DataGridTextColumn Header="Уровень знания"
+                                                Width="*"
+                                                Binding="{Binding LanguageLevel.Name}" />
+                            <DataGridTextColumn Header="Комментарий преподавателя"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*"
+                                                Binding="{Binding Comment}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </ListViewItem>
+
+            <!--17:00-->
+            <ListViewItem VirtualizingPanel.IsVirtualizing="True"
+                          VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                          VirtualizingPanel.ScrollUnit="Pixel"
+                          Margin="0,5,0,0"
+                          VirtualizingPanel.VirtualizationMode="Recycling"
+                          VirtualizingPanel.IsContainerVirtualizable="True">
+                <DockPanel>
+                    <TextBlock Text="17:00"
+                               Style="{StaticResource otherText}"
+                               Width="55"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" />
+                    <DataGrid x:Name="trialSeventeenDataGrid"
+                              Height="150"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              VirtualizingPanel.IsVirtualizing="True"
+                              VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                              VirtualizingPanel.ScrollUnit="Pixel"
+                              VirtualizingPanel.VirtualizationMode="Recycling"
+                              VirtualizingPanel.IsContainerVirtualizable="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding  StringFormat="{} {0} {1} {2}">
+                                        <Binding Path="FirstName" />
+                                        <Binding Path="LastName" />
+                                        <Binding Path="MiddleName" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Номер телефона"
+                                                Width="*"
+                                                Binding="{Binding PhoneNumber}" />
+                            <DataGridTextColumn Header="E-Mail"
+                                                Width="*"
+                                                Binding="{Binding Email}" />
+                            <DataGridTextColumn Header="Уровень знания"
+                                                Width="*"
+                                                Binding="{Binding LanguageLevel.Name}" />
+                            <DataGridTextColumn Header="Комментарий преподавателя"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*"
+                                                Binding="{Binding Comment}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </ListViewItem>
+
+            <!--18:00-->
+            <ListViewItem VirtualizingPanel.IsVirtualizing="True"
+                          VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                          VirtualizingPanel.ScrollUnit="Pixel"
+                          Margin="0,5,0,0"
+                          VirtualizingPanel.VirtualizationMode="Recycling"
+                          VirtualizingPanel.IsContainerVirtualizable="True">
+                <DockPanel>
+                    <TextBlock Text="18:00"
+                               Style="{StaticResource otherText}"
+                               Width="55"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" />
+                    <DataGrid x:Name="trialEighteenDataGrid"
+                              Height="150"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              VirtualizingPanel.IsVirtualizing="True"
+                              VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                              VirtualizingPanel.ScrollUnit="Pixel"
+                              VirtualizingPanel.VirtualizationMode="Recycling"
+                              VirtualizingPanel.IsContainerVirtualizable="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding  StringFormat="{} {0} {1} {2}">
+                                        <Binding Path="FirstName" />
+                                        <Binding Path="LastName" />
+                                        <Binding Path="MiddleName" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Номер телефона"
+                                                Width="*"
+                                                Binding="{Binding PhoneNumber}" />
+                            <DataGridTextColumn Header="E-Mail"
+                                                Width="*"
+                                                Binding="{Binding Email}" />
+                            <DataGridTextColumn Header="Уровень знания"
+                                                Width="*"
+                                                Binding="{Binding LanguageLevel.Name}" />
+                            <DataGridTextColumn Header="Комментарий преподавателя"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*"
+                                                Binding="{Binding Comment}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </ListViewItem>
+
+            <!--19:00-->
+            <ListViewItem VirtualizingPanel.IsVirtualizing="True"
+                          VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                          VirtualizingPanel.ScrollUnit="Pixel"
+                          Margin="0,5,0,0"
+                          VirtualizingPanel.VirtualizationMode="Recycling"
+                          VirtualizingPanel.IsContainerVirtualizable="True">
+                <DockPanel>
+                    <TextBlock Text="19:00"
+                               Style="{StaticResource otherText}"
+                               Width="55"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" />
+                    <DataGrid x:Name="trialNineteenDataGrid"
+                              Height="150"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              VirtualizingPanel.IsVirtualizing="True"
+                              VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                              VirtualizingPanel.ScrollUnit="Pixel"
+                              VirtualizingPanel.VirtualizationMode="Recycling"
+                              VirtualizingPanel.IsContainerVirtualizable="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding  StringFormat="{} {0} {1} {2}">
+                                        <Binding Path="FirstName" />
+                                        <Binding Path="LastName" />
+                                        <Binding Path="MiddleName" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Номер телефона"
+                                                Width="*"
+                                                Binding="{Binding PhoneNumber}" />
+                            <DataGridTextColumn Header="E-Mail"
+                                                Width="*"
+                                                Binding="{Binding Email}" />
+                            <DataGridTextColumn Header="Уровень знания"
+                                                Width="*"
+                                                Binding="{Binding LanguageLevel.Name}" />
+                            <DataGridTextColumn Header="Комментарий преподавателя"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*"
+                                                Binding="{Binding Comment}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </ListViewItem>
+
+            <!--20:00-->
+            <ListViewItem VirtualizingPanel.IsVirtualizing="True"
+                          VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                          VirtualizingPanel.ScrollUnit="Pixel"
+                          Margin="0,5,0,0"
+                          VirtualizingPanel.VirtualizationMode="Recycling"
+                          VirtualizingPanel.IsContainerVirtualizable="True">
+                <DockPanel>
+                    <TextBlock Text="20:00"
+                               Style="{StaticResource otherText}"
+                               Width="55"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" />
+                    <DataGrid x:Name="trialTwentyDataGrid"
+                              Height="150"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              VirtualizingPanel.IsVirtualizing="True"
+                              VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                              VirtualizingPanel.ScrollUnit="Pixel"
+                              VirtualizingPanel.VirtualizationMode="Recycling"
+                              VirtualizingPanel.IsContainerVirtualizable="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding  StringFormat="{} {0} {1} {2}">
+                                        <Binding Path="FirstName" />
+                                        <Binding Path="LastName" />
+                                        <Binding Path="MiddleName" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Номер телефона"
+                                                Width="*"
+                                                Binding="{Binding PhoneNumber}" />
+                            <DataGridTextColumn Header="E-Mail"
+                                                Width="*"
+                                                Binding="{Binding Email}" />
+                            <DataGridTextColumn Header="Уровень знания"
+                                                Width="*"
+                                                Binding="{Binding LanguageLevel.Name}" />
+                            <DataGridTextColumn Header="Комментарий преподавателя"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*"
+                                                Binding="{Binding Comment}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </ListViewItem>
+        </ListView>
+
+    </Grid>
+</Page>

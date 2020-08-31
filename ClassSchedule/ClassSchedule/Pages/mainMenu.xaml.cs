@@ -58,5 +58,10 @@ namespace ClassSchedule.Pages
             //}
             //AppData.Context.SaveChanges();
         }
+
+        private void trialButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new trialPage());
+        }
     }
 }

@@ -432,6 +432,7 @@ namespace ClassSchedule.Pages
                 {
                     selectedDate = DateTime.Today;
                 }
+
                 string nameDate = selectedDate.DayOfWeek.ToString();
                 if (nameDate == "Monday")
                 {
@@ -476,6 +477,14 @@ namespace ClassSchedule.Pages
                     endDate = selectedDate;
                     Properties.Settings.Default.dayStart = "Sunday";
                 }
+
+                oneDate.Text = $"Понедельник {startDate.ToShortDateString()}";
+                twoDate.Text = $"Вторник {startDate.AddDays(1).ToShortDateString()}";
+                threeDate.Text = $"Среда {startDate.AddDays(2).ToShortDateString()}";
+                fourDate.Text = $"Четверг {startDate.AddDays(3).ToShortDateString()}";
+                fiveDate.Text = $"Пятница {startDate.AddDays(4).ToShortDateString()}";
+                sixDate.Text = $"Суббота {startDate.AddDays(5).ToShortDateString()}";
+                sevenDate.Text = $"Воскресенье {startDate.AddDays(6).ToShortDateString()}";
 
                 //понедельник 9:00
                 var monday900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:00") && (c.Day == "Monday") && (c.Teacher.Id == CurrentTeacher.Id));

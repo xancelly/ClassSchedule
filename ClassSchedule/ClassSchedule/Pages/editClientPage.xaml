@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:ClassSchedule.Pages"
       mc:Ignorable="d"
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-      d:DesignHeight="800" d:DesignWidth="1200"
+      d:DesignHeight="1080"
+      d:DesignWidth="1920"
       Title="Добавление обучающегося">
 
     <Grid>
