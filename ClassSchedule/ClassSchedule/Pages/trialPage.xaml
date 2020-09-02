@@ -61,6 +61,7 @@
                               Height="150"
                               AutoGenerateColumns="False"
                               IsReadOnly="True"
+                              MouseDoubleClick="selectedDataGrid_MouseDoubleClick"
                               CanUserAddRows="False"
                               VirtualizingPanel.IsVirtualizing="True"
                               VirtualizingPanel.IsVirtualizingWhenGrouping="True"
@@ -73,8 +74,8 @@
                                                 ElementStyle="{StaticResource DataGridCellTextWrap}">
                                 <DataGridTextColumn.Binding>
                                     <MultiBinding  StringFormat="{} {0} {1} {2}">
-                                        <Binding Path="FirstName" />
                                         <Binding Path="LastName" />
+                                        <Binding Path="FirstName" />
                                         <Binding Path="MiddleName" />
                                     </MultiBinding>
                                 </DataGridTextColumn.Binding>
@@ -114,6 +115,7 @@
                               Height="150"
                               AutoGenerateColumns="False"
                               IsReadOnly="True"
+                              MouseDoubleClick="selectedDataGrid_MouseDoubleClick"
                               CanUserAddRows="False"
                               VirtualizingPanel.IsVirtualizing="True"
                               VirtualizingPanel.IsVirtualizingWhenGrouping="True"
@@ -126,8 +128,8 @@
                                                 Width="*">
                                 <DataGridTextColumn.Binding>
                                     <MultiBinding  StringFormat="{} {0} {1} {2}">
-                                        <Binding Path="FirstName" />
                                         <Binding Path="LastName" />
+                                        <Binding Path="FirstName" />
                                         <Binding Path="MiddleName" />
                                     </MultiBinding>
                                 </DataGridTextColumn.Binding>
@@ -167,6 +169,7 @@
                               Height="150"
                               AutoGenerateColumns="False"
                               IsReadOnly="True"
+                              MouseDoubleClick="selectedDataGrid_MouseDoubleClick"
                               CanUserAddRows="False"
                               VirtualizingPanel.IsVirtualizing="True"
                               VirtualizingPanel.IsVirtualizingWhenGrouping="True"
@@ -179,8 +182,8 @@
                                                 Width="*">
                                 <DataGridTextColumn.Binding>
                                     <MultiBinding  StringFormat="{} {0} {1} {2}">
-                                        <Binding Path="FirstName" />
                                         <Binding Path="LastName" />
+                                        <Binding Path="FirstName" />
                                         <Binding Path="MiddleName" />
                                     </MultiBinding>
                                 </DataGridTextColumn.Binding>
@@ -219,6 +222,7 @@
                     <DataGrid x:Name="trialTwelveDataGrid"
                               Height="150"
                               AutoGenerateColumns="False"
+                              MouseDoubleClick="selectedDataGrid_MouseDoubleClick"
                               IsReadOnly="True"
                               CanUserAddRows="False"
                               VirtualizingPanel.IsVirtualizing="True"
@@ -232,8 +236,8 @@
                                                 Width="*">
                                 <DataGridTextColumn.Binding>
                                     <MultiBinding  StringFormat="{} {0} {1} {2}">
-                                        <Binding Path="FirstName" />
                                         <Binding Path="LastName" />
+                                        <Binding Path="FirstName" />
                                         <Binding Path="MiddleName" />
                                     </MultiBinding>
                                 </DataGridTextColumn.Binding>
@@ -274,6 +278,7 @@
                               AutoGenerateColumns="False"
                               IsReadOnly="True"
                               CanUserAddRows="False"
+                              MouseDoubleClick="selectedDataGrid_MouseDoubleClick"
                               VirtualizingPanel.IsVirtualizing="True"
                               VirtualizingPanel.IsVirtualizingWhenGrouping="True"
                               VirtualizingPanel.ScrollUnit="Pixel"
@@ -285,8 +290,8 @@
                                                 Width="*">
                                 <DataGridTextColumn.Binding>
                                     <MultiBinding  StringFormat="{} {0} {1} {2}">
-                                        <Binding Path="FirstName" />
                                         <Binding Path="LastName" />
+                                        <Binding Path="FirstName" />
                                         <Binding Path="MiddleName" />
                                     </MultiBinding>
                                 </DataGridTextColumn.Binding>
@@ -326,6 +331,7 @@
                               Height="150"
                               AutoGenerateColumns="False"
                               IsReadOnly="True"
+                              MouseDoubleClick="selectedDataGrid_MouseDoubleClick"
                               CanUserAddRows="False"
                               VirtualizingPanel.IsVirtualizing="True"
                               VirtualizingPanel.IsVirtualizingWhenGrouping="True"
@@ -338,8 +344,8 @@
                                                 Width="*">
                                 <DataGridTextColumn.Binding>
                                     <MultiBinding  StringFormat="{} {0} {1} {2}">
-                                        <Binding Path="FirstName" />
                                         <Binding Path="LastName" />
+                                        <Binding Path="FirstName" />
                                         <Binding Path="MiddleName" />
                                     </MultiBinding>
                                 </DataGridTextColumn.Binding>
@@ -380,6 +386,7 @@
                               AutoGenerateColumns="False"
                               IsReadOnly="True"
                               CanUserAddRows="False"
+                              MouseDoubleClick="selectedDataGrid_MouseDoubleClick"
                               VirtualizingPanel.IsVirtualizing="True"
                               VirtualizingPanel.IsVirtualizingWhenGrouping="True"
                               VirtualizingPanel.ScrollUnit="Pixel"
@@ -391,8 +398,8 @@
                                                 Width="*">
                                 <DataGridTextColumn.Binding>
                                     <MultiBinding  StringFormat="{} {0} {1} {2}">
-                                        <Binding Path="FirstName" />
                                         <Binding Path="LastName" />
+                                        <Binding Path="FirstName" />
                                         <Binding Path="MiddleName" />
                                     </MultiBinding>
                                 </DataGridTextColumn.Binding>
@@ -433,6 +440,7 @@
                               AutoGenerateColumns="False"
                               IsReadOnly="True"
                               CanUserAddRows="False"
+                              MouseDoubleClick="selectedDataGrid_MouseDoubleClick"
                               VirtualizingPanel.IsVirtualizing="True"
                               VirtualizingPanel.IsVirtualizingWhenGrouping="True"
                               VirtualizingPanel.ScrollUnit="Pixel"
@@ -444,8 +452,8 @@
                                                 Width="*">
                                 <DataGridTextColumn.Binding>
                                     <MultiBinding  StringFormat="{} {0} {1} {2}">
-                                        <Binding Path="FirstName" />
                                         <Binding Path="LastName" />
+                                        <Binding Path="FirstName" />
                                         <Binding Path="MiddleName" />
                                     </MultiBinding>
                                 </DataGridTextColumn.Binding>
@@ -486,6 +494,7 @@
                               AutoGenerateColumns="False"
                               IsReadOnly="True"
                               CanUserAddRows="False"
+                              MouseDoubleClick="selectedDataGrid_MouseDoubleClick"
                               VirtualizingPanel.IsVirtualizing="True"
                               VirtualizingPanel.IsVirtualizingWhenGrouping="True"
                               VirtualizingPanel.ScrollUnit="Pixel"
@@ -497,8 +506,8 @@
                                                 Width="*">
                                 <DataGridTextColumn.Binding>
                                     <MultiBinding  StringFormat="{} {0} {1} {2}">
-                                        <Binding Path="FirstName" />
                                         <Binding Path="LastName" />
+                                        <Binding Path="FirstName" />
                                         <Binding Path="MiddleName" />
                                     </MultiBinding>
                                 </DataGridTextColumn.Binding>
@@ -539,6 +548,7 @@
                               AutoGenerateColumns="False"
                               IsReadOnly="True"
                               CanUserAddRows="False"
+                              MouseDoubleClick="selectedDataGrid_MouseDoubleClick"
                               VirtualizingPanel.IsVirtualizing="True"
                               VirtualizingPanel.IsVirtualizingWhenGrouping="True"
                               VirtualizingPanel.ScrollUnit="Pixel"
@@ -550,8 +560,8 @@
                                                 Width="*">
                                 <DataGridTextColumn.Binding>
                                     <MultiBinding  StringFormat="{} {0} {1} {2}">
-                                        <Binding Path="FirstName" />
                                         <Binding Path="LastName" />
+                                        <Binding Path="FirstName" />
                                         <Binding Path="MiddleName" />
                                     </MultiBinding>
                                 </DataGridTextColumn.Binding>
@@ -592,6 +602,7 @@
                               AutoGenerateColumns="False"
                               IsReadOnly="True"
                               CanUserAddRows="False"
+                              MouseDoubleClick="selectedDataGrid_MouseDoubleClick"
                               VirtualizingPanel.IsVirtualizing="True"
                               VirtualizingPanel.IsVirtualizingWhenGrouping="True"
                               VirtualizingPanel.ScrollUnit="Pixel"
@@ -603,8 +614,8 @@
                                                 Width="*">
                                 <DataGridTextColumn.Binding>
                                     <MultiBinding  StringFormat="{} {0} {1} {2}">
-                                        <Binding Path="FirstName" />
                                         <Binding Path="LastName" />
+                                        <Binding Path="FirstName" />
                                         <Binding Path="MiddleName" />
                                     </MultiBinding>
                                 </DataGridTextColumn.Binding>
@@ -645,6 +656,7 @@
                               AutoGenerateColumns="False"
                               IsReadOnly="True"
                               CanUserAddRows="False"
+                              MouseDoubleClick="selectedDataGrid_MouseDoubleClick"
                               VirtualizingPanel.IsVirtualizing="True"
                               VirtualizingPanel.IsVirtualizingWhenGrouping="True"
                               VirtualizingPanel.ScrollUnit="Pixel"
@@ -656,8 +668,62 @@
                                                 Width="*">
                                 <DataGridTextColumn.Binding>
                                     <MultiBinding  StringFormat="{} {0} {1} {2}">
-                                        <Binding Path="FirstName" />
                                         <Binding Path="LastName" />
+                                        <Binding Path="FirstName" />
+                                        <Binding Path="MiddleName" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Номер телефона"
+                                                Width="*"
+                                                Binding="{Binding PhoneNumber}" />
+                            <DataGridTextColumn Header="E-Mail"
+                                                Width="*"
+                                                Binding="{Binding Email}" />
+                            <DataGridTextColumn Header="Уровень знания"
+                                                Width="*"
+                                                Binding="{Binding LanguageLevel.Name}" />
+                            <DataGridTextColumn Header="Комментарий преподавателя"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*"
+                                                Binding="{Binding Comment}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </ListViewItem>
+
+            <!--21:00-->
+            <ListViewItem VirtualizingPanel.IsVirtualizing="True"
+                          VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                          VirtualizingPanel.ScrollUnit="Pixel"
+                          Margin="0,5,0,0"
+                          VirtualizingPanel.VirtualizationMode="Recycling"
+                          VirtualizingPanel.IsContainerVirtualizable="True">
+                <DockPanel>
+                    <TextBlock Text="21:00"
+                               Style="{StaticResource otherText}"
+                               Width="55"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" />
+                    <DataGrid x:Name="trialTwentyOneDataGrid"
+                              Height="150"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              MouseDoubleClick="selectedDataGrid_MouseDoubleClick"
+                              VirtualizingPanel.IsVirtualizing="True"
+                              VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                              VirtualizingPanel.ScrollUnit="Pixel"
+                              VirtualizingPanel.VirtualizationMode="Recycling"
+                              VirtualizingPanel.IsContainerVirtualizable="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО"
+                                                ElementStyle="{StaticResource DataGridCellTextWrap}"
+                                                Width="*">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding  StringFormat="{} {0} {1} {2}">
+                                        <Binding Path="LastName" />
+                                        <Binding Path="FirstName" />
                                         <Binding Path="MiddleName" />
                                     </MultiBinding>
                                 </DataGridTextColumn.Binding>

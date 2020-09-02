@@ -14,7 +14,7 @@
         <EntityTypeShape EntityType="ClassScheduleModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="8.125" />
         <EntityTypeShape EntityType="ClassScheduleModel.Teacher" Width="1.5" PointX="0.75" PointY="4" />
         <EntityTypeShape EntityType="ClassScheduleModel.TeacherDayOfWeek" Width="1.5" PointX="3" PointY="4.375" />
-        <EntityTypeShape EntityType="ClassScheduleModel.TrialLesson" Width="1.5" PointX="6" PointY="15" />
+        <EntityTypeShape EntityType="ClassScheduleModel.TrialLesson" Width="1.5" PointX="6" PointY="14.875" />
         <AssociationConnector Association="ClassScheduleModel.FK_Client_LanguageLevel" />
         <AssociationConnector Association="ClassScheduleModel.FK_ClientLesson_Client" />
         <AssociationConnector Association="ClassScheduleModel.FK_ClientLesson_Lesson" />

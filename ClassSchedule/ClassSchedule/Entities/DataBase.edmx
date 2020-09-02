@@ -112,6 +112,7 @@
           <Property Name="Comment" Type="nvarchar(max)" />
           <Property Name="Time" Type="nvarchar" MaxLength="5" />
           <Property Name="Date" Type="date" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <Association Name="FK_Client_LanguageLevel">
           <End Role="LanguageLevel" Type="Self.LanguageLevel" Multiplicity="0..1" />
@@ -423,6 +424,7 @@
           <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Time" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="LanguageLevel" Relationship="ClassScheduleModel.FK_TrialLesson_LanguageLevel" FromRole="TrialLesson" ToRole="LanguageLevel" />
         </EntityType>
         <Association Name="FK_Client_LanguageLevel">
@@ -632,6 +634,7 @@
           <EntitySetMapping Name="TrialLesson">
             <EntityTypeMapping TypeName="ClassScheduleModel.TrialLesson">
               <MappingFragment StoreEntitySet="TrialLesson">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />

@@ -52,7 +52,7 @@ namespace ClassSchedule.Pages
                     {
                         if (middleNameTextBox.Text.IndexOfAny(numList.ToCharArray()) <= -1)
                         {
-                            if (phoneNumberTextBox.Text.Length == 18 && (phoneNumberTextBox.Text.IndexOfAny(letterList.ToCharArray()) <= -1) && !phoneNumberTextBox.Text.Contains('_'))
+                            if (phoneNumberTextBox.Text.IndexOfAny(letterList.ToCharArray()) <= -1)
                             {
                                 if (dateOfBirthDatePicker.SelectedDate < DateTime.Today)
                                 {
@@ -64,7 +64,6 @@ namespace ClassSchedule.Pages
                                             {
                                                 LastName = lastNameTextBox.Text.Substring(0, 1).ToUpper() + lastNameTextBox.Text.Substring(1, lastNameTextBox.Text.Length - 1),
                                                 FirstName = firstNameTextBox.Text.Substring(0, 1).ToUpper() + firstNameTextBox.Text.Substring(1, firstNameTextBox.Text.Length - 1),
-                                                MiddleName = middleNameTextBox.Text.Substring(0, 1).ToUpper() + middleNameTextBox.Text.Substring(1, middleNameTextBox.Text.Length - 1),
                                                 DateOfBirth = Convert.ToDateTime(dateOfBirthDatePicker.SelectedDate.Value.ToShortDateString()),
                                                 PhoneNumber = phoneNumberTextBox.Text,
                                                 FavoriteTime = timeComboBox.Text,
@@ -72,6 +71,10 @@ namespace ClassSchedule.Pages
                                                 Zoom = zoomTextBox.Text,
                                                 IsDeleted = false,
                                             };
+                                            if (!String.IsNullOrWhiteSpace(middleNameTextBox.Text))
+                                            {
+                                                CurrentClient.MiddleName = middleNameTextBox.Text.Substring(0, 1).ToUpper() + middleNameTextBox.Text.Substring(1, middleNameTextBox.Text.Length - 1);
+                                            }
                                             AppData.Context.Client.Add(CurrentClient);
                                             AppData.Context.SaveChanges();
                                             MessageBox.Show("Обучающийся успешно добавлен!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -81,7 +84,14 @@ namespace ClassSchedule.Pages
                                         {
                                             CurrentClient.LastName = lastNameTextBox.Text.Substring(0, 1).ToUpper() + lastNameTextBox.Text.Substring(1, lastNameTextBox.Text.Length - 1);
                                             CurrentClient.FirstName = firstNameTextBox.Text.Substring(0, 1).ToUpper() + firstNameTextBox.Text.Substring(1, firstNameTextBox.Text.Length - 1);
-                                            CurrentClient.MiddleName = middleNameTextBox.Text.Substring(0, 1).ToUpper() + middleNameTextBox.Text.Substring(1, middleNameTextBox.Text.Length - 1);
+                                            if (!String.IsNullOrWhiteSpace(middleNameTextBox.Text))
+                                            {
+                                                CurrentClient.MiddleName = middleNameTextBox.Text.Substring(0, 1).ToUpper() + middleNameTextBox.Text.Substring(1, middleNameTextBox.Text.Length - 1);
+                                            }
+                                            else
+                                            {
+                                                CurrentClient.MiddleName = middleNameTextBox.Text;
+                                            }
                                             CurrentClient.DateOfBirth = Convert.ToDateTime(dateOfBirthDatePicker.SelectedDate.Value.ToShortDateString());
                                             CurrentClient.PhoneNumber = phoneNumberTextBox.Text;
                                             CurrentClient.Zoom = zoomTextBox.Text;

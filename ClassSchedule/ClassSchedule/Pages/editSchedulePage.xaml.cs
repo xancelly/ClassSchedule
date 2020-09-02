@@ -217,7 +217,7 @@ namespace ClassSchedule.Pages
             {
                 teacherComboBox.ItemsSource = null;
                 teacherComboBox.Items.Clear();
-                teacherComboBox.ItemsSource = AppData.Context.Teacher.Where(c => c.IsDeleted == false).ToList();
+                teacherComboBox.ItemsSource = AppData.Context.TeacherDayOfWeek.Where(c => c.Teacher.IsDeleted == false).ToList();
             }
             else
             {

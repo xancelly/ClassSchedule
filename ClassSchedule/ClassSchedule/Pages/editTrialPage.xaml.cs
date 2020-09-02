@@ -30,7 +30,14 @@ namespace ClassSchedule.Pages
             CurrentTrialLesson = trialLesson;
             if (CurrentTrialLesson != null)
             {
-                this.Title = $"Редактирование пробного занятия \nна {Properties.Settings.Default.dateStart} в {Properties.Settings.Default.timeStart}";
+                if (Properties.Settings.Default.dateStart != "0" && Properties.Settings.Default.timeStart != "0")
+                {
+                    this.Title = $"Редактирование пробного занятия \nна {Properties.Settings.Default.dateStart} в {Properties.Settings.Default.timeStart}";
+                } else
+                {
+                    this.Title = $"Редактирование пробного занятия \nна {CurrentTrialLesson.Date.Value.ToShortDateString()} в {CurrentTrialLesson.Time}";
+                }
+                
                 lastNameTextBox.Text = CurrentTrialLesson.LastName;
                 firstNameTextBox.Text = CurrentTrialLesson.FirstName;
                 middleNameTextBox.Text = CurrentTrialLesson.MiddleName;
@@ -57,7 +64,7 @@ namespace ClassSchedule.Pages
                     {
                         if (middleNameTextBox.Text.IndexOfAny(numList.ToCharArray()) <= -1)
                         {
-                            if (phoneNumberTextBox.Text.Length == 18 && (phoneNumberTextBox.Text.IndexOfAny(letterList.ToCharArray()) <= -1) && !phoneNumberTextBox.Text.Contains('_'))
+                            if (phoneNumberTextBox.Text.IndexOfAny(letterList.ToCharArray()) <= -1)
                             {
                                 if (new EmailAddressAttribute().IsValid(emailTextBox.Text))
                                 {
@@ -67,14 +74,18 @@ namespace ClassSchedule.Pages
                                         {
                                             LastName = lastNameTextBox.Text.Substring(0, 1).ToUpper() + lastNameTextBox.Text.Substring(1, lastNameTextBox.Text.Length - 1),
                                             FirstName = firstNameTextBox.Text.Substring(0, 1).ToUpper() + firstNameTextBox.Text.Substring(1, firstNameTextBox.Text.Length - 1),
-                                            MiddleName = middleNameTextBox.Text.Substring(0, 1).ToUpper() + middleNameTextBox.Text.Substring(1, middleNameTextBox.Text.Length - 1),
                                             PhoneNumber = phoneNumberTextBox.Text,
                                             Email = emailTextBox.Text,
                                             Comment = commentTextBox.Text,
                                             LanguageLevel = languageLevelComboBox.SelectedItem as LanguageLevel,
                                             Time = Properties.Settings.Default.timeStart,
                                             Date = Convert.ToDateTime(Properties.Settings.Default.dateStart),
+                                            IsDeleted = false,
                                         };
+                                        if (!String.IsNullOrWhiteSpace(middleNameTextBox.Text))
+                                        {
+                                            CurrentTrialLesson.MiddleName = middleNameTextBox.Text.Substring(0, 1).ToUpper() + middleNameTextBox.Text.Substring(1, middleNameTextBox.Text.Length - 1);
+                                        }
                                         AppData.Context.TrialLesson.Add(CurrentTrialLesson);
                                         AppData.Context.SaveChanges();
                                         MessageBox.Show("Пробное занятие успешно добавлено!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -83,7 +94,14 @@ namespace ClassSchedule.Pages
                                     {
                                         CurrentTrialLesson.LastName = lastNameTextBox.Text.Substring(0, 1).ToUpper() + lastNameTextBox.Text.Substring(1, lastNameTextBox.Text.Length - 1);
                                         CurrentTrialLesson.FirstName = firstNameTextBox.Text.Substring(0, 1).ToUpper() + firstNameTextBox.Text.Substring(1, firstNameTextBox.Text.Length - 1);
-                                        CurrentTrialLesson.MiddleName = middleNameTextBox.Text.Substring(0, 1).ToUpper() + middleNameTextBox.Text.Substring(1, middleNameTextBox.Text.Length - 1);
+                                        if (!String.IsNullOrWhiteSpace(middleNameTextBox.Text))
+                                        {
+                                            CurrentTrialLesson.MiddleName = middleNameTextBox.Text.Substring(0, 1).ToUpper() + middleNameTextBox.Text.Substring(1, middleNameTextBox.Text.Length - 1);
+                                        }
+                                        else
+                                        {
+                                            CurrentTrialLesson.MiddleName = middleNameTextBox.Text;
+                                        }
                                         CurrentTrialLesson.PhoneNumber = phoneNumberTextBox.Text;
                                         CurrentTrialLesson.Email = emailTextBox.Text;
                                         CurrentTrialLesson.Comment = commentTextBox.Text;

@@ -105,7 +105,7 @@ namespace ClassSchedule.Pages
                         {
                             if (middleNameTextBox.Text.IndexOfAny(numList.ToCharArray()) <= -1)
                             {
-                                if (phoneNumberTextBox.Text.Length == 18 && (phoneNumberTextBox.Text.IndexOfAny(letterList.ToCharArray()) <= -1) && !phoneNumberTextBox.Text.Contains('_'))
+                                if (phoneNumberTextBox.Text.IndexOfAny(letterList.ToCharArray()) <= -1)
                                 {
                                     if (mondayCheckBox.IsChecked == true || tuesdayCheckBox.IsChecked == true || wednesdayCheckBox.IsChecked == true || thursdayCheckBox.IsChecked == true || fridayCheckBox.IsChecked == true || saturdayCheckBox.IsChecked == true || sundayCheckBox.IsChecked == true)
                                     {
@@ -119,13 +119,16 @@ namespace ClassSchedule.Pages
                                                     {
                                                         LastName = lastNameTextBox.Text.Substring(0, 1).ToUpper() + lastNameTextBox.Text.Substring(1, lastNameTextBox.Text.Length - 1),
                                                         FirstName = firstNameTextBox.Text.Substring(0, 1).ToUpper() + firstNameTextBox.Text.Substring(1, firstNameTextBox.Text.Length - 1),
-                                                        MiddleName = middleNameTextBox.Text.Substring(0, 1).ToUpper() + middleNameTextBox.Text.Substring(1, middleNameTextBox.Text.Length - 1),
                                                         DateOfBirth = Convert.ToDateTime(dateOfBirthDatePicker.SelectedDate.Value.ToShortDateString()),
                                                         PhoneNumber = phoneNumberTextBox.Text,
                                                         Skype = skypeTextBox.Text,
                                                         Zoom = zoomTextBox.Text,
                                                         IsDeleted = false,
                                                     };
+                                                    if (!String.IsNullOrWhiteSpace(middleNameTextBox.Text))
+                                                    {
+                                                        CurrentTeacher.MiddleName = middleNameTextBox.Text.Substring(0, 1).ToUpper() + middleNameTextBox.Text.Substring(1, middleNameTextBox.Text.Length - 1);
+                                                    }
                                                     AppData.Context.Teacher.Add(CurrentTeacher);
 
                                                     if (mondayCheckBox.IsChecked == true)
@@ -212,7 +215,14 @@ namespace ClassSchedule.Pages
                                                 {
                                                     CurrentTeacher.LastName = lastNameTextBox.Text.Substring(0, 1).ToUpper() + lastNameTextBox.Text.Substring(1, lastNameTextBox.Text.Length - 1);
                                                     CurrentTeacher.FirstName = firstNameTextBox.Text.Substring(0, 1).ToUpper() + firstNameTextBox.Text.Substring(1, firstNameTextBox.Text.Length - 1);
-                                                    CurrentTeacher.MiddleName = middleNameTextBox.Text.Substring(0, 1).ToUpper() + middleNameTextBox.Text.Substring(1, middleNameTextBox.Text.Length - 1);
+                                                    if (!String.IsNullOrWhiteSpace(middleNameTextBox.Text))
+                                                    {
+                                                        CurrentTeacher.MiddleName = middleNameTextBox.Text.Substring(0, 1).ToUpper() + middleNameTextBox.Text.Substring(1, middleNameTextBox.Text.Length - 1);
+                                                    }
+                                                    else
+                                                    {
+                                                        CurrentTeacher.MiddleName = middleNameTextBox.Text;
+                                                    }
                                                     CurrentTeacher.DateOfBirth = Convert.ToDateTime(dateOfBirthDatePicker.SelectedDate.Value.ToShortDateString());
                                                     CurrentTeacher.PhoneNumber = phoneNumberTextBox.Text;
                                                     CurrentTeacher.Zoom = zoomTextBox.Text;

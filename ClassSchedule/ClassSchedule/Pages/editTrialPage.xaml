@@ -48,9 +48,9 @@
                 <TextBlock Style="{StaticResource otherText}"
                            Text="Номер телефона"
                            Margin="5" />
-                <xctk:MaskedTextBox x:Name="phoneNumberTextBox"
-                                    Mask="+7 (000) 000-00-00"
-                                    Margin="5" />
+                <TextBox x:Name="phoneNumberTextBox"
+                         Style="{StaticResource normalTextBox}"
+                         Margin="5" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal"

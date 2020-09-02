@@ -24,6 +24,7 @@ namespace ClassSchedule.Entities
         public string Comment { get; set; }
         public string Time { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         public virtual LanguageLevel LanguageLevel { get; set; }
     }
