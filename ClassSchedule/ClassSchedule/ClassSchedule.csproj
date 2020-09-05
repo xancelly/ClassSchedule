@@ -132,6 +132,9 @@
     <Compile Include="Entities\Lesson.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Status.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\sysdiagrams.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
@@ -143,6 +146,9 @@
     </Compile>
     <Compile Include="Entities\timeStartPartial.cs" />
     <Compile Include="Entities\TrialLesson.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TypeLesson.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">

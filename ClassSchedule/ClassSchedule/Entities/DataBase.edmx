@@ -29,6 +29,8 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdClient" Type="int" />
           <Property Name="IdLesson" Type="int" />
+          <Property Name="IsAttendance" Type="bit" />
+          <Property Name="IsPaid" Type="bit" />
         </EntityType>
         <EntityType Name="DayOfWeek">
           <Key>
@@ -58,11 +60,20 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdTeacher" Type="int" />
+          <Property Name="IdTypeLesson" Type="int" />
           <Property Name="IdGroups" Type="int" />
-          <Property Name="Time" Type="nvarchar" MaxLength="5" />
           <Property Name="Date" Type="date" />
+          <Property Name="Time" Type="nvarchar" MaxLength="5" />
           <Property Name="Day" Type="nvarchar" MaxLength="8" />
           <Property Name="LessonTime" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bit" Nullable="false" />
+          <Property Name="IsPaid" Type="bit" />
+          <Property Name="IsAttendance" Type="bit" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -113,6 +124,13 @@
           <Property Name="Time" Type="nvarchar" MaxLength="5" />
           <Property Name="Date" Type="date" />
           <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="TypeLesson">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_Client_LanguageLevel">
           <End Role="LanguageLevel" Type="Self.LanguageLevel" Multiplicity="0..1" />
@@ -174,6 +192,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Lesson_TypeLesson">
+          <End Role="TypeLesson" Type="Self.TypeLesson" Multiplicity="0..1" />
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeLesson">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Lesson">
+              <PropertyRef Name="IdTypeLesson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TeacherDayOfWeek_DayOfWeek">
           <End Role="DayOfWeek" Type="Self.DayOfWeek" Multiplicity="0..1" />
           <End Role="TeacherDayOfWeek" Type="Self.TeacherDayOfWeek" Multiplicity="*" />
@@ -217,10 +247,12 @@
           <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LanguageLevel" EntityType="Self.LanguageLevel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lesson" EntityType="Self.Lesson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TeacherDayOfWeek" EntityType="Self.TeacherDayOfWeek" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TrialLesson" EntityType="Self.TrialLesson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeLesson" EntityType="Self.TypeLesson" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Client_LanguageLevel" Association="Self.FK_Client_LanguageLevel">
             <End Role="LanguageLevel" EntitySet="LanguageLevel" />
             <End Role="Client" EntitySet="Client" />
@@ -239,6 +271,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Lesson_Teacher" Association="Self.FK_Lesson_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Lesson" EntitySet="Lesson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lesson_TypeLesson" Association="Self.FK_Lesson_TypeLesson">
+            <End Role="TypeLesson" EntitySet="TypeLesson" />
             <End Role="Lesson" EntitySet="Lesson" />
           </AssociationSet>
           <AssociationSet Name="FK_TeacherDayOfWeek_DayOfWeek" Association="Self.FK_TeacherDayOfWeek_DayOfWeek">
@@ -265,10 +301,12 @@
           <EntitySet Name="Groups" EntityType="ClassScheduleModel.Groups" />
           <EntitySet Name="LanguageLevel" EntityType="ClassScheduleModel.LanguageLevel" />
           <EntitySet Name="Lesson" EntityType="ClassScheduleModel.Lesson" />
+          <EntitySet Name="Status" EntityType="ClassScheduleModel.Status" />
           <EntitySet Name="sysdiagrams" EntityType="ClassScheduleModel.sysdiagrams" />
           <EntitySet Name="Teacher" EntityType="ClassScheduleModel.Teacher" />
           <EntitySet Name="TeacherDayOfWeek" EntityType="ClassScheduleModel.TeacherDayOfWeek" />
           <EntitySet Name="TrialLesson" EntityType="ClassScheduleModel.TrialLesson" />
+          <EntitySet Name="TypeLesson" EntityType="ClassScheduleModel.TypeLesson" />
           <AssociationSet Name="FK_Client_LanguageLevel" Association="ClassScheduleModel.FK_Client_LanguageLevel">
             <End Role="LanguageLevel" EntitySet="LanguageLevel" />
             <End Role="Client" EntitySet="Client" />
@@ -295,6 +333,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Lesson_Teacher" Association="ClassScheduleModel.FK_Lesson_Teacher">
             <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Lesson" EntitySet="Lesson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lesson_TypeLesson" Association="ClassScheduleModel.FK_Lesson_TypeLesson">
+            <End Role="TypeLesson" EntitySet="TypeLesson" />
             <End Role="Lesson" EntitySet="Lesson" />
           </AssociationSet>
           <AssociationSet Name="FK_TeacherDayOfWeek_Teacher" Association="ClassScheduleModel.FK_TeacherDayOfWeek_Teacher">
@@ -328,6 +370,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdClient" Type="Int32" />
           <Property Name="IdLesson" Type="Int32" />
+          <Property Name="IsAttendance" Type="Boolean" />
+          <Property Name="IsPaid" Type="Boolean" />
           <NavigationProperty Name="Client" Relationship="ClassScheduleModel.FK_ClientLesson_Client" FromRole="ClientLesson" ToRole="Client" />
           <NavigationProperty Name="Lesson" Relationship="ClassScheduleModel.FK_ClientLesson_Lesson" FromRole="ClientLesson" ToRole="Lesson" />
         </EntityType>
@@ -363,14 +407,24 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdTeacher" Type="Int32" />
+          <Property Name="IdTypeLesson" Type="Int32" />
           <Property Name="IdGroups" Type="Int32" />
-          <Property Name="Time" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Time" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="Day" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
           <Property Name="LessonTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ClientLesson" Relationship="ClassScheduleModel.FK_ClientLesson_Lesson" FromRole="Lesson" ToRole="ClientLesson" />
           <NavigationProperty Name="Groups" Relationship="ClassScheduleModel.FK_Lesson_Group" FromRole="Lesson" ToRole="Groups" />
           <NavigationProperty Name="Teacher" Relationship="ClassScheduleModel.FK_Lesson_Teacher" FromRole="Lesson" ToRole="Teacher" />
+          <NavigationProperty Name="TypeLesson" Relationship="ClassScheduleModel.FK_Lesson_TypeLesson" FromRole="Lesson" ToRole="TypeLesson" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Boolean" Nullable="false" />
+          <Property Name="IsPaid" Type="Boolean" />
+          <Property Name="IsAttendance" Type="Boolean" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -426,6 +480,14 @@
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="LanguageLevel" Relationship="ClassScheduleModel.FK_TrialLesson_LanguageLevel" FromRole="TrialLesson" ToRole="LanguageLevel" />
+        </EntityType>
+        <EntityType Name="TypeLesson">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Lesson" Relationship="ClassScheduleModel.FK_Lesson_TypeLesson" FromRole="TypeLesson" ToRole="Lesson" />
         </EntityType>
         <Association Name="FK_Client_LanguageLevel">
           <End Type="ClassScheduleModel.LanguageLevel" Role="LanguageLevel" Multiplicity="0..1" />
@@ -511,6 +573,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Lesson_TypeLesson">
+          <End Type="ClassScheduleModel.TypeLesson" Role="TypeLesson" Multiplicity="0..1" />
+          <End Type="ClassScheduleModel.Lesson" Role="Lesson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeLesson">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Lesson">
+              <PropertyRef Name="IdTypeLesson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TeacherDayOfWeek_Teacher">
           <End Type="ClassScheduleModel.Teacher" Role="Teacher" Multiplicity="0..1" />
           <End Type="ClassScheduleModel.TeacherDayOfWeek" Role="TeacherDayOfWeek" Multiplicity="*" />
@@ -550,6 +624,8 @@
           <EntitySetMapping Name="ClientLesson">
             <EntityTypeMapping TypeName="ClassScheduleModel.ClientLesson">
               <MappingFragment StoreEntitySet="ClientLesson">
+                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+                <ScalarProperty Name="IsAttendance" ColumnName="IsAttendance" />
                 <ScalarProperty Name="IdLesson" ColumnName="IdLesson" />
                 <ScalarProperty Name="IdClient" ColumnName="IdClient" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -586,10 +662,20 @@
               <MappingFragment StoreEntitySet="Lesson">
                 <ScalarProperty Name="LessonTime" ColumnName="LessonTime" />
                 <ScalarProperty Name="Day" ColumnName="Day" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="IdGroups" ColumnName="IdGroups" />
+                <ScalarProperty Name="IdTypeLesson" ColumnName="IdTypeLesson" />
                 <ScalarProperty Name="IdTeacher" ColumnName="IdTeacher" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="ClassScheduleModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="IsAttendance" ColumnName="IsAttendance" />
+                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -644,6 +730,14 @@
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeLesson">
+            <EntityTypeMapping TypeName="ClassScheduleModel.TypeLesson">
+              <MappingFragment StoreEntitySet="TypeLesson">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

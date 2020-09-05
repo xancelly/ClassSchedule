@@ -12,15 +12,18 @@ namespace ClassSchedule.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class ClientLesson
+    public partial class TypeLesson
     {
-        public int Id { get; set; }
-        public Nullable<int> IdClient { get; set; }
-        public Nullable<int> IdLesson { get; set; }
-        public Nullable<bool> IsAttendance { get; set; }
-        public Nullable<bool> IsPaid { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TypeLesson()
+        {
+            this.Lesson = new HashSet<Lesson>();
+        }
     
-        public virtual Client Client { get; set; }
-        public virtual Lesson Lesson { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Lesson> Lesson { get; set; }
     }
 }

@@ -6,15 +6,17 @@
     <edmx:Diagrams>
       <Diagram DiagramId="01ce160d55254da2bf626cb9f4e86ecc" Name="Diagram1">
         <EntityTypeShape EntityType="ClassScheduleModel.Client" Width="1.5" PointX="6" PointY="9.75" />
-        <EntityTypeShape EntityType="ClassScheduleModel.ClientLesson" Width="1.5" PointX="8.25" PointY="4.5" />
-        <EntityTypeShape EntityType="ClassScheduleModel.DayOfWeek" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ClassScheduleModel.Groups" Width="1.5" PointX="3.75" PointY="1.625" />
+        <EntityTypeShape EntityType="ClassScheduleModel.ClientLesson" Width="1.5" PointX="8.25" PointY="4.375" />
+        <EntityTypeShape EntityType="ClassScheduleModel.DayOfWeek" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClassScheduleModel.Groups" Width="1.5" PointX="0.75" PointY="8.875" />
         <EntityTypeShape EntityType="ClassScheduleModel.LanguageLevel" Width="1.5" PointX="3.75" PointY="10.625" />
-        <EntityTypeShape EntityType="ClassScheduleModel.Lesson" Width="1.5" PointX="6" PointY="4.125" />
-        <EntityTypeShape EntityType="ClassScheduleModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="8.125" />
+        <EntityTypeShape EntityType="ClassScheduleModel.Lesson" Width="1.5" PointX="3" PointY="3.875" />
+        <EntityTypeShape EntityType="ClassScheduleModel.Status" Width="1.5" PointX="5.75" PointY="1.875" />
+        <EntityTypeShape EntityType="ClassScheduleModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="7.875" />
         <EntityTypeShape EntityType="ClassScheduleModel.Teacher" Width="1.5" PointX="0.75" PointY="4" />
-        <EntityTypeShape EntityType="ClassScheduleModel.TeacherDayOfWeek" Width="1.5" PointX="3" PointY="4.375" />
+        <EntityTypeShape EntityType="ClassScheduleModel.TeacherDayOfWeek" Width="1.5" PointX="6" PointY="4.375" />
         <EntityTypeShape EntityType="ClassScheduleModel.TrialLesson" Width="1.5" PointX="6" PointY="14.875" />
+        <EntityTypeShape EntityType="ClassScheduleModel.TypeLesson" Width="1.5" PointX="0.75" PointY="1.5" />
         <AssociationConnector Association="ClassScheduleModel.FK_Client_LanguageLevel" />
         <AssociationConnector Association="ClassScheduleModel.FK_ClientLesson_Client" />
         <AssociationConnector Association="ClassScheduleModel.FK_ClientLesson_Lesson" />
@@ -22,6 +24,7 @@
         <AssociationConnector Association="ClassScheduleModel.FK_Lesson_Group" />
         <AssociationConnector Association="ClassScheduleModel.FK_TrialLesson_LanguageLevel" />
         <AssociationConnector Association="ClassScheduleModel.FK_Lesson_Teacher" />
+        <AssociationConnector Association="ClassScheduleModel.FK_Lesson_TypeLesson" />
         <AssociationConnector Association="ClassScheduleModel.FK_TeacherDayOfWeek_Teacher" />
       </Diagram>
     </edmx:Diagrams>

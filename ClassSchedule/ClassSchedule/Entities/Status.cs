@@ -12,15 +12,10 @@ namespace ClassSchedule.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class ClientLesson
+    public partial class Status
     {
-        public int Id { get; set; }
-        public Nullable<int> IdClient { get; set; }
-        public Nullable<int> IdLesson { get; set; }
-        public Nullable<bool> IsAttendance { get; set; }
+        public bool Id { get; set; }
         public Nullable<bool> IsPaid { get; set; }
-    
-        public virtual Client Client { get; set; }
-        public virtual Lesson Lesson { get; set; }
+        public Nullable<bool> IsAttendance { get; set; }
     }
 }

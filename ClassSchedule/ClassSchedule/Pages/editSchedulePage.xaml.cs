@@ -115,14 +115,18 @@ namespace ClassSchedule.Pages
                                     Day = Properties.Settings.Default.dayStart,
                                     Groups = groupComboBox.SelectedItem as Groups,
                                     LessonTime = lessonTimeComboBox.Text,
+                                    IdTypeLesson = 1,
                                 };
 
                                 foreach (var item in Clients)
                                 {
                                     CurrentLesson.ClientLesson.Add(
+
                                         new ClientLesson
                                         {
-                                            Client = item
+                                            Client = item,
+                                            IsAttendance = false,
+                                            IsPaid = false,
                                         });
                                 }
                                 AppData.Context.Lesson.Add(CurrentLesson);

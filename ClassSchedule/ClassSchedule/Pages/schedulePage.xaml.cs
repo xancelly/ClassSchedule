@@ -428,7 +428,8 @@ namespace ClassSchedule.Pages
                 if (scheduleCalendar.SelectedDate != null)
                 {
                     selectedDate = scheduleCalendar.SelectedDate.Value;
-                } else
+                }
+                else
                 {
                     selectedDate = DateTime.Today;
                 }
@@ -487,8 +488,8 @@ namespace ClassSchedule.Pages
                 sevenDate.Text = $"Воскресенье {startDate.AddDays(6).ToShortDateString()}";
 
                 //понедельник 9:00
-                var monday900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:00") && (c.Day == "Monday") && (c.Teacher.Id == CurrentTeacher.Id));
-                var mondayClients900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:00") && (c.Lesson.Day == "Monday") && (c.Lesson.Teacher.Id == CurrentTeacher.Id));
+                var monday900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:00") && (c.Day == "Monday") && (c.Teacher.Id == CurrentTeacher.Id) && c.TypeLesson.Name == "Групповое");
+                var mondayClients900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday900Data.FirstOrDefault() != null && mondayClients900Data.FirstOrDefault() != null)
                 {
                     monday900.ItemsSource = monday900Data.ToList();
@@ -496,8 +497,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 9:30
-                var monday930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday930Data.FirstOrDefault() != null && mondayClients930Data.FirstOrDefault() != null)
                 {
                     monday930.ItemsSource = monday930Data.ToList();
@@ -505,8 +506,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 10:00
-                var monday1000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1000Data.FirstOrDefault() != null && mondayClients1000Data.FirstOrDefault() != null)
                 {
                     monday1000.ItemsSource = monday1000Data.ToList();
@@ -514,8 +515,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 10:30
-                var monday1030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1030Data.FirstOrDefault() != null && mondayClients1030Data.FirstOrDefault() != null)
                 {
                     monday1030.ItemsSource = monday1030Data.ToList();
@@ -523,8 +524,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 11:00
-                var monday1100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1100Data.FirstOrDefault() != null && mondayClients1100Data.FirstOrDefault() != null)
                 {
                     monday1100.ItemsSource = monday1100Data.ToList();
@@ -532,8 +533,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 11:30
-                var monday1130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1130Data.FirstOrDefault() != null && mondayClients1130Data.FirstOrDefault() != null)
                 {
                     monday1130.ItemsSource = monday1130Data.ToList();
@@ -541,8 +542,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 12:00
-                var monday1200Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1200Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1200Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1200Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1200Data.FirstOrDefault() != null && mondayClients1200Data.FirstOrDefault() != null)
                 {
                     monday1200.ItemsSource = monday1200Data.ToList();
@@ -550,8 +551,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 12:30
-                var monday1230Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1230Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1230Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1230Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1230Data.FirstOrDefault() != null && mondayClients1230Data.FirstOrDefault() != null)
                 {
                     monday1230.ItemsSource = monday1230Data.ToList();
@@ -559,8 +560,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 13:00
-                var monday1300Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1300Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1300Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1300Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1300Data.FirstOrDefault() != null && mondayClients1300Data.FirstOrDefault() != null)
                 {
                     monday1300.ItemsSource = monday1300Data.ToList();
@@ -568,8 +569,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 13:30
-                var monday1330Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1330Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1330Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1330Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1330Data.FirstOrDefault() != null && mondayClients1330Data.FirstOrDefault() != null)
                 {
                     monday1330.ItemsSource = monday1330Data.ToList();
@@ -577,8 +578,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 14:00
-                var monday1400Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1400Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1400Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1400Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1400Data.FirstOrDefault() != null && mondayClients1400Data.FirstOrDefault() != null)
                 {
                     monday1400.ItemsSource = monday1400Data.ToList();
@@ -586,8 +587,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 14:30
-                var monday1430Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1430Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1430Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1430Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1430Data.FirstOrDefault() != null && mondayClients1430Data.FirstOrDefault() != null)
                 {
                     monday1430.ItemsSource = monday1430Data.ToList();
@@ -595,8 +596,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 15:00
-                var monday1500Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1500Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1500Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1500Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1500Data.FirstOrDefault() != null && mondayClients1500Data.FirstOrDefault() != null)
                 {
                     monday1500.ItemsSource = monday1500Data.ToList();
@@ -604,8 +605,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 15:30
-                var monday1530Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1530Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1530Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1530Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1530Data.FirstOrDefault() != null && mondayClients1530Data.FirstOrDefault() != null)
                 {
                     monday1530.ItemsSource = monday1530Data.ToList();
@@ -613,8 +614,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 16:00
-                var monday1600Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1600Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1600Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1600Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1600Data.FirstOrDefault() != null && mondayClients1600Data.FirstOrDefault() != null)
                 {
                     monday1600.ItemsSource = monday1600Data.ToList();
@@ -622,8 +623,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 16:30
-                var monday1630Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1630Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1630Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1630Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1630Data.FirstOrDefault() != null && mondayClients1630Data.FirstOrDefault() != null)
                 {
                     monday1630.ItemsSource = monday1630Data.ToList();
@@ -631,8 +632,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 17:00
-                var monday1700Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1700Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1700Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1700Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1700Data.FirstOrDefault() != null && mondayClients1700Data.FirstOrDefault() != null)
                 {
                     monday1700.ItemsSource = monday1700Data.ToList();
@@ -640,8 +641,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 17:30
-                var monday1730Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1730Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1730Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1730Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1730Data.FirstOrDefault() != null && mondayClients1730Data.FirstOrDefault() != null)
                 {
                     monday1730.ItemsSource = monday1730Data.ToList();
@@ -649,8 +650,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 18:00
-                var monday1800Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1800Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1800Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1800Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1800Data.FirstOrDefault() != null && mondayClients1800Data.FirstOrDefault() != null)
                 {
                     monday1800.ItemsSource = monday1800Data.ToList();
@@ -658,8 +659,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 18:30
-                var monday1830Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1830Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1830Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1830Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1830Data.FirstOrDefault() != null && mondayClients1830Data.FirstOrDefault() != null)
                 {
                     monday1830.ItemsSource = monday1830Data.ToList();
@@ -667,8 +668,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 19:00
-                var monday1900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1900Data.FirstOrDefault() != null && mondayClients1900Data.FirstOrDefault() != null)
                 {
                     monday1900.ItemsSource = monday1900Data.ToList();
@@ -676,8 +677,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 19:30
-                var monday1930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients1930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday1930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients1930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday1930Data.FirstOrDefault() != null && mondayClients1930Data.FirstOrDefault() != null)
                 {
                     monday1930.ItemsSource = monday1930Data.ToList();
@@ -685,8 +686,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 20:00
-                var monday2000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients2000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday2000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients2000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday2000Data.FirstOrDefault() != null && mondayClients2000Data.FirstOrDefault() != null)
                 {
                     monday2000.ItemsSource = monday2000Data.ToList();
@@ -694,8 +695,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 20:30
-                var monday2030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients2030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday2030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients2030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday2030Data.FirstOrDefault() != null && mondayClients2030Data.FirstOrDefault() != null)
                 {
                     monday2030.ItemsSource = monday2030Data.ToList();
@@ -703,8 +704,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 21:00
-                var monday2100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients2100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday2100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:00") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients2100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:00") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday2100Data.FirstOrDefault() != null && mondayClients2100Data.FirstOrDefault() != null)
                 {
                     monday2100.ItemsSource = monday2100Data.ToList();
@@ -712,8 +713,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //понедельник 21:30
-                var monday2130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id);
-                var mondayClients2130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var monday2130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:30") && (c.Day == "Monday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var mondayClients2130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:30") && (c.Lesson.Day == "Monday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (monday2130Data.FirstOrDefault() != null && mondayClients2130Data.FirstOrDefault() != null)
                 {
                     monday2130.ItemsSource = monday2130Data.ToList();
@@ -721,8 +722,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 9:00
-                var tuesday900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:00") && (c.Day == "Tuesday") && (c.Teacher.Id == CurrentTeacher.Id) && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday900Data.FirstOrDefault() != null && tuesdayClients900Data.FirstOrDefault() != null)
                 {
                     tuesday900.ItemsSource = tuesday900Data.ToList();
@@ -730,8 +731,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 9:30
-                var tuesday930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday930Data.FirstOrDefault() != null && tuesdayClients930Data.FirstOrDefault() != null)
                 {
                     tuesday930.ItemsSource = tuesday930Data.ToList();
@@ -739,8 +740,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 10:00
-                var tuesday1000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1000Data.FirstOrDefault() != null && tuesdayClients1000Data.FirstOrDefault() != null)
                 {
                     tuesday1000.ItemsSource = tuesday1000Data.ToList();
@@ -748,8 +749,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 10:30
-                var tuesday1030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1030Data.FirstOrDefault() != null && tuesdayClients1030Data.FirstOrDefault() != null)
                 {
                     tuesday1030.ItemsSource = tuesday1030Data.ToList();
@@ -757,8 +758,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 11:00
-                var tuesday1100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1100Data.FirstOrDefault() != null && tuesdayClients1100Data.FirstOrDefault() != null)
                 {
                     tuesday1100.ItemsSource = tuesday1100Data.ToList();
@@ -766,8 +767,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 11:30
-                var tuesday1130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1130Data.FirstOrDefault() != null && tuesdayClients1130Data.FirstOrDefault() != null)
                 {
                     tuesday1130.ItemsSource = tuesday1130Data.ToList();
@@ -775,8 +776,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 12:00
-                var tuesday1200Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1200Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1200Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1200Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1200Data.FirstOrDefault() != null && tuesdayClients1200Data.FirstOrDefault() != null)
                 {
                     tuesday1200.ItemsSource = tuesday1200Data.ToList();
@@ -784,8 +785,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 12:30
-                var tuesday1230Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1230Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1230Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1230Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1230Data.FirstOrDefault() != null && tuesdayClients1230Data.FirstOrDefault() != null)
                 {
                     tuesday1230.ItemsSource = tuesday1230Data.ToList();
@@ -793,8 +794,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 13:00
-                var tuesday1300Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1300Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1300Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1300Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1300Data.FirstOrDefault() != null && tuesdayClients1300Data.FirstOrDefault() != null)
                 {
                     tuesday1300.ItemsSource = tuesday1300Data.ToList();
@@ -802,8 +803,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 13:30
-                var tuesday1330Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1330Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1330Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1330Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1330Data.FirstOrDefault() != null && tuesdayClients1330Data.FirstOrDefault() != null)
                 {
                     tuesday1330.ItemsSource = tuesday1330Data.ToList();
@@ -811,8 +812,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 14:00
-                var tuesday1400Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1400Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1400Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1400Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1400Data.FirstOrDefault() != null && tuesdayClients1400Data.FirstOrDefault() != null)
                 {
                     tuesday1400.ItemsSource = tuesday1400Data.ToList();
@@ -820,8 +821,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 14:30
-                var tuesday1430Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1430Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1430Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1430Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1430Data.FirstOrDefault() != null && tuesdayClients1430Data.FirstOrDefault() != null)
                 {
                     tuesday1430.ItemsSource = tuesday1430Data.ToList();
@@ -829,8 +830,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 15:00
-                var tuesday1500Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1500Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1500Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1500Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1500Data.FirstOrDefault() != null && tuesdayClients1500Data.FirstOrDefault() != null)
                 {
                     tuesday1500.ItemsSource = tuesday1500Data.ToList();
@@ -838,8 +839,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 15:30
-                var tuesday1530Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1530Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1530Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1530Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1530Data.FirstOrDefault() != null && tuesdayClients1530Data.FirstOrDefault() != null)
                 {
                     tuesday1530.ItemsSource = tuesday1530Data.ToList();
@@ -847,8 +848,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 16:00
-                var tuesday1600Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1600Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1600Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1600Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1600Data.FirstOrDefault() != null && tuesdayClients1600Data.FirstOrDefault() != null)
                 {
                     tuesday1600.ItemsSource = tuesday1600Data.ToList();
@@ -856,8 +857,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 16:30
-                var tuesday1630Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1630Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1630Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1630Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1630Data.FirstOrDefault() != null && tuesdayClients1630Data.FirstOrDefault() != null)
                 {
                     tuesday1630.ItemsSource = tuesday1630Data.ToList();
@@ -865,8 +866,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 17:00
-                var tuesday1700Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1700Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1700Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1700Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1700Data.FirstOrDefault() != null && tuesdayClients1700Data.FirstOrDefault() != null)
                 {
                     tuesday1700.ItemsSource = tuesday1700Data.ToList();
@@ -874,8 +875,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 17:30
-                var tuesday1730Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1730Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1730Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1730Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1730Data.FirstOrDefault() != null && tuesdayClients1730Data.FirstOrDefault() != null)
                 {
                     tuesday1730.ItemsSource = tuesday1730Data.ToList();
@@ -883,8 +884,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 18:00
-                var tuesday1800Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1800Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1800Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1800Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1800Data.FirstOrDefault() != null && tuesdayClients1800Data.FirstOrDefault() != null)
                 {
                     tuesday1800.ItemsSource = tuesday1800Data.ToList();
@@ -892,8 +893,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 18:30
-                var tuesday1830Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1830Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1830Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1830Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1830Data.FirstOrDefault() != null && tuesdayClients1830Data.FirstOrDefault() != null)
                 {
                     tuesday1830.ItemsSource = tuesday1830Data.ToList();
@@ -901,8 +902,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 19:00
-                var tuesday1900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1900Data.FirstOrDefault() != null && tuesdayClients1900Data.FirstOrDefault() != null)
                 {
                     tuesday1900.ItemsSource = tuesday1900Data.ToList();
@@ -910,8 +911,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 19:30
-                var tuesday1930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients1930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday1930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients1930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday1930Data.FirstOrDefault() != null && tuesdayClients1930Data.FirstOrDefault() != null)
                 {
                     tuesday1930.ItemsSource = tuesday1930Data.ToList();
@@ -919,8 +920,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 20:00
-                var tuesday2000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients2000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday2000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients2000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday2000Data.FirstOrDefault() != null && tuesdayClients2000Data.FirstOrDefault() != null)
                 {
                     tuesday2000.ItemsSource = tuesday2000Data.ToList();
@@ -928,8 +929,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 20:30
-                var tuesday2030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients2030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday2030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients2030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday2030Data.FirstOrDefault() != null && tuesdayClients2030Data.FirstOrDefault() != null)
                 {
                     tuesday2030.ItemsSource = tuesday2030Data.ToList();
@@ -937,8 +938,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 21:00
-                var tuesday2100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients2100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday2100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:00") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients2100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:00") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday2100Data.FirstOrDefault() != null && tuesdayClients2100Data.FirstOrDefault() != null)
                 {
                     tuesday2100.ItemsSource = tuesday2100Data.ToList();
@@ -946,8 +947,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //вторник 21:30
-                var tuesday2130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var tuesdayClients2130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var tuesday2130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:30") && (c.Day == "Tuesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var tuesdayClients2130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:30") && (c.Lesson.Day == "Tuesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (tuesday2130Data.FirstOrDefault() != null && tuesdayClients2130Data.FirstOrDefault() != null)
                 {
                     tuesday2130.ItemsSource = tuesday2130Data.ToList();
@@ -955,8 +956,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 9:00
-                var wednesday900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:00") && (c.Day == "Wednesday") && (c.Teacher.Id == CurrentTeacher.Id) && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday900Data.FirstOrDefault() != null && wednesdayClients900Data.FirstOrDefault() != null)
                 {
                     wednesday900.ItemsSource = wednesday900Data.ToList();
@@ -964,8 +965,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 9:30
-                var wednesday930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday930Data.FirstOrDefault() != null && wednesdayClients930Data.FirstOrDefault() != null)
                 {
                     wednesday930.ItemsSource = wednesday930Data.ToList();
@@ -973,8 +974,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 10:00
-                var wednesday1000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1000Data.FirstOrDefault() != null && wednesdayClients1000Data.FirstOrDefault() != null)
                 {
                     wednesday1000.ItemsSource = wednesday1000Data.ToList();
@@ -982,8 +983,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 10:30
-                var wednesday1030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1030Data.FirstOrDefault() != null && wednesdayClients1030Data.FirstOrDefault() != null)
                 {
                     wednesday1030.ItemsSource = wednesday1030Data.ToList();
@@ -991,8 +992,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 11:00
-                var wednesday1100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1100Data.FirstOrDefault() != null && wednesdayClients1100Data.FirstOrDefault() != null)
                 {
                     wednesday1100.ItemsSource = wednesday1100Data.ToList();
@@ -1000,8 +1001,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 11:30
-                var wednesday1130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1130Data.FirstOrDefault() != null && wednesdayClients1130Data.FirstOrDefault() != null)
                 {
                     wednesday1130.ItemsSource = wednesday1130Data.ToList();
@@ -1009,8 +1010,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 12:00
-                var wednesday1200Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1200Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1200Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1200Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1200Data.FirstOrDefault() != null && wednesdayClients1200Data.FirstOrDefault() != null)
                 {
                     wednesday1200.ItemsSource = wednesday1200Data.ToList();
@@ -1018,8 +1019,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 12:30
-                var wednesday1230Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1230Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1230Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1230Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1230Data.FirstOrDefault() != null && wednesdayClients1230Data.FirstOrDefault() != null)
                 {
                     wednesday1230.ItemsSource = wednesday1230Data.ToList();
@@ -1027,8 +1028,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 13:00
-                var wednesday1300Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1300Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1300Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1300Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1300Data.FirstOrDefault() != null && wednesdayClients1300Data.FirstOrDefault() != null)
                 {
                     wednesday1300.ItemsSource = wednesday1300Data.ToList();
@@ -1036,8 +1037,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 13:30
-                var wednesday1330Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1330Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1330Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1330Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1330Data.FirstOrDefault() != null && wednesdayClients1330Data.FirstOrDefault() != null)
                 {
                     wednesday1330.ItemsSource = wednesday1330Data.ToList();
@@ -1045,8 +1046,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 14:00
-                var wednesday1400Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1400Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1400Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1400Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1400Data.FirstOrDefault() != null && wednesdayClients1400Data.FirstOrDefault() != null)
                 {
                     wednesday1400.ItemsSource = wednesday1400Data.ToList();
@@ -1054,8 +1055,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 14:30
-                var wednesday1430Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1430Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1430Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1430Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1430Data.FirstOrDefault() != null && wednesdayClients1430Data.FirstOrDefault() != null)
                 {
                     wednesday1430.ItemsSource = wednesday1430Data.ToList();
@@ -1063,8 +1064,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 15:00
-                var wednesday1500Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1500Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1500Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1500Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1500Data.FirstOrDefault() != null && wednesdayClients1500Data.FirstOrDefault() != null)
                 {
                     wednesday1500.ItemsSource = wednesday1500Data.ToList();
@@ -1072,8 +1073,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 15:30
-                var wednesday1530Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1530Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1530Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1530Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1530Data.FirstOrDefault() != null && wednesdayClients1530Data.FirstOrDefault() != null)
                 {
                     wednesday1530.ItemsSource = wednesday1530Data.ToList();
@@ -1081,8 +1082,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 16:00
-                var wednesday1600Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1600Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1600Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1600Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1600Data.FirstOrDefault() != null && wednesdayClients1600Data.FirstOrDefault() != null)
                 {
                     wednesday1600.ItemsSource = wednesday1600Data.ToList();
@@ -1090,8 +1091,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 16:30
-                var wednesday1630Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1630Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1630Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1630Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1630Data.FirstOrDefault() != null && wednesdayClients1630Data.FirstOrDefault() != null)
                 {
                     wednesday1630.ItemsSource = wednesday1630Data.ToList();
@@ -1099,8 +1100,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 17:00
-                var wednesday1700Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1700Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1700Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1700Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1700Data.FirstOrDefault() != null && wednesdayClients1700Data.FirstOrDefault() != null)
                 {
                     wednesday1700.ItemsSource = wednesday1700Data.ToList();
@@ -1108,8 +1109,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 17:30
-                var wednesday1730Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1730Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1730Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1730Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1730Data.FirstOrDefault() != null && wednesdayClients1730Data.FirstOrDefault() != null)
                 {
                     wednesday1730.ItemsSource = wednesday1730Data.ToList();
@@ -1117,8 +1118,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 18:00
-                var wednesday1800Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1800Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1800Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1800Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1800Data.FirstOrDefault() != null && wednesdayClients1800Data.FirstOrDefault() != null)
                 {
                     wednesday1800.ItemsSource = wednesday1800Data.ToList();
@@ -1126,8 +1127,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 18:30
-                var wednesday1830Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1830Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1830Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1830Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1830Data.FirstOrDefault() != null && wednesdayClients1830Data.FirstOrDefault() != null)
                 {
                     wednesday1830.ItemsSource = wednesday1830Data.ToList();
@@ -1135,8 +1136,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 19:00
-                var wednesday1900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1900Data.FirstOrDefault() != null && wednesdayClients1900Data.FirstOrDefault() != null)
                 {
                     wednesday1900.ItemsSource = wednesday1900Data.ToList();
@@ -1144,8 +1145,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 19:30
-                var wednesday1930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients1930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday1930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients1930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday1930Data.FirstOrDefault() != null && wednesdayClients1930Data.FirstOrDefault() != null)
                 {
                     wednesday1930.ItemsSource = wednesday1930Data.ToList();
@@ -1153,8 +1154,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 20:00
-                var wednesday2000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients2000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday2000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients2000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday2000Data.FirstOrDefault() != null && wednesdayClients2000Data.FirstOrDefault() != null)
                 {
                     wednesday2000.ItemsSource = wednesday2000Data.ToList();
@@ -1162,8 +1163,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 20:30
-                var wednesday2030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients2030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday2030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients2030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday2030Data.FirstOrDefault() != null && wednesdayClients2030Data.FirstOrDefault() != null)
                 {
                     wednesday2030.ItemsSource = wednesday2030Data.ToList();
@@ -1171,8 +1172,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 21:00
-                var wednesday2100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients2100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday2100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:00") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients2100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:00") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday2100Data.FirstOrDefault() != null && wednesdayClients2100Data.FirstOrDefault() != null)
                 {
                     wednesday2100.ItemsSource = wednesday2100Data.ToList();
@@ -1180,8 +1181,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //среда 21:30
-                var wednesday2130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id);
-                var wednesdayClients2130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var wednesday2130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:30") && (c.Day == "Wednesday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var wednesdayClients2130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:30") && (c.Lesson.Day == "Wednesday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (wednesday2130Data.FirstOrDefault() != null && wednesdayClients2130Data.FirstOrDefault() != null)
                 {
                     wednesday2130.ItemsSource = wednesday2130Data.ToList();
@@ -1189,8 +1190,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 9:00
-                var thursday900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:00") && (c.Day == "Thursday") && (c.Teacher.Id == CurrentTeacher.Id) && c.TypeLesson.Name == "Групповое");
+                var thursdayClients900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday900Data.FirstOrDefault() != null && thursdayClients900Data.FirstOrDefault() != null)
                 {
                     thursday900.ItemsSource = thursday900Data.ToList();
@@ -1198,8 +1199,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 9:30
-                var thursday930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday930Data.FirstOrDefault() != null && thursdayClients930Data.FirstOrDefault() != null)
                 {
                     thursday930.ItemsSource = thursday930Data.ToList();
@@ -1207,8 +1208,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 10:00
-                var thursday1000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1000Data.FirstOrDefault() != null && thursdayClients1000Data.FirstOrDefault() != null)
                 {
                     thursday1000.ItemsSource = thursday1000Data.ToList();
@@ -1216,8 +1217,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 10:30
-                var thursday1030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1030Data.FirstOrDefault() != null && thursdayClients1030Data.FirstOrDefault() != null)
                 {
                     thursday1030.ItemsSource = thursday1030Data.ToList();
@@ -1225,8 +1226,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 11:00
-                var thursday1100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1100Data.FirstOrDefault() != null && thursdayClients1100Data.FirstOrDefault() != null)
                 {
                     thursday1100.ItemsSource = thursday1100Data.ToList();
@@ -1234,8 +1235,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 11:30
-                var thursday1130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1130Data.FirstOrDefault() != null && thursdayClients1130Data.FirstOrDefault() != null)
                 {
                     thursday1130.ItemsSource = thursday1130Data.ToList();
@@ -1243,8 +1244,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 12:00
-                var thursday1200Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1200Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1200Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1200Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1200Data.FirstOrDefault() != null && thursdayClients1200Data.FirstOrDefault() != null)
                 {
                     thursday1200.ItemsSource = thursday1200Data.ToList();
@@ -1252,8 +1253,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 12:30
-                var thursday1230Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1230Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1230Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1230Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1230Data.FirstOrDefault() != null && thursdayClients1230Data.FirstOrDefault() != null)
                 {
                     thursday1230.ItemsSource = thursday1230Data.ToList();
@@ -1261,8 +1262,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 13:00
-                var thursday1300Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1300Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1300Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1300Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1300Data.FirstOrDefault() != null && thursdayClients1300Data.FirstOrDefault() != null)
                 {
                     thursday1300.ItemsSource = thursday1300Data.ToList();
@@ -1270,8 +1271,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 13:30
-                var thursday1330Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1330Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1330Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1330Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1330Data.FirstOrDefault() != null && thursdayClients1330Data.FirstOrDefault() != null)
                 {
                     thursday1330.ItemsSource = thursday1330Data.ToList();
@@ -1279,8 +1280,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 14:00
-                var thursday1400Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1400Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1400Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1400Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1400Data.FirstOrDefault() != null && thursdayClients1400Data.FirstOrDefault() != null)
                 {
                     thursday1400.ItemsSource = thursday1400Data.ToList();
@@ -1288,8 +1289,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 14:30
-                var thursday1430Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1430Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1430Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1430Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1430Data.FirstOrDefault() != null && thursdayClients1430Data.FirstOrDefault() != null)
                 {
                     thursday1430.ItemsSource = thursday1430Data.ToList();
@@ -1297,8 +1298,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 15:00
-                var thursday1500Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1500Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1500Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1500Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1500Data.FirstOrDefault() != null && thursdayClients1500Data.FirstOrDefault() != null)
                 {
                     thursday1500.ItemsSource = thursday1500Data.ToList();
@@ -1306,8 +1307,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 15:30
-                var thursday1530Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1530Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1530Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1530Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1530Data.FirstOrDefault() != null && thursdayClients1530Data.FirstOrDefault() != null)
                 {
                     thursday1530.ItemsSource = thursday1530Data.ToList();
@@ -1315,8 +1316,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 16:00
-                var thursday1600Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1600Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1600Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1600Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1600Data.FirstOrDefault() != null && thursdayClients1600Data.FirstOrDefault() != null)
                 {
                     thursday1600.ItemsSource = thursday1600Data.ToList();
@@ -1324,8 +1325,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 16:30
-                var thursday1630Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1630Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1630Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1630Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1630Data.FirstOrDefault() != null && thursdayClients1630Data.FirstOrDefault() != null)
                 {
                     thursday1630.ItemsSource = thursday1630Data.ToList();
@@ -1333,8 +1334,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 17:00
-                var thursday1700Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1700Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1700Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1700Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1700Data.FirstOrDefault() != null && thursdayClients1700Data.FirstOrDefault() != null)
                 {
                     thursday1700.ItemsSource = thursday1700Data.ToList();
@@ -1342,8 +1343,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 17:30
-                var thursday1730Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1730Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1730Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1730Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1730Data.FirstOrDefault() != null && thursdayClients1730Data.FirstOrDefault() != null)
                 {
                     thursday1730.ItemsSource = thursday1730Data.ToList();
@@ -1351,8 +1352,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 18:00
-                var thursday1800Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1800Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1800Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1800Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1800Data.FirstOrDefault() != null && thursdayClients1800Data.FirstOrDefault() != null)
                 {
                     thursday1800.ItemsSource = thursday1800Data.ToList();
@@ -1360,8 +1361,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 18:30
-                var thursday1830Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1830Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1830Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1830Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1830Data.FirstOrDefault() != null && thursdayClients1830Data.FirstOrDefault() != null)
                 {
                     thursday1830.ItemsSource = thursday1830Data.ToList();
@@ -1369,8 +1370,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 19:00
-                var thursday1900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1900Data.FirstOrDefault() != null && thursdayClients1900Data.FirstOrDefault() != null)
                 {
                     thursday1900.ItemsSource = thursday1900Data.ToList();
@@ -1378,8 +1379,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 19:30
-                var thursday1930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients1930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday1930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients1930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday1930Data.FirstOrDefault() != null && thursdayClients1930Data.FirstOrDefault() != null)
                 {
                     thursday1930.ItemsSource = thursday1930Data.ToList();
@@ -1387,8 +1388,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 20:00
-                var thursday2000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients2000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday2000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients2000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday2000Data.FirstOrDefault() != null && thursdayClients2000Data.FirstOrDefault() != null)
                 {
                     thursday2000.ItemsSource = thursday2000Data.ToList();
@@ -1396,8 +1397,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 20:30
-                var thursday2030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients2030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday2030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients2030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday2030Data.FirstOrDefault() != null && thursdayClients2030Data.FirstOrDefault() != null)
                 {
                     thursday2030.ItemsSource = thursday2030Data.ToList();
@@ -1405,8 +1406,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 21:00
-                var thursday2100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients2100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday2100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:00") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients2100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:00") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday2100Data.FirstOrDefault() != null && thursdayClients2100Data.FirstOrDefault() != null)
                 {
                     thursday2100.ItemsSource = thursday2100Data.ToList();
@@ -1414,8 +1415,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //четверг 21:30
-                var thursday2130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id);
-                var thursdayClients2130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var thursday2130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:30") && (c.Day == "Thursday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var thursdayClients2130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:30") && (c.Lesson.Day == "Thursday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (thursday2130Data.FirstOrDefault() != null && thursdayClients2130Data.FirstOrDefault() != null)
                 {
                     thursday2130.ItemsSource = thursday2130Data.ToList();
@@ -1423,8 +1424,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 9:00
-                var friday900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:00") && (c.Day == "Friday") && (c.Teacher.Id == CurrentTeacher.Id) && c.TypeLesson.Name == "Групповое");
+                var fridayClients900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday900Data.FirstOrDefault() != null && fridayClients900Data.FirstOrDefault() != null)
                 {
                     friday900.ItemsSource = friday900Data.ToList();
@@ -1432,8 +1433,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 9:30
-                var friday930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday930Data.FirstOrDefault() != null && fridayClients930Data.FirstOrDefault() != null)
                 {
                     friday930.ItemsSource = friday930Data.ToList();
@@ -1441,8 +1442,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 10:00
-                var friday1000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1000Data.FirstOrDefault() != null && fridayClients1000Data.FirstOrDefault() != null)
                 {
                     friday1000.ItemsSource = friday1000Data.ToList();
@@ -1450,8 +1451,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 10:30
-                var friday1030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1030Data.FirstOrDefault() != null && fridayClients1030Data.FirstOrDefault() != null)
                 {
                     friday1030.ItemsSource = friday1030Data.ToList();
@@ -1459,8 +1460,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 11:00
-                var friday1100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1100Data.FirstOrDefault() != null && fridayClients1100Data.FirstOrDefault() != null)
                 {
                     friday1100.ItemsSource = friday1100Data.ToList();
@@ -1468,8 +1469,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 11:30
-                var friday1130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1130Data.FirstOrDefault() != null && fridayClients1130Data.FirstOrDefault() != null)
                 {
                     friday1130.ItemsSource = friday1130Data.ToList();
@@ -1477,8 +1478,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 12:00
-                var friday1200Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1200Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1200Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1200Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1200Data.FirstOrDefault() != null && fridayClients1200Data.FirstOrDefault() != null)
                 {
                     friday1200.ItemsSource = friday1200Data.ToList();
@@ -1486,8 +1487,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 12:30
-                var friday1230Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1230Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1230Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1230Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1230Data.FirstOrDefault() != null && fridayClients1230Data.FirstOrDefault() != null)
                 {
                     friday1230.ItemsSource = friday1230Data.ToList();
@@ -1495,8 +1496,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 13:00
-                var friday1300Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1300Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1300Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1300Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1300Data.FirstOrDefault() != null && fridayClients1300Data.FirstOrDefault() != null)
                 {
                     friday1300.ItemsSource = friday1300Data.ToList();
@@ -1504,8 +1505,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 13:30
-                var friday1330Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1330Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1330Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1330Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1330Data.FirstOrDefault() != null && fridayClients1330Data.FirstOrDefault() != null)
                 {
                     friday1330.ItemsSource = friday1330Data.ToList();
@@ -1513,8 +1514,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 14:00
-                var friday1400Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1400Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1400Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1400Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1400Data.FirstOrDefault() != null && fridayClients1400Data.FirstOrDefault() != null)
                 {
                     friday1400.ItemsSource = friday1400Data.ToList();
@@ -1522,8 +1523,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 14:30
-                var friday1430Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1430Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1430Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1430Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1430Data.FirstOrDefault() != null && fridayClients1430Data.FirstOrDefault() != null)
                 {
                     friday1430.ItemsSource = friday1430Data.ToList();
@@ -1531,8 +1532,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 15:00
-                var friday1500Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1500Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1500Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1500Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1500Data.FirstOrDefault() != null && fridayClients1500Data.FirstOrDefault() != null)
                 {
                     friday1500.ItemsSource = friday1500Data.ToList();
@@ -1540,8 +1541,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 15:30
-                var friday1530Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1530Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1530Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1530Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1530Data.FirstOrDefault() != null && fridayClients1530Data.FirstOrDefault() != null)
                 {
                     friday1530.ItemsSource = friday1530Data.ToList();
@@ -1549,8 +1550,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 16:00
-                var friday1600Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1600Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1600Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1600Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1600Data.FirstOrDefault() != null && fridayClients1600Data.FirstOrDefault() != null)
                 {
                     friday1600.ItemsSource = friday1600Data.ToList();
@@ -1558,8 +1559,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 16:30
-                var friday1630Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1630Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1630Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1630Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1630Data.FirstOrDefault() != null && fridayClients1630Data.FirstOrDefault() != null)
                 {
                     friday1630.ItemsSource = friday1630Data.ToList();
@@ -1567,8 +1568,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 17:00
-                var friday1700Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1700Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1700Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1700Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1700Data.FirstOrDefault() != null && fridayClients1700Data.FirstOrDefault() != null)
                 {
                     friday1700.ItemsSource = friday1700Data.ToList();
@@ -1576,8 +1577,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 17:30
-                var friday1730Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1730Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1730Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1730Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1730Data.FirstOrDefault() != null && fridayClients1730Data.FirstOrDefault() != null)
                 {
                     friday1730.ItemsSource = friday1730Data.ToList();
@@ -1585,8 +1586,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 18:00
-                var friday1800Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1800Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1800Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1800Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1800Data.FirstOrDefault() != null && fridayClients1800Data.FirstOrDefault() != null)
                 {
                     friday1800.ItemsSource = friday1800Data.ToList();
@@ -1594,8 +1595,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 18:30
-                var friday1830Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1830Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1830Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1830Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1830Data.FirstOrDefault() != null && fridayClients1830Data.FirstOrDefault() != null)
                 {
                     friday1830.ItemsSource = friday1830Data.ToList();
@@ -1603,8 +1604,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 19:00
-                var friday1900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1900Data.FirstOrDefault() != null && fridayClients1900Data.FirstOrDefault() != null)
                 {
                     friday1900.ItemsSource = friday1900Data.ToList();
@@ -1612,8 +1613,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 19:30
-                var friday1930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients1930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday1930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients1930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday1930Data.FirstOrDefault() != null && fridayClients1930Data.FirstOrDefault() != null)
                 {
                     friday1930.ItemsSource = friday1930Data.ToList();
@@ -1621,8 +1622,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 20:00
-                var friday2000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients2000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday2000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients2000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday2000Data.FirstOrDefault() != null && fridayClients2000Data.FirstOrDefault() != null)
                 {
                     friday2000.ItemsSource = friday2000Data.ToList();
@@ -1630,8 +1631,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 20:30
-                var friday2030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients2030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday2030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients2030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday2030Data.FirstOrDefault() != null && fridayClients2030Data.FirstOrDefault() != null)
                 {
                     friday2030.ItemsSource = friday2030Data.ToList();
@@ -1639,8 +1640,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 21:00
-                var friday2100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients2100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday2100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:00") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients2100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:00") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday2100Data.FirstOrDefault() != null && fridayClients2100Data.FirstOrDefault() != null)
                 {
                     friday2100.ItemsSource = friday2100Data.ToList();
@@ -1648,8 +1649,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //пятница 21:30
-                var friday2130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id);
-                var fridayClients2130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var friday2130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:30") && (c.Day == "Friday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var fridayClients2130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:30") && (c.Lesson.Day == "Friday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (friday2130Data.FirstOrDefault() != null && fridayClients2130Data.FirstOrDefault() != null)
                 {
                     friday2130.ItemsSource = friday2130Data.ToList();
@@ -1657,8 +1658,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 9:00
-                var saturday900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:00") && (c.Day == "Saturday") && (c.Teacher.Id == CurrentTeacher.Id) && c.TypeLesson.Name == "Групповое");
+                var saturdayClients900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday900Data.FirstOrDefault() != null && saturdayClients900Data.FirstOrDefault() != null)
                 {
                     saturday900.ItemsSource = saturday900Data.ToList();
@@ -1666,8 +1667,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 9:30
-                var saturday930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday930Data.FirstOrDefault() != null && saturdayClients930Data.FirstOrDefault() != null)
                 {
                     saturday930.ItemsSource = saturday930Data.ToList();
@@ -1675,8 +1676,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 10:00
-                var saturday1000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1000Data.FirstOrDefault() != null && saturdayClients1000Data.FirstOrDefault() != null)
                 {
                     saturday1000.ItemsSource = saturday1000Data.ToList();
@@ -1684,8 +1685,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 10:30
-                var saturday1030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1030Data.FirstOrDefault() != null && saturdayClients1030Data.FirstOrDefault() != null)
                 {
                     saturday1030.ItemsSource = saturday1030Data.ToList();
@@ -1693,8 +1694,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 11:00
-                var saturday1100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1100Data.FirstOrDefault() != null && saturdayClients1100Data.FirstOrDefault() != null)
                 {
                     saturday1100.ItemsSource = saturday1100Data.ToList();
@@ -1702,8 +1703,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 11:30
-                var saturday1130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1130Data.FirstOrDefault() != null && saturdayClients1130Data.FirstOrDefault() != null)
                 {
                     saturday1130.ItemsSource = saturday1130Data.ToList();
@@ -1711,8 +1712,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 12:00
-                var saturday1200Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1200Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1200Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1200Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1200Data.FirstOrDefault() != null && saturdayClients1200Data.FirstOrDefault() != null)
                 {
                     saturday1200.ItemsSource = saturday1200Data.ToList();
@@ -1720,8 +1721,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 12:30
-                var saturday1230Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1230Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1230Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1230Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1230Data.FirstOrDefault() != null && saturdayClients1230Data.FirstOrDefault() != null)
                 {
                     saturday1230.ItemsSource = saturday1230Data.ToList();
@@ -1729,8 +1730,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 13:00
-                var saturday1300Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1300Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1300Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1300Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1300Data.FirstOrDefault() != null && saturdayClients1300Data.FirstOrDefault() != null)
                 {
                     saturday1300.ItemsSource = saturday1300Data.ToList();
@@ -1738,8 +1739,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 13:30
-                var saturday1330Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1330Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1330Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1330Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1330Data.FirstOrDefault() != null && saturdayClients1330Data.FirstOrDefault() != null)
                 {
                     saturday1330.ItemsSource = saturday1330Data.ToList();
@@ -1747,8 +1748,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 14:00
-                var saturday1400Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1400Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1400Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1400Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1400Data.FirstOrDefault() != null && saturdayClients1400Data.FirstOrDefault() != null)
                 {
                     saturday1400.ItemsSource = saturday1400Data.ToList();
@@ -1756,8 +1757,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 14:30
-                var saturday1430Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1430Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1430Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1430Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1430Data.FirstOrDefault() != null && saturdayClients1430Data.FirstOrDefault() != null)
                 {
                     saturday1430.ItemsSource = saturday1430Data.ToList();
@@ -1765,8 +1766,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 15:00
-                var saturday1500Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1500Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1500Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1500Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1500Data.FirstOrDefault() != null && saturdayClients1500Data.FirstOrDefault() != null)
                 {
                     saturday1500.ItemsSource = saturday1500Data.ToList();
@@ -1774,8 +1775,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 15:30
-                var saturday1530Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1530Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1530Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1530Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1530Data.FirstOrDefault() != null && saturdayClients1530Data.FirstOrDefault() != null)
                 {
                     saturday1530.ItemsSource = saturday1530Data.ToList();
@@ -1783,8 +1784,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 16:00
-                var saturday1600Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1600Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1600Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1600Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1600Data.FirstOrDefault() != null && saturdayClients1600Data.FirstOrDefault() != null)
                 {
                     saturday1600.ItemsSource = saturday1600Data.ToList();
@@ -1792,8 +1793,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 16:30
-                var saturday1630Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1630Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1630Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1630Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1630Data.FirstOrDefault() != null && saturdayClients1630Data.FirstOrDefault() != null)
                 {
                     saturday1630.ItemsSource = saturday1630Data.ToList();
@@ -1801,8 +1802,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 17:00
-                var saturday1700Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1700Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1700Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1700Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1700Data.FirstOrDefault() != null && saturdayClients1700Data.FirstOrDefault() != null)
                 {
                     saturday1700.ItemsSource = saturday1700Data.ToList();
@@ -1810,8 +1811,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 17:30
-                var saturday1730Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1730Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1730Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1730Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1730Data.FirstOrDefault() != null && saturdayClients1730Data.FirstOrDefault() != null)
                 {
                     saturday1730.ItemsSource = saturday1730Data.ToList();
@@ -1819,8 +1820,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 18:00
-                var saturday1800Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1800Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1800Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1800Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1800Data.FirstOrDefault() != null && saturdayClients1800Data.FirstOrDefault() != null)
                 {
                     saturday1800.ItemsSource = saturday1800Data.ToList();
@@ -1828,8 +1829,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 18:30
-                var saturday1830Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1830Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1830Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1830Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1830Data.FirstOrDefault() != null && saturdayClients1830Data.FirstOrDefault() != null)
                 {
                     saturday1830.ItemsSource = saturday1830Data.ToList();
@@ -1837,8 +1838,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 19:00
-                var saturday1900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1900Data.FirstOrDefault() != null && saturdayClients1900Data.FirstOrDefault() != null)
                 {
                     saturday1900.ItemsSource = saturday1900Data.ToList();
@@ -1846,8 +1847,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 19:30
-                var saturday1930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients1930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday1930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients1930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday1930Data.FirstOrDefault() != null && saturdayClients1930Data.FirstOrDefault() != null)
                 {
                     saturday1930.ItemsSource = saturday1930Data.ToList();
@@ -1855,8 +1856,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 20:00
-                var saturday2000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients2000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday2000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients2000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday2000Data.FirstOrDefault() != null && saturdayClients2000Data.FirstOrDefault() != null)
                 {
                     saturday2000.ItemsSource = saturday2000Data.ToList();
@@ -1864,8 +1865,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 20:30
-                var saturday2030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients2030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday2030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients2030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday2030Data.FirstOrDefault() != null && saturdayClients2030Data.FirstOrDefault() != null)
                 {
                     saturday2030.ItemsSource = saturday2030Data.ToList();
@@ -1873,8 +1874,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 21:00
-                var saturday2100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients2100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday2100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:00") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients2100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:00") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday2100Data.FirstOrDefault() != null && saturdayClients2100Data.FirstOrDefault() != null)
                 {
                     saturday2100.ItemsSource = saturday2100Data.ToList();
@@ -1882,8 +1883,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //суббота 21:30
-                var saturday2130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id);
-                var saturdayClients2130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var saturday2130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:30") && (c.Day == "Saturday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var saturdayClients2130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:30") && (c.Lesson.Day == "Saturday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (saturday2130Data.FirstOrDefault() != null && saturdayClients2130Data.FirstOrDefault() != null)
                 {
                     saturday2130.ItemsSource = saturday2130Data.ToList();
@@ -1891,8 +1892,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 9:00
-                var sunday900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:00") && (c.Day == "Sunday") && (c.Teacher.Id == CurrentTeacher.Id) && c.TypeLesson.Name == "Групповое");
+                var sundayClients900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday900Data.FirstOrDefault() != null && sundayClients900Data.FirstOrDefault() != null)
                 {
                     sunday900.ItemsSource = sunday900Data.ToList();
@@ -1900,8 +1901,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 9:30
-                var sunday930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "9:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "9:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday930Data.FirstOrDefault() != null && sundayClients930Data.FirstOrDefault() != null)
                 {
                     sunday930.ItemsSource = sunday930Data.ToList();
@@ -1909,8 +1910,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 10:00
-                var sunday1000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1000Data.FirstOrDefault() != null && sundayClients1000Data.FirstOrDefault() != null)
                 {
                     sunday1000.ItemsSource = sunday1000Data.ToList();
@@ -1918,8 +1919,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 10:30
-                var sunday1030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "10:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "10:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1030Data.FirstOrDefault() != null && sundayClients1030Data.FirstOrDefault() != null)
                 {
                     sunday1030.ItemsSource = sunday1030Data.ToList();
@@ -1927,8 +1928,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 11:00
-                var sunday1100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1100Data.FirstOrDefault() != null && sundayClients1100Data.FirstOrDefault() != null)
                 {
                     sunday1100.ItemsSource = sunday1100Data.ToList();
@@ -1936,8 +1937,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 11:30
-                var sunday1130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "11:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "11:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1130Data.FirstOrDefault() != null && sundayClients1130Data.FirstOrDefault() != null)
                 {
                     sunday1130.ItemsSource = sunday1130Data.ToList();
@@ -1945,8 +1946,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 12:00
-                var sunday1200Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1200Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1200Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1200Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1200Data.FirstOrDefault() != null && sundayClients1200Data.FirstOrDefault() != null)
                 {
                     sunday1200.ItemsSource = sunday1200Data.ToList();
@@ -1954,8 +1955,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 12:30
-                var sunday1230Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1230Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1230Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "12:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1230Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "12:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1230Data.FirstOrDefault() != null && sundayClients1230Data.FirstOrDefault() != null)
                 {
                     sunday1230.ItemsSource = sunday1230Data.ToList();
@@ -1963,8 +1964,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 13:00
-                var sunday1300Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1300Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1300Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1300Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1300Data.FirstOrDefault() != null && sundayClients1300Data.FirstOrDefault() != null)
                 {
                     sunday1300.ItemsSource = sunday1300Data.ToList();
@@ -1972,8 +1973,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 13:30
-                var sunday1330Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1330Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1330Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "13:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1330Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "13:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1330Data.FirstOrDefault() != null && sundayClients1330Data.FirstOrDefault() != null)
                 {
                     sunday1330.ItemsSource = sunday1330Data.ToList();
@@ -1981,8 +1982,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 14:00
-                var sunday1400Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1400Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1400Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1400Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1400Data.FirstOrDefault() != null && sundayClients1400Data.FirstOrDefault() != null)
                 {
                     sunday1400.ItemsSource = sunday1400Data.ToList();
@@ -1990,8 +1991,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 14:30
-                var sunday1430Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1430Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1430Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "14:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1430Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "14:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1430Data.FirstOrDefault() != null && sundayClients1430Data.FirstOrDefault() != null)
                 {
                     sunday1430.ItemsSource = sunday1430Data.ToList();
@@ -1999,8 +2000,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 15:00
-                var sunday1500Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1500Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1500Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1500Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1500Data.FirstOrDefault() != null && sundayClients1500Data.FirstOrDefault() != null)
                 {
                     sunday1500.ItemsSource = sunday1500Data.ToList();
@@ -2008,8 +2009,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 15:30
-                var sunday1530Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1530Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1530Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "15:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1530Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "15:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1530Data.FirstOrDefault() != null && sundayClients1530Data.FirstOrDefault() != null)
                 {
                     sunday1530.ItemsSource = sunday1530Data.ToList();
@@ -2017,8 +2018,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 16:00
-                var sunday1600Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1600Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1600Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1600Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1600Data.FirstOrDefault() != null && sundayClients1600Data.FirstOrDefault() != null)
                 {
                     sunday1600.ItemsSource = sunday1600Data.ToList();
@@ -2026,8 +2027,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 16:30
-                var sunday1630Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1630Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1630Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "16:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1630Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "16:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1630Data.FirstOrDefault() != null && sundayClients1630Data.FirstOrDefault() != null)
                 {
                     sunday1630.ItemsSource = sunday1630Data.ToList();
@@ -2035,8 +2036,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 17:00
-                var sunday1700Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1700Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1700Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1700Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1700Data.FirstOrDefault() != null && sundayClients1700Data.FirstOrDefault() != null)
                 {
                     sunday1700.ItemsSource = sunday1700Data.ToList();
@@ -2044,8 +2045,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 17:30
-                var sunday1730Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1730Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1730Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "17:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1730Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "17:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1730Data.FirstOrDefault() != null && sundayClients1730Data.FirstOrDefault() != null)
                 {
                     sunday1730.ItemsSource = sunday1730Data.ToList();
@@ -2053,8 +2054,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 18:00
-                var sunday1800Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1800Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1800Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1800Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1800Data.FirstOrDefault() != null && sundayClients1800Data.FirstOrDefault() != null)
                 {
                     sunday1800.ItemsSource = sunday1800Data.ToList();
@@ -2062,8 +2063,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 18:30
-                var sunday1830Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1830Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1830Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "18:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1830Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "18:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1830Data.FirstOrDefault() != null && sundayClients1830Data.FirstOrDefault() != null)
                 {
                     sunday1830.ItemsSource = sunday1830Data.ToList();
@@ -2071,8 +2072,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 19:00
-                var sunday1900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1900Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1900Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1900Data.FirstOrDefault() != null && sundayClients1900Data.FirstOrDefault() != null)
                 {
                     sunday1900.ItemsSource = sunday1900Data.ToList();
@@ -2080,8 +2081,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 19:30
-                var sunday1930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients1930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday1930Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "19:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients1930Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "19:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday1930Data.FirstOrDefault() != null && sundayClients1930Data.FirstOrDefault() != null)
                 {
                     sunday1930.ItemsSource = sunday1930Data.ToList();
@@ -2089,8 +2090,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 20:00
-                var sunday2000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients2000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday2000Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients2000Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday2000Data.FirstOrDefault() != null && sundayClients2000Data.FirstOrDefault() != null)
                 {
                     sunday2000.ItemsSource = sunday2000Data.ToList();
@@ -2098,8 +2099,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 20:30
-                var sunday2030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients2030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday2030Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "20:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients2030Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "20:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday2030Data.FirstOrDefault() != null && sundayClients2030Data.FirstOrDefault() != null)
                 {
                     sunday2030.ItemsSource = sunday2030Data.ToList();
@@ -2107,8 +2108,8 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 21:00
-                var sunday2100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients2100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday2100Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:00") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients2100Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:00") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday2100Data.FirstOrDefault() != null && sundayClients2100Data.FirstOrDefault() != null)
                 {
                     sunday2100.ItemsSource = sunday2100Data.ToList();
@@ -2116,13 +2117,14 @@ namespace ClassSchedule.Pages
                 }
 
                 //воскресенье 21:30
-                var sunday2130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id);
-                var sundayClients2130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id);
+                var sunday2130Data = AppData.Context.Lesson.Where(c => (c.Date >= startDate && c.Date <= endDate) && (c.Time == "21:30") && (c.Day == "Sunday") && c.Teacher.Id == CurrentTeacher.Id && c.TypeLesson.Name == "Групповое");
+                var sundayClients2130Data = AppData.Context.ClientLesson.Where(c => (c.Lesson.Date >= startDate && c.Lesson.Date <= endDate) && (c.Lesson.Time == "21:30") && (c.Lesson.Day == "Sunday") && c.Lesson.Teacher.Id == CurrentTeacher.Id && c.Lesson.TypeLesson.Name == "Групповое");
                 if (sunday2130Data.FirstOrDefault() != null && sundayClients2130Data.FirstOrDefault() != null)
                 {
                     sunday2130.ItemsSource = sunday2130Data.ToList();
                     sundayClients2130.ItemsSource = sundayClients2130Data.ToList();
                 }
+
             }
         }
         private void scheduleCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
@@ -2202,7 +2204,8 @@ namespace ClassSchedule.Pages
                                 }
                             }
                         }
-                    } else
+                    }
+                    else
                     {
                         NavigationService.Navigate(new editSchedulePage(null));
                     }
@@ -2223,6 +2226,531 @@ namespace ClassSchedule.Pages
         {
             CurrentTeacher = teacherComboBox.SelectedItem as Teacher;
             Page_Loaded(null, null);
+        }
+
+        private void PaidAndAttendance(object sender, RoutedEventArgs e)
+        {
+            //понедельник
+            if (mondayClients900.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients900.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients930.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients930.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1000.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1000.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1030.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1030.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1100.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1100.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1130.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1130.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1200.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1200.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1230.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1230.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1300.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1300.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1330.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1330.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1400.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1400.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1430.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1430.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1500.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1500.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1530.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1530.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1600.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1600.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1630.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1630.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1700.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1700.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1730.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1730.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1800.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1800.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1830.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1830.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1900.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1900.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients1930.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients1930.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients2000.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients2000.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients2030.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients2030.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients2100.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients2100.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
+            else if (mondayClients2130.IsMouseOver == true)
+            {
+                ClientLesson CurrentClientLesson = mondayClients2130.SelectedItem as ClientLesson;
+                if (CurrentClientLesson != null)
+                {
+                    var checkbox = (CheckBox)sender;
+                    if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "paid")
+                    {
+                        CurrentClientLesson.IsPaid = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else if ((checkbox.IsChecked == true || checkbox.IsChecked == false) && checkbox.Name == "attendance")
+                    {
+                        CurrentClientLesson.IsAttendance = checkbox.IsChecked.Value;
+                        AppData.Context.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                }
+            }
         }
     }
 }

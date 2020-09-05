@@ -22,9 +22,10 @@ namespace ClassSchedule.Entities
     
         public int Id { get; set; }
         public Nullable<int> IdTeacher { get; set; }
+        public Nullable<int> IdTypeLesson { get; set; }
         public Nullable<int> IdGroups { get; set; }
-        public string Time { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
+        public string Time { get; set; }
         public string Day { get; set; }
         public string LessonTime { get; set; }
     
@@ -32,5 +33,6 @@ namespace ClassSchedule.Entities
         public virtual ICollection<ClientLesson> ClientLesson { get; set; }
         public virtual Groups Groups { get; set; }
         public virtual Teacher Teacher { get; set; }
+        public virtual TypeLesson TypeLesson { get; set; }
     }
 }
