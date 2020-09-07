@@ -72,7 +72,7 @@
                           Margin="5">
                     <TextBlock Text="Не выбрано"
                                    Style="{StaticResource otherText}" />
-                    <TextBlock Text="9:00"
+                    <TextBlock Text="09:00"
                                Style="{StaticResource otherText}" />
                     <TextBlock Text="10:00"
                                Style="{StaticResource otherText}" />

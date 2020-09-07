@@ -17,7 +17,7 @@
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="18" />
           <Property Name="Zoom" Type="nvarchar(max)" />
           <Property Name="Skype" Type="nvarchar(max)" />
-          <Property Name="FavoriteTime" Type="nvarchar" MaxLength="5" />
+          <Property Name="FavoriteTime" Type="time" Precision="0" />
           <Property Name="Balance" Type="money" />
           <Property Name="IsDeleted" Type="bit" />
           <Property Name="IdLanguageLevel" Type="int" />
@@ -63,8 +63,8 @@
           <Property Name="IdTypeLesson" Type="int" />
           <Property Name="IdGroups" Type="int" />
           <Property Name="Date" Type="date" />
-          <Property Name="Time" Type="nvarchar" MaxLength="5" />
-          <Property Name="Day" Type="nvarchar" MaxLength="8" />
+          <Property Name="Time" Type="time" Precision="0" />
+          <Property Name="Day" Type="nvarchar" MaxLength="9" />
           <Property Name="LessonTime" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Status">
@@ -121,7 +121,7 @@
           <Property Name="Email" Type="nvarchar(max)" />
           <Property Name="IdLanguageLevel" Type="int" />
           <Property Name="Comment" Type="nvarchar(max)" />
-          <Property Name="Time" Type="nvarchar" MaxLength="5" />
+          <Property Name="Time" Type="time" Precision="0" />
           <Property Name="Date" Type="date" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
@@ -129,7 +129,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_Client_LanguageLevel">
@@ -356,7 +356,7 @@
           <Property Name="PhoneNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
           <Property Name="Zoom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Skype" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="FavoriteTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="FavoriteTime" Type="Time" Precision="0" />
           <Property Name="Balance" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IdLanguageLevel" Type="Int32" />
@@ -410,8 +410,8 @@
           <Property Name="IdTypeLesson" Type="Int32" />
           <Property Name="IdGroups" Type="Int32" />
           <Property Name="Date" Type="DateTime" Precision="0" />
-          <Property Name="Time" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="Day" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="Time" Precision="0" />
+          <Property Name="Day" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
           <Property Name="LessonTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ClientLesson" Relationship="ClassScheduleModel.FK_ClientLesson_Lesson" FromRole="Lesson" ToRole="ClientLesson" />
           <NavigationProperty Name="Groups" Relationship="ClassScheduleModel.FK_Lesson_Group" FromRole="Lesson" ToRole="Groups" />
@@ -476,7 +476,7 @@
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IdLanguageLevel" Type="Int32" />
           <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Time" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="Time" Precision="0" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="LanguageLevel" Relationship="ClassScheduleModel.FK_TrialLesson_LanguageLevel" FromRole="TrialLesson" ToRole="LanguageLevel" />
@@ -485,7 +485,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Lesson" Relationship="ClassScheduleModel.FK_Lesson_TypeLesson" FromRole="TypeLesson" ToRole="Lesson" />
         </EntityType>

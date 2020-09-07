@@ -25,7 +25,7 @@ namespace ClassSchedule.Entities
         public Nullable<int> IdTypeLesson { get; set; }
         public Nullable<int> IdGroups { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
-        public string Time { get; set; }
+        public Nullable<System.TimeSpan> Time { get; set; }
         public string Day { get; set; }
         public string LessonTime { get; set; }
     

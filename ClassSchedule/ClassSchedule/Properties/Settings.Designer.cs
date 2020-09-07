@@ -25,10 +25,10 @@ namespace ClassSchedule.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public string timeStart {
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00")]
+        public global::System.TimeSpan timeStart {
             get {
-                return ((string)(this["timeStart"]));
+                return ((global::System.TimeSpan)(this["timeStart"]));
             }
             set {
                 this["timeStart"] = value;

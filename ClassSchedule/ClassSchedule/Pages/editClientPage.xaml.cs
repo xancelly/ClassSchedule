@@ -36,7 +36,7 @@ namespace ClassSchedule.Pages
                 dateOfBirthDatePicker.SelectedDate = CurrentClient.DateOfBirth;
                 zoomTextBox.Text = CurrentClient.Zoom;
                 skypeTextBox.Text = CurrentClient.Skype;
-                timeComboBox.Text = CurrentClient.FavoriteTime;
+                timeComboBox.Text = Convert.ToString(CurrentClient.FavoriteTime).Remove(5,3);
             }
         }
 
@@ -56,7 +56,7 @@ namespace ClassSchedule.Pages
                             {
                                 if (dateOfBirthDatePicker.SelectedDate < DateTime.Today)
                                 {
-                                    if (timeComboBox.SelectedItem.ToString() != "Не выбрано")
+                                    if (timeComboBox.Text != "Не выбрано")
                                     {
                                         if (CurrentClient == null)
                                         {
@@ -66,7 +66,7 @@ namespace ClassSchedule.Pages
                                                 FirstName = firstNameTextBox.Text.Substring(0, 1).ToUpper() + firstNameTextBox.Text.Substring(1, firstNameTextBox.Text.Length - 1),
                                                 DateOfBirth = Convert.ToDateTime(dateOfBirthDatePicker.SelectedDate.Value.ToShortDateString()),
                                                 PhoneNumber = phoneNumberTextBox.Text,
-                                                FavoriteTime = timeComboBox.Text,
+                                                FavoriteTime = TimeSpan.Parse(timeComboBox.Text),
                                                 Skype = skypeTextBox.Text,
                                                 Zoom = zoomTextBox.Text,
                                                 IsDeleted = false,
@@ -96,7 +96,7 @@ namespace ClassSchedule.Pages
                                             CurrentClient.PhoneNumber = phoneNumberTextBox.Text;
                                             CurrentClient.Zoom = zoomTextBox.Text;
                                             CurrentClient.Skype = skypeTextBox.Text;
-                                            CurrentClient.FavoriteTime = timeComboBox.Text;
+                                            CurrentClient.FavoriteTime = TimeSpan.Parse(timeComboBox.Text);
                                             CurrentClient.IsDeleted = false;
                                             AppData.Context.SaveChanges();
                                             MessageBox.Show("Информация обновлена!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);

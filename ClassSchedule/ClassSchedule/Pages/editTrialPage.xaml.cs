@@ -30,7 +30,7 @@ namespace ClassSchedule.Pages
             CurrentTrialLesson = trialLesson;
             if (CurrentTrialLesson != null)
             {
-                if (Properties.Settings.Default.dateStart != "0" && Properties.Settings.Default.timeStart != "0")
+                if (Properties.Settings.Default.dateStart != "0" && Properties.Settings.Default.timeStart != TimeSpan.Parse("00:00:00"))
                 {
                     this.Title = $"Редактирование пробного занятия \nна {Properties.Settings.Default.dateStart} в {Properties.Settings.Default.timeStart}";
                 } else

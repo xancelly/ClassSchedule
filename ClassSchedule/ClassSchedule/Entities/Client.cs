@@ -28,7 +28,7 @@ namespace ClassSchedule.Entities
         public string PhoneNumber { get; set; }
         public string Zoom { get; set; }
         public string Skype { get; set; }
-        public string FavoriteTime { get; set; }
+        public Nullable<System.TimeSpan> FavoriteTime { get; set; }
         public Nullable<decimal> Balance { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
         public Nullable<int> IdLanguageLevel { get; set; }

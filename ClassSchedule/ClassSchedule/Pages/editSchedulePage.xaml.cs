@@ -21,14 +21,14 @@ namespace ClassSchedule.Pages
     /// </summary>
     public partial class editSchedulePage : Page
     {
-        TimeSpan timeStartLesson = TimeSpan.Parse($"{Properties.Settings.Default.timeStart}:00");
         Lesson CurrentLesson = null;
         TeacherDayOfWeek CurrentTeacherDayOfWeek = null;
+        Teacher CurrentAllTeacher = null;
         List<Client> Clients = new List<Client>();
         public editSchedulePage(Lesson lesson)
         {
             InitializeComponent();
-            teacherComboBox.ItemsSource = AppData.Context.TeacherDayOfWeek.Where(c => c.Teacher.IsDeleted == false && c.DayOfWeek.Name == Properties.Settings.Default.dayStart && c.StartTimeWork.Value <= timeStartLesson && c.EndTimeWork.Value > timeStartLesson).ToList();
+            teacherComboBox.ItemsSource = AppData.Context.TeacherDayOfWeek.Where(c => c.Teacher.IsDeleted == false && c.DayOfWeek.Name == Properties.Settings.Default.dayStart && c.StartTimeWork <= Properties.Settings.Default.timeStart && c.EndTimeWork > Properties.Settings.Default.timeStart).ToList();
             groupComboBox.ItemsSource = AppData.Context.Groups.Where(c => c.IsDeleted == false).ToList();
             freeClientsListView.ItemsSource = AppData.Context.Client.Where(c => c.FavoriteTime == Properties.Settings.Default.timeStart && c.IsDeleted == false).ToList();
 
@@ -37,7 +37,7 @@ namespace ClassSchedule.Pages
             if (CurrentLesson != null)
             {
                 CurrentTeacherDayOfWeek = AppData.Context.TeacherDayOfWeek.Where(c => c.IdTeacher == CurrentLesson.IdTeacher).FirstOrDefault();
-                this.Title = $"Редактирование занятия \nна {Properties.Settings.Default.dateStart} в {Properties.Settings.Default.timeStart}";
+                this.Title = $"Редактирование занятия \nна {Properties.Settings.Default.dateStart} в {Properties.Settings.Default.timeStart.TotalHours}";
                 groupComboBox.SelectedItem = CurrentLesson.Groups as Groups;
                 teacherComboBox.SelectedItem = CurrentTeacherDayOfWeek as TeacherDayOfWeek;
                 var lessonClient = AppData.Context.ClientLesson.Where(c => c.IdLesson == CurrentLesson.Id).ToList().Select(c => c.Client).ToList();
@@ -54,7 +54,8 @@ namespace ClassSchedule.Pages
                     }
                     lessonClientsListView.ItemsSource = Clients;
                 }
-            } else
+            }
+            else
             {
                 this.Title = $"Добавление занятия на {Properties.Settings.Default.dateStart} \nв {Properties.Settings.Default.timeStart}";
             }
@@ -96,6 +97,7 @@ namespace ClassSchedule.Pages
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
+            DateTime dtStart = Convert.ToDateTime(Properties.Settings.Default.dateStart);
             try
             {
                 if (CurrentLesson == null)
@@ -106,43 +108,93 @@ namespace ClassSchedule.Pages
                         {
                             if (groupComboBox.SelectedItem != null)
                             {
-                                CurrentTeacherDayOfWeek = teacherComboBox.SelectedItem as TeacherDayOfWeek;
-                                CurrentLesson = new Lesson()
+                                if (showAllTeachers.IsChecked == true)
                                 {
-                                    Teacher = CurrentTeacherDayOfWeek.Teacher,
-                                    Time = Properties.Settings.Default.timeStart,
-                                    Date = Convert.ToDateTime(Properties.Settings.Default.dateStart),
-                                    Day = Properties.Settings.Default.dayStart,
-                                    Groups = groupComboBox.SelectedItem as Groups,
-                                    LessonTime = lessonTimeComboBox.Text,
-                                    IdTypeLesson = 1,
-                                };
-
-                                foreach (var item in Clients)
-                                {
-                                    CurrentLesson.ClientLesson.Add(
-
-                                        new ClientLesson
+                                    CurrentAllTeacher = teacherComboBox.SelectedItem as Teacher;
+                                    if (AppData.Context.Lesson.Where(c => c.Teacher.Id == CurrentAllTeacher.Id && c.Time == Properties.Settings.Default.timeStart && c.Date == dtStart).Count() < 1)
+                                    {
+                                        CurrentLesson = new Lesson()
                                         {
-                                            Client = item,
-                                            IsAttendance = false,
-                                            IsPaid = false,
-                                        });
+                                            Teacher = CurrentAllTeacher,
+                                            Time = Properties.Settings.Default.timeStart,
+                                            Date = Convert.ToDateTime(Properties.Settings.Default.dateStart),
+                                            Day = Properties.Settings.Default.dayStart,
+                                            Groups = groupComboBox.SelectedItem as Groups,
+                                            LessonTime = lessonTimeComboBox.Text,
+                                            IdTypeLesson = 1,
+                                        };
+
+                                        foreach (var item in Clients)
+                                        {
+                                            CurrentLesson.ClientLesson.Add(
+
+                                                new ClientLesson
+                                                {
+                                                    Client = item,
+                                                    IsAttendance = false,
+                                                    IsPaid = false,
+                                                });
+                                        }
+                                        AppData.Context.Lesson.Add(CurrentLesson);
+                                        AppData.Context.SaveChanges();
+                                        MessageBox.Show("Запись добавлена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+                                        NavigationService.GoBack();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Занятие уже существует с данным преподавателем!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                                    }
                                 }
-                                AppData.Context.Lesson.Add(CurrentLesson);
-                                AppData.Context.SaveChanges();
-                                MessageBox.Show("Запись добавлена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
-                                NavigationService.GoBack();
+                                else
+                                {
+                                    CurrentTeacherDayOfWeek = teacherComboBox.SelectedItem as TeacherDayOfWeek;
+                                    if (AppData.Context.Lesson.Where(c => c.Teacher.Id == CurrentTeacherDayOfWeek.Teacher.Id && c.Time == Properties.Settings.Default.timeStart && c.Date == dtStart).Count() < 1)
+                                    {
+                                        CurrentLesson = new Lesson()
+                                        {
+                                            Teacher = CurrentTeacherDayOfWeek.Teacher,
+                                            Time = Properties.Settings.Default.timeStart,
+                                            Date = Convert.ToDateTime(Properties.Settings.Default.dateStart),
+                                            Day = Properties.Settings.Default.dayStart,
+                                            Groups = groupComboBox.SelectedItem as Groups,
+                                            LessonTime = lessonTimeComboBox.Text,
+                                            IdTypeLesson = 1,
+                                        };
+
+                                        foreach (var item in Clients)
+                                        {
+                                            CurrentLesson.ClientLesson.Add(
+
+                                                new ClientLesson
+                                                {
+                                                    Client = item,
+                                                    IsAttendance = false,
+                                                    IsPaid = false,
+                                                });
+                                        }
+                                        AppData.Context.Lesson.Add(CurrentLesson);
+                                        AppData.Context.SaveChanges();
+                                        MessageBox.Show("Запись добавлена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+                                        NavigationService.GoBack();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Занятие уже существует с данным преподавателем!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                                    }
+                                }
+
                             }
                             else
                             {
                                 MessageBox.Show("Поле с группой обязательно должно быть заполнено!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                             }
-                        } else
+                        }
+                        else
                         {
                             MessageBox.Show("Выберите продолжительность занятия!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
-                    } else
+                    }
+                    else
                     {
                         MessageBox.Show("Поле с преподавателем обязательно должно быть заполнено!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
@@ -155,8 +207,15 @@ namespace ClassSchedule.Pages
                         {
                             if (lessonTimeComboBox.SelectedItem != null)
                             {
-                                CurrentTeacherDayOfWeek = teacherComboBox.SelectedItem as TeacherDayOfWeek;
-                                CurrentLesson.Teacher = CurrentTeacherDayOfWeek.Teacher;
+                                if (showAllTeachers.IsChecked == true)
+                                {
+                                    CurrentLesson.Teacher = teacherComboBox.SelectedItem as Teacher;
+                                }
+                                else if (showAllTeachers.IsChecked == false)
+                                {
+                                    CurrentTeacherDayOfWeek = teacherComboBox.SelectedItem as TeacherDayOfWeek;
+                                    CurrentLesson.Teacher = CurrentTeacherDayOfWeek.Teacher;
+                                }
                                 CurrentLesson.Groups = groupComboBox.SelectedItem as Groups;
                                 if (Clients.Count() > 0)
                                 {
@@ -178,7 +237,8 @@ namespace ClassSchedule.Pages
                                 {
                                     MessageBox.Show("На занятии должен присутствовать минимум 1 человек!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                                 }
-                            } else
+                            }
+                            else
                             {
                                 MessageBox.Show("Выберите продолжительность занятия!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                             }
@@ -187,7 +247,8 @@ namespace ClassSchedule.Pages
                         {
                             MessageBox.Show("Поле с группой обязательно должно быть заполнено!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
-                    } else
+                    }
+                    else
                     {
                         MessageBox.Show("Поле с преподавателем обязательно должно быть заполнено!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
@@ -207,7 +268,8 @@ namespace ClassSchedule.Pages
                 freeClientsListView.ItemsSource = null;
                 freeClientsListView.Items.Clear();
                 freeClientsListView.ItemsSource = AppData.Context.Client.Where(c => c.IsDeleted == false).ToList();
-            } else
+            }
+            else
             {
                 freeClientsListView.ItemsSource = null;
                 freeClientsListView.Items.Clear();
@@ -221,13 +283,15 @@ namespace ClassSchedule.Pages
             {
                 teacherComboBox.ItemsSource = null;
                 teacherComboBox.Items.Clear();
-                teacherComboBox.ItemsSource = AppData.Context.TeacherDayOfWeek.Where(c => c.Teacher.IsDeleted == false).ToList();
+                teacherComboBox.ItemsSource = AppData.Context.Teacher.Where(c => c.IsDeleted == false).ToList();
+                teacherComboBox.DisplayMemberPath = "fullnameTeacher";
             }
             else
             {
                 teacherComboBox.ItemsSource = null;
                 teacherComboBox.Items.Clear();
-                teacherComboBox.ItemsSource = AppData.Context.TeacherDayOfWeek.Where(c => c.Teacher.IsDeleted == false && c.DayOfWeek.Name == Properties.Settings.Default.dayStart && c.StartTimeWork.Value <= timeStartLesson && c.EndTimeWork.Value > timeStartLesson).ToList();
+                teacherComboBox.ItemsSource = AppData.Context.TeacherDayOfWeek.Where(c => c.Teacher.IsDeleted == false && c.DayOfWeek.Name == Properties.Settings.Default.dayStart && c.StartTimeWork.Value <= Properties.Settings.Default.timeStart && c.EndTimeWork.Value > Properties.Settings.Default.timeStart).ToList();
+                teacherComboBox.DisplayMemberPath = "Teacher.fullnameTeacher";
             }
         }
 

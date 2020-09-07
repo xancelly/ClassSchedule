@@ -87,83 +87,98 @@ namespace ClassSchedule.Pages
                 Properties.Settings.Default.dayStart = "Sunday";
             }
 
-            var trialNine = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && (c.Time == "09:00" || c.Time == "9:00") && c.IsDeleted == false);
-            if (trialNine.FirstOrDefault() != null)
+            DataGrid[] trialDataGrids = new[] { trialNineDataGrid, trialTenDataGrid, trialElevenDataGrid, trialTwelveDataGrid, trialThirteenDataGrid, trialFourteenDataGrid, trialFifteenDataGrid, trialSixteenDataGrid, trialSeventeenDataGrid, trialEighteenDataGrid, trialNineteenDataGrid, trialTwentyDataGrid, trialTwentyOneDataGrid };
+            TimeSpan[] time = new TimeSpan[] { TimeSpan.Parse("09:00"),  TimeSpan.Parse("10:00"), TimeSpan.Parse("11:00"), TimeSpan.Parse("12:00"), TimeSpan.Parse("13:00"), TimeSpan.Parse("14:00"), TimeSpan.Parse("15:00"), TimeSpan.Parse("16:00"),  TimeSpan.Parse("17:00"), TimeSpan.Parse("18:00"),  TimeSpan.Parse("19:00"),  TimeSpan.Parse("20:00"), TimeSpan.Parse("21:00"), };
+            for (int i = 0; i < trialDataGrids.Length; i++)
             {
-                trialNineDataGrid.ItemsSource = trialNine.ToList();
+                for (int j = 0; j < time.Length; j++)
+                {
+                    TimeSpan startTime = time[j];
+                    var trialLesson = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && (c.Time == startTime) && c.IsDeleted == false);
+                    if (trialLesson.FirstOrDefault() != null)
+                    {
+                        trialDataGrids[j].ItemsSource = trialLesson.ToList();
+                    }
+                }
             }
 
-            var trialTen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "10:00" && c.IsDeleted == false);
-            if (trialTen.FirstOrDefault() != null)
-            {
-                trialTenDataGrid.ItemsSource = trialTen.ToList();
-            }
+            //var trialNine = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && (c.Time == "09:00" || c.Time == "9:00") && c.IsDeleted == false);
+            //if (trialNine.FirstOrDefault() != null)
+            //{
+            //    trialNineDataGrid.ItemsSource = trialNine.ToList();
+            //}
 
-            var trialEleven = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "11:00" && c.IsDeleted == false);
-            if (trialEleven.FirstOrDefault() != null)
-            {
-                trialElevenDataGrid.ItemsSource = trialEleven.ToList();
-            }
+            //var trialTen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "10:00" && c.IsDeleted == false);
+            //if (trialTen.FirstOrDefault() != null)
+            //{
+            //    trialTenDataGrid.ItemsSource = trialTen.ToList();
+            //}
 
-            var trialTwelve = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "12:00" && c.IsDeleted == false);
-            if (trialTwelve.FirstOrDefault() != null)
-            {
-                trialTwelveDataGrid.ItemsSource = trialTwelve.ToList();
-            }
+            //var trialEleven = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "11:00" && c.IsDeleted == false);
+            //if (trialEleven.FirstOrDefault() != null)
+            //{
+            //    trialElevenDataGrid.ItemsSource = trialEleven.ToList();
+            //}
 
-            var trialThirteen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "13:00" && c.IsDeleted == false);
-            if (trialThirteen.FirstOrDefault() != null)
-            {
-                trialThirteenDataGrid.ItemsSource = trialThirteen.ToList();
-            }
+            //var trialTwelve = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "12:00" && c.IsDeleted == false);
+            //if (trialTwelve.FirstOrDefault() != null)
+            //{
+            //    trialTwelveDataGrid.ItemsSource = trialTwelve.ToList();
+            //}
 
-            var trialFourteen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "14:00" && c.IsDeleted == false);
-            if (trialFourteen.FirstOrDefault() != null)
-            {
-                trialFourteenDataGrid.ItemsSource = trialFourteen.ToList();
-            }
+            //var trialThirteen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "13:00" && c.IsDeleted == false);
+            //if (trialThirteen.FirstOrDefault() != null)
+            //{
+            //    trialThirteenDataGrid.ItemsSource = trialThirteen.ToList();
+            //}
 
-            var trialFifteen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "15:00" && c.IsDeleted == false);
-            if (trialFifteen.FirstOrDefault() != null)
-            {
-                trialFifteenDataGrid.ItemsSource = trialFifteen.ToList();
-            }
+            //var trialFourteen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "14:00" && c.IsDeleted == false);
+            //if (trialFourteen.FirstOrDefault() != null)
+            //{
+            //    trialFourteenDataGrid.ItemsSource = trialFourteen.ToList();
+            //}
 
-            var trialSixteen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "16:00" && c.IsDeleted == false);
-            if (trialSixteen.FirstOrDefault() != null)
-            {
-                trialSixteenDataGrid.ItemsSource = trialSixteen.ToList();
-            }
+            //var trialFifteen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "15:00" && c.IsDeleted == false);
+            //if (trialFifteen.FirstOrDefault() != null)
+            //{
+            //    trialFifteenDataGrid.ItemsSource = trialFifteen.ToList();
+            //}
 
-            var trialSeventeen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "17:00" && c.IsDeleted == false);
-            if (trialSeventeen.FirstOrDefault() != null)
-            {
-                trialSeventeenDataGrid.ItemsSource = trialSeventeen.ToList();
-            }
+            //var trialSixteen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "16:00" && c.IsDeleted == false);
+            //if (trialSixteen.FirstOrDefault() != null)
+            //{
+            //    trialSixteenDataGrid.ItemsSource = trialSixteen.ToList();
+            //}
 
-            var trialEighteen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "18:00" && c.IsDeleted == false);
-            if (trialEighteen.FirstOrDefault() != null)
-            {
-                trialEighteenDataGrid.ItemsSource = trialEighteen.ToList();
-            }
+            //var trialSeventeen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "17:00" && c.IsDeleted == false);
+            //if (trialSeventeen.FirstOrDefault() != null)
+            //{
+            //    trialSeventeenDataGrid.ItemsSource = trialSeventeen.ToList();
+            //}
 
-            var trialNineteen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "19:00" && c.IsDeleted == false);
-            if (trialNineteen.FirstOrDefault() != null)
-            {
-                trialNineteenDataGrid.ItemsSource = trialNineteen.ToList();
-            }
+            //var trialEighteen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "18:00" && c.IsDeleted == false);
+            //if (trialEighteen.FirstOrDefault() != null)
+            //{
+            //    trialEighteenDataGrid.ItemsSource = trialEighteen.ToList();
+            //}
 
-            var trialTwenty = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "20:00" && c.IsDeleted == false);
-            if (trialTwenty.FirstOrDefault() != null)
-            {
-                trialTwentyDataGrid.ItemsSource = trialTwenty.ToList();
-            }
+            //var trialNineteen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "19:00" && c.IsDeleted == false);
+            //if (trialNineteen.FirstOrDefault() != null)
+            //{
+            //    trialNineteenDataGrid.ItemsSource = trialNineteen.ToList();
+            //}
 
-            var trialTwentyOne = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "21:00" && c.IsDeleted == false);
-            if (trialTwentyOne.FirstOrDefault() != null)
-            {
-                trialTwentyOneDataGrid.ItemsSource = trialTwentyOne.ToList();
-            }
+            //var trialTwenty = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "20:00" && c.IsDeleted == false);
+            //if (trialTwenty.FirstOrDefault() != null)
+            //{
+            //    trialTwentyDataGrid.ItemsSource = trialTwenty.ToList();
+            //}
+
+            //var trialTwentyOne = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "21:00" && c.IsDeleted == false);
+            //if (trialTwentyOne.FirstOrDefault() != null)
+            //{
+            //    trialTwentyOneDataGrid.ItemsSource = trialTwentyOne.ToList();
+            //}
 
         }
 
@@ -191,7 +206,7 @@ namespace ClassSchedule.Pages
             };
             MessageBoxResult resultTime = WpfMessageBox.Show(ref timeMsg);
 
-            Properties.Settings.Default.timeStart = timeMsg.TextBoxText;
+            Properties.Settings.Default.timeStart = TimeSpan.Parse(timeMsg.TextBoxText);
             Properties.Settings.Default.dateStart = trialCalendar.SelectedDate.Value.ToShortDateString();
 
             if (resultTime == MessageBoxResult.OK)

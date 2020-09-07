@@ -22,7 +22,7 @@ namespace ClassSchedule.Entities
         public string Email { get; set; }
         public Nullable<int> IdLanguageLevel { get; set; }
         public string Comment { get; set; }
-        public string Time { get; set; }
+        public Nullable<System.TimeSpan> Time { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     
