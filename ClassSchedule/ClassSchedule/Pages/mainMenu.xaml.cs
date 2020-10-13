@@ -28,7 +28,7 @@ namespace ClassSchedule.Pages
 
         private void scheduleButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new schedulePage());
+            NavigationService.Navigate(new testPage());
             
         }
 

@@ -51,15 +51,12 @@
                 <DataGridTextColumn Header="Номер телефона"
                                     Width="*"
                                     Binding="{Binding PhoneNumber}" />
-                <DataGridTextColumn Header="Время для обучения"
+                <DataGridTextColumn Header="E-Mail"
                                     Width="*"
-                                    Binding="{Binding FavoriteTime}" />
-                <DataGridTextColumn Header="Zoom"
+                                    Binding="{Binding Email}" />
+                <DataGridTextColumn Header="Комментарий"
                                     Width="*"
-                                    Binding="{Binding Zoom}" />
-                <DataGridTextColumn Header="Skype"
-                                    Width="*"
-                                    Binding="{Binding Skype}" />
+                                    Binding="{Binding Comment}" />
 
             </DataGrid.Columns>
         </DataGrid>

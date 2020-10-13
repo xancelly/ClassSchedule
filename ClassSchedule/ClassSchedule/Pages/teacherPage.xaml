@@ -52,12 +52,12 @@
                 <DataGridTextColumn Header="Номер телефона"
                                     Width="*"
                                     Binding="{Binding PhoneNumber}" />
-                <DataGridTextColumn Header="Zoom"
+                <DataGridTextColumn Header="E-Mail"
                                     Width="*"
-                                    Binding="{Binding Zoom}" />
-                <DataGridTextColumn Header="Skype"
+                                    Binding="{Binding Email}" />
+                <DataGridTextColumn Header="Комментарий"
                                     Width="*"
-                                    Binding="{Binding Skype}" />
+                                    Binding="{Binding Comment}" />
 
             </DataGrid.Columns>
         </DataGrid>

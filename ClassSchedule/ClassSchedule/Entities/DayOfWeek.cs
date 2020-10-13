@@ -17,12 +17,15 @@ namespace ClassSchedule.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DayOfWeek()
         {
+            this.ClientDayOfWeek = new HashSet<ClientDayOfWeek>();
             this.TeacherDayOfWeek = new HashSet<TeacherDayOfWeek>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClientDayOfWeek> ClientDayOfWeek { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TeacherDayOfWeek> TeacherDayOfWeek { get; set; }
     }

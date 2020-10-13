@@ -17,6 +17,7 @@ namespace ClassSchedule.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Client()
         {
+            this.ClientDayOfWeek = new HashSet<ClientDayOfWeek>();
             this.ClientLesson = new HashSet<ClientLesson>();
         }
     
@@ -26,14 +27,14 @@ namespace ClassSchedule.Entities
         public string MiddleName { get; set; }
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         public string PhoneNumber { get; set; }
-        public string Zoom { get; set; }
-        public string Skype { get; set; }
-        public Nullable<System.TimeSpan> FavoriteTime { get; set; }
-        public Nullable<decimal> Balance { get; set; }
+        public string Email { get; set; }
+        public string Comment { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
         public Nullable<int> IdLanguageLevel { get; set; }
     
         public virtual LanguageLevel LanguageLevel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClientDayOfWeek> ClientDayOfWeek { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientLesson> ClientLesson { get; set; }
     }

@@ -15,12 +15,20 @@
           <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
           <Property Name="DateOfBirth" Type="date" />
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="18" />
-          <Property Name="Zoom" Type="nvarchar(max)" />
-          <Property Name="Skype" Type="nvarchar(max)" />
-          <Property Name="FavoriteTime" Type="time" Precision="0" />
-          <Property Name="Balance" Type="money" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Comment" Type="nvarchar(max)" />
           <Property Name="IsDeleted" Type="bit" />
           <Property Name="IdLanguageLevel" Type="int" />
+        </EntityType>
+        <EntityType Name="ClientDayOfWeek">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdClient" Type="int" />
+          <Property Name="IdDayOfWeek" Type="int" />
+          <Property Name="StartTimeWork" Type="time" Precision="0" />
+          <Property Name="EndTimeWork" Type="time" Precision="0" />
         </EntityType>
         <EntityType Name="ClientLesson">
           <Key>
@@ -67,14 +75,6 @@
           <Property Name="Day" Type="nvarchar" MaxLength="9" />
           <Property Name="LessonTime" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Status">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="bit" Nullable="false" />
-          <Property Name="IsPaid" Type="bit" />
-          <Property Name="IsAttendance" Type="bit" />
-        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -95,8 +95,8 @@
           <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
           <Property Name="DateOfBirth" Type="date" />
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="18" />
-          <Property Name="Zoom" Type="nvarchar(max)" />
-          <Property Name="Skype" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Comment" Type="nvarchar(max)" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="TeacherDayOfWeek">
@@ -141,6 +141,30 @@
             </Principal>
             <Dependent Role="Client">
               <PropertyRef Name="IdLanguageLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientDayOfWeek_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="ClientDayOfWeek" Type="Self.ClientDayOfWeek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClientDayOfWeek">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientDayOfWeek_DayOfWeek">
+          <End Role="DayOfWeek" Type="Self.DayOfWeek" Multiplicity="0..1" />
+          <End Role="ClientDayOfWeek" Type="Self.ClientDayOfWeek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DayOfWeek">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClientDayOfWeek">
+              <PropertyRef Name="IdDayOfWeek" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -240,14 +264,61 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="GetLesson" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Date" Type="datetime" Mode="In" />
+          <Parameter Name="Time" Type="time" Mode="In" />
+          <Parameter Name="Teacher" Type="int" Mode="In" />
+          <Parameter Name="IdLesson" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="Count" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="LessonTime" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="TypeLesson" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="IsPaid" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="IsAttendance" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="GetLessonEntities" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Date" Type="datetime" Mode="In" />
+          <Parameter Name="Time" Type="time" Mode="In" />
+          <Parameter Name="Teacher" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Хранилище ClassScheduleModelContainer">
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientDayOfWeek" EntityType="Self.ClientDayOfWeek" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClientLesson" EntityType="Self.ClientLesson" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DayOfWeek" EntityType="Self.DayOfWeek" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LanguageLevel" EntityType="Self.LanguageLevel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lesson" EntityType="Self.Lesson" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TeacherDayOfWeek" EntityType="Self.TeacherDayOfWeek" Schema="dbo" store:Type="Tables" />
@@ -256,6 +327,14 @@
           <AssociationSet Name="FK_Client_LanguageLevel" Association="Self.FK_Client_LanguageLevel">
             <End Role="LanguageLevel" EntitySet="LanguageLevel" />
             <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientDayOfWeek_Client" Association="Self.FK_ClientDayOfWeek_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientDayOfWeek" EntitySet="ClientDayOfWeek" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientDayOfWeek_DayOfWeek" Association="Self.FK_ClientDayOfWeek_DayOfWeek">
+            <End Role="DayOfWeek" EntitySet="DayOfWeek" />
+            <End Role="ClientDayOfWeek" EntitySet="ClientDayOfWeek" />
           </AssociationSet>
           <AssociationSet Name="FK_ClientLesson_Client" Association="Self.FK_ClientLesson_Client">
             <End Role="Client" EntitySet="Client" />
@@ -295,13 +374,59 @@
     <edmx:ConceptualModels>
       <Schema Namespace="ClassScheduleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ClassScheduleEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="GetLesson">
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Time" Mode="In" Type="Time" />
+            <Parameter Name="Teacher" Mode="In" Type="Int32" />
+            <Parameter Name="IdLesson" Mode="InOut" Type="String" />
+            <Parameter Name="Count" Mode="InOut" Type="String" />
+            <Parameter Name="LessonTime" Mode="InOut" Type="String" />
+            <Parameter Name="TypeLesson" Mode="InOut" Type="String" />
+            <Parameter Name="IsPaid" Mode="InOut" Type="String" />
+            <Parameter Name="IsAttendance" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ClassScheduleModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ClassScheduleModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="GetLessonLINQ" ReturnType="Collection(ClassScheduleModel.GetLessonLINQ_Result)">
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Time" Mode="In" Type="Time" />
+            <Parameter Name="Teacher" Mode="In" Type="Int32" />
+          </FunctionImport>
           <EntitySet Name="Client" EntityType="ClassScheduleModel.Client" />
+          <EntitySet Name="ClientDayOfWeek" EntityType="ClassScheduleModel.ClientDayOfWeek" />
           <EntitySet Name="ClientLesson" EntityType="ClassScheduleModel.ClientLesson" />
           <EntitySet Name="DayOfWeek" EntityType="ClassScheduleModel.DayOfWeek" />
           <EntitySet Name="Groups" EntityType="ClassScheduleModel.Groups" />
           <EntitySet Name="LanguageLevel" EntityType="ClassScheduleModel.LanguageLevel" />
           <EntitySet Name="Lesson" EntityType="ClassScheduleModel.Lesson" />
-          <EntitySet Name="Status" EntityType="ClassScheduleModel.Status" />
           <EntitySet Name="sysdiagrams" EntityType="ClassScheduleModel.sysdiagrams" />
           <EntitySet Name="Teacher" EntityType="ClassScheduleModel.Teacher" />
           <EntitySet Name="TeacherDayOfWeek" EntityType="ClassScheduleModel.TeacherDayOfWeek" />
@@ -311,9 +436,17 @@
             <End Role="LanguageLevel" EntitySet="LanguageLevel" />
             <End Role="Client" EntitySet="Client" />
           </AssociationSet>
+          <AssociationSet Name="FK_ClientDayOfWeek_Client" Association="ClassScheduleModel.FK_ClientDayOfWeek_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientDayOfWeek" EntitySet="ClientDayOfWeek" />
+          </AssociationSet>
           <AssociationSet Name="FK_ClientLesson_Client" Association="ClassScheduleModel.FK_ClientLesson_Client">
             <End Role="Client" EntitySet="Client" />
             <End Role="ClientLesson" EntitySet="ClientLesson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientDayOfWeek_DayOfWeek" Association="ClassScheduleModel.FK_ClientDayOfWeek_DayOfWeek">
+            <End Role="DayOfWeek" EntitySet="DayOfWeek" />
+            <End Role="ClientDayOfWeek" EntitySet="ClientDayOfWeek" />
           </AssociationSet>
           <AssociationSet Name="FK_ClientLesson_Lesson" Association="ClassScheduleModel.FK_ClientLesson_Lesson">
             <End Role="Lesson" EntitySet="Lesson" />
@@ -343,7 +476,30 @@
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="TeacherDayOfWeek" EntitySet="TeacherDayOfWeek" />
           </AssociationSet>
-        </EntityContainer>
+          <FunctionImport Name="GetLessonEntities" ReturnType="Collection(ClassScheduleModel.GetLessonEntities_Result)">
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Time" Mode="In" Type="Time" />
+            <Parameter Name="Teacher" Mode="In" Type="Int32" />
+          </FunctionImport>
+          </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetLessonLINQ_Result">
+          <Property Type="String" Name="TypeLesson" Nullable="true" />
+          <Property Type="String" Name="LessonTime" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Count" Nullable="true" />
+          <Property Type="Int32" Name="IsPaid" Nullable="false" />
+          <Property Type="Int32" Name="IsAttendance" Nullable="false" />
+        </ComplexType>
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="Id" />
@@ -354,14 +510,25 @@
           <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
           <Property Name="PhoneNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
-          <Property Name="Zoom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Skype" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="FavoriteTime" Type="Time" Precision="0" />
-          <Property Name="Balance" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="IdLanguageLevel" Type="Int32" />
           <NavigationProperty Name="LanguageLevel" Relationship="ClassScheduleModel.FK_Client_LanguageLevel" FromRole="Client" ToRole="LanguageLevel" />
+          <NavigationProperty Name="ClientDayOfWeek" Relationship="ClassScheduleModel.FK_ClientDayOfWeek_Client" FromRole="Client" ToRole="ClientDayOfWeek" />
           <NavigationProperty Name="ClientLesson" Relationship="ClassScheduleModel.FK_ClientLesson_Client" FromRole="Client" ToRole="ClientLesson" />
+        </EntityType>
+        <EntityType Name="ClientDayOfWeek">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdClient" Type="Int32" />
+          <Property Name="IdDayOfWeek" Type="Int32" />
+          <Property Name="StartTimeWork" Type="Time" Precision="0" />
+          <Property Name="EndTimeWork" Type="Time" Precision="0" />
+          <NavigationProperty Name="Client" Relationship="ClassScheduleModel.FK_ClientDayOfWeek_Client" FromRole="ClientDayOfWeek" ToRole="Client" />
+          <NavigationProperty Name="DayOfWeek" Relationship="ClassScheduleModel.FK_ClientDayOfWeek_DayOfWeek" FromRole="ClientDayOfWeek" ToRole="DayOfWeek" />
         </EntityType>
         <EntityType Name="ClientLesson">
           <Key>
@@ -381,6 +548,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ClientDayOfWeek" Relationship="ClassScheduleModel.FK_ClientDayOfWeek_DayOfWeek" FromRole="DayOfWeek" ToRole="ClientDayOfWeek" />
           <NavigationProperty Name="TeacherDayOfWeek" Relationship="ClassScheduleModel.FK_TeacherDayOfWeek_DayOfWeek" FromRole="DayOfWeek" ToRole="TeacherDayOfWeek" />
         </EntityType>
         <EntityType Name="Groups">
@@ -418,14 +586,6 @@
           <NavigationProperty Name="Teacher" Relationship="ClassScheduleModel.FK_Lesson_Teacher" FromRole="Lesson" ToRole="Teacher" />
           <NavigationProperty Name="TypeLesson" Relationship="ClassScheduleModel.FK_Lesson_TypeLesson" FromRole="Lesson" ToRole="TypeLesson" />
         </EntityType>
-        <EntityType Name="Status">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Boolean" Nullable="false" />
-          <Property Name="IsPaid" Type="Boolean" />
-          <Property Name="IsAttendance" Type="Boolean" />
-        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -446,8 +606,8 @@
           <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
           <Property Name="PhoneNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
-          <Property Name="Zoom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Skype" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Boolean" />
           <NavigationProperty Name="Lesson" Relationship="ClassScheduleModel.FK_Lesson_Teacher" FromRole="Teacher" ToRole="Lesson" />
           <NavigationProperty Name="TeacherDayOfWeek" Relationship="ClassScheduleModel.FK_TeacherDayOfWeek_Teacher" FromRole="Teacher" ToRole="TeacherDayOfWeek" />
@@ -501,6 +661,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ClientDayOfWeek_Client">
+          <End Type="ClassScheduleModel.Client" Role="Client" Multiplicity="0..1" />
+          <End Type="ClassScheduleModel.ClientDayOfWeek" Role="ClientDayOfWeek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClientDayOfWeek">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ClientLesson_Client">
           <End Type="ClassScheduleModel.Client" Role="Client" Multiplicity="0..1" />
           <End Type="ClassScheduleModel.ClientLesson" Role="ClientLesson" Multiplicity="*" />
@@ -510,6 +682,18 @@
             </Principal>
             <Dependent Role="ClientLesson">
               <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientDayOfWeek_DayOfWeek">
+          <End Type="ClassScheduleModel.DayOfWeek" Role="DayOfWeek" Multiplicity="0..1" />
+          <End Type="ClassScheduleModel.ClientDayOfWeek" Role="ClientDayOfWeek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DayOfWeek">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClientDayOfWeek">
+              <PropertyRef Name="IdDayOfWeek" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -597,26 +781,68 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="GetLessonEntities_Result">
+          <Property Type="Int32" Name="IdLesson" Nullable="false" />
+          <Property Type="String" Name="TypeLesson" Nullable="true" />
+          <Property Type="String" Name="LessonTime" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Count" Nullable="true" />
+          <Property Type="Int32" Name="IsPaid" Nullable="false" />
+          <Property Type="Int32" Name="IsAttendance" Nullable="false" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище ClassScheduleModelContainer" CdmEntityContainer="ClassScheduleEntities">
+          <FunctionImportMapping FunctionImportName="GetLesson" FunctionName="Хранилище ClassScheduleModel.GetLesson" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище ClassScheduleModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище ClassScheduleModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище ClassScheduleModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище ClassScheduleModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClassScheduleModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище ClassScheduleModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClassScheduleModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище ClassScheduleModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище ClassScheduleModel.sp_upgraddiagrams" />
           <EntitySetMapping Name="Client">
             <EntityTypeMapping TypeName="ClassScheduleModel.Client">
               <MappingFragment StoreEntitySet="Client">
                 <ScalarProperty Name="IdLanguageLevel" ColumnName="IdLanguageLevel" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="Balance" ColumnName="Balance" />
-                <ScalarProperty Name="FavoriteTime" ColumnName="FavoriteTime" />
-                <ScalarProperty Name="Skype" ColumnName="Skype" />
-                <ScalarProperty Name="Zoom" ColumnName="Zoom" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientDayOfWeek">
+            <EntityTypeMapping TypeName="ClassScheduleModel.ClientDayOfWeek">
+              <MappingFragment StoreEntitySet="ClientDayOfWeek">
+                <ScalarProperty Name="EndTimeWork" ColumnName="EndTimeWork" />
+                <ScalarProperty Name="StartTimeWork" ColumnName="StartTimeWork" />
+                <ScalarProperty Name="IdDayOfWeek" ColumnName="IdDayOfWeek" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -671,15 +897,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Status">
-            <EntityTypeMapping TypeName="ClassScheduleModel.Status">
-              <MappingFragment StoreEntitySet="Status">
-                <ScalarProperty Name="IsAttendance" ColumnName="IsAttendance" />
-                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="ClassScheduleModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -695,8 +912,8 @@
             <EntityTypeMapping TypeName="ClassScheduleModel.Teacher">
               <MappingFragment StoreEntitySet="Teacher">
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="Skype" ColumnName="Skype" />
-                <ScalarProperty Name="Zoom" ColumnName="Zoom" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
@@ -742,7 +959,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <FunctionImportMapping FunctionImportName="GetLessonEntities" FunctionName="Хранилище ClassScheduleModel.GetLessonEntities">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClassScheduleModel.GetLessonEntities_Result">
+                <ScalarProperty Name="IdLesson" ColumnName="IdLesson" />
+                <ScalarProperty Name="TypeLesson" ColumnName="TypeLesson" />
+                <ScalarProperty Name="LessonTime" ColumnName="LessonTime" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+                <ScalarProperty Name="IsAttendance" ColumnName="IsAttendance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

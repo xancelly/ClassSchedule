@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace ClassSchedule.Pages
 {
@@ -21,17 +22,35 @@ namespace ClassSchedule.Pages
     /// </summary>
     public partial class clientPage : Page
     {
+        DispatcherTimer timer = new DispatcherTimer();
+        int countData;
         public clientPage()
         {
             InitializeComponent();
             clientDataGrid.ItemsSource = AppData.Context.Client.Where(c => c.IsDeleted == false).ToList();
+
+            timer.Interval = TimeSpan.Parse("00:00:05");
+            timer.Tick += Timer_Tick;
+            timer.Start();
+            countData = AppData.Context.Client.Count();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            timer.Stop();
+            if (countData < AppData.Context.Client.Count() || countData > AppData.Context.Client.Count())
+            {
+                countData = AppData.Context.Client.Count();
+                updateClient();
+            }
+            timer.Start();
         }
 
         public void updateClient()
         {
             
             var CurrentClient = AppData.Context.Client.Where(c => c.IsDeleted == false).ToList();
-            CurrentClient = CurrentClient.Where(c => c.LastName.ToLower().Contains(searchTextBox.Text.ToLower()) || c.FirstName.ToLower().Contains(searchTextBox.Text.ToLower()) || c.MiddleName.ToLower().Contains(searchTextBox.Text.ToLower()) || c.PhoneNumber.ToLower().Contains(searchTextBox.Text.ToLower()) || c.Zoom.ToLower().Contains(searchTextBox.Text.ToLower()) || c.Skype.ToLower().Contains(searchTextBox.Text.ToLower()) || Convert.ToString(c.DateOfBirth).ToLower().Contains(searchTextBox.Text.ToLower())).ToList();
+            CurrentClient = CurrentClient.Where(c => c.LastName.ToLower().Contains(searchTextBox.Text.ToLower()) || c.FirstName.ToLower().Contains(searchTextBox.Text.ToLower()) || c.MiddleName.ToLower().Contains(searchTextBox.Text.ToLower()) || c.PhoneNumber.ToLower().Contains(searchTextBox.Text.ToLower()) || c.Email.ToLower().Contains(searchTextBox.Text.ToLower()) || c.Comment.ToLower().Contains(searchTextBox.Text.ToLower()) || Convert.ToString(c.DateOfBirth).ToLower().Contains(searchTextBox.Text.ToLower())).ToList();
             clientDataGrid.ItemsSource = CurrentClient;
         }
 

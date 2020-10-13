@@ -100,6 +100,9 @@
     <Compile Include="Entities\Client.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\ClientDayOfWeek.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\ClientLesson.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
@@ -123,6 +126,12 @@
     </Compile>
     <Compile Include="Entities\getFullnameClient.cs" />
     <Compile Include="Entities\getFullnameTeacher.cs" />
+    <Compile Include="Entities\GetLessonEntities_Result.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\GetLessonLINQ_Result.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Groups.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
@@ -132,7 +141,10 @@
     <Compile Include="Entities\Lesson.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Status.cs">
+    <Compile Include="Entities\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\sp_helpdiagrams_Result.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\sysdiagrams.cs">
@@ -283,6 +295,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Entities\DataBase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DataBase.edmx</DependentUpon>
@@ -293,13 +314,6 @@
       <DependentUpon>DataBase.edmx</DependentUpon>
       <LastGenOutput>DataBase.cs</LastGenOutput>
     </Content>
-    <Resource Include="logo.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Source\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

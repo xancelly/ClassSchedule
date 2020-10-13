@@ -12,6 +12,8 @@ namespace ClassSchedule.Entities
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ClassScheduleEntities : DbContext
     {
@@ -26,16 +28,170 @@ namespace ClassSchedule.Entities
         }
     
         public virtual DbSet<Client> Client { get; set; }
+        public virtual DbSet<ClientDayOfWeek> ClientDayOfWeek { get; set; }
         public virtual DbSet<ClientLesson> ClientLesson { get; set; }
         public virtual DbSet<DayOfWeek> DayOfWeek { get; set; }
         public virtual DbSet<Groups> Groups { get; set; }
         public virtual DbSet<LanguageLevel> LanguageLevel { get; set; }
         public virtual DbSet<Lesson> Lesson { get; set; }
-        public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Teacher> Teacher { get; set; }
         public virtual DbSet<TeacherDayOfWeek> TeacherDayOfWeek { get; set; }
         public virtual DbSet<TrialLesson> TrialLesson { get; set; }
         public virtual DbSet<TypeLesson> TypeLesson { get; set; }
+    
+        public virtual int GetLesson(Nullable<System.DateTime> date, Nullable<System.TimeSpan> time, Nullable<int> teacher, ObjectParameter idLesson, ObjectParameter count, ObjectParameter lessonTime, ObjectParameter typeLesson, ObjectParameter isPaid, ObjectParameter isAttendance)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
+    
+            var timeParameter = time.HasValue ?
+                new ObjectParameter("Time", time) :
+                new ObjectParameter("Time", typeof(System.TimeSpan));
+    
+            var teacherParameter = teacher.HasValue ?
+                new ObjectParameter("Teacher", teacher) :
+                new ObjectParameter("Teacher", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetLesson", dateParameter, timeParameter, teacherParameter, idLesson, count, lessonTime, typeLesson, isPaid, isAttendance);
+        }
+    
+        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
+        }
+    
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual ObjectResult<GetLessonLINQ_Result> GetLessonLINQ(Nullable<System.DateTime> date, Nullable<System.TimeSpan> time, Nullable<int> teacher)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
+    
+            var timeParameter = time.HasValue ?
+                new ObjectParameter("Time", time) :
+                new ObjectParameter("Time", typeof(System.TimeSpan));
+    
+            var teacherParameter = teacher.HasValue ?
+                new ObjectParameter("Teacher", teacher) :
+                new ObjectParameter("Teacher", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetLessonLINQ_Result>("GetLessonLINQ", dateParameter, timeParameter, teacherParameter);
+        }
+    
+        public virtual ObjectResult<GetLessonEntities_Result> GetLessonEntities(Nullable<System.DateTime> date, Nullable<System.TimeSpan> time, Nullable<int> teacher)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
+    
+            var timeParameter = time.HasValue ?
+                new ObjectParameter("Time", time) :
+                new ObjectParameter("Time", typeof(System.TimeSpan));
+    
+            var teacherParameter = teacher.HasValue ?
+                new ObjectParameter("Teacher", teacher) :
+                new ObjectParameter("Teacher", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetLessonEntities_Result>("GetLessonEntities", dateParameter, timeParameter, teacherParameter);
+        }
     }
 }

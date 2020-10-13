@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace ClassSchedule.Pages
 {
@@ -21,10 +22,17 @@ namespace ClassSchedule.Pages
     /// </summary>
     public partial class groupPage : Page
     {
+        DispatcherTimer timer = new DispatcherTimer();
+        int countData;
         public groupPage()
         {
             InitializeComponent();
             groupsDataGrid.ItemsSource = AppData.Context.Groups.Where(c => c.IsDeleted == false).ToList();
+
+            timer.Interval = TimeSpan.Parse("00:00:05");
+            timer.Tick += Timer_Tick;
+            timer.Start();
+            countData = AppData.Context.Groups.Count();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -32,11 +40,23 @@ namespace ClassSchedule.Pages
             updateGroups();
         }
 
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            timer.Stop();
+            if (countData < AppData.Context.Groups.Count() || countData > AppData.Context.Groups.Count())
+            {
+                countData = AppData.Context.Groups.Count();
+                updateGroups();
+            }
+            timer.Start();
+        }
+
         public void updateGroups()
         {
             var CurrentGroup = AppData.Context.Groups.Where(c => c.IsDeleted == false).ToList();
             CurrentGroup = CurrentGroup.Where(c => c.Name.ToLower().Contains(searchTextBox.Text.ToLower())).ToList();
             groupsDataGrid.ItemsSource = CurrentGroup;
+            timer.Start();
         }
 
         private void searchTextBox_SelectionChanged(object sender, RoutedEventArgs e)

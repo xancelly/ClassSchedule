@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using WpfMessageBoxLibrary;
 
 namespace ClassSchedule.Pages
@@ -22,9 +23,29 @@ namespace ClassSchedule.Pages
     /// </summary>
     public partial class trialPage : Page
     {
+        DataGrid[] trialDataGrids;
+        TimeSpan[] time;
+        DispatcherTimer timer = new DispatcherTimer();
+        int countData;
         public trialPage()
         {
             InitializeComponent();
+
+            timer.Interval = TimeSpan.Parse("00:00:05");
+            timer.Tick += Timer_Tick;
+            timer.Start();
+            countData = AppData.Context.TrialLesson.Count();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            timer.Stop();
+            if (countData < AppData.Context.TrialLesson.Count() || countData > AppData.Context.TrialLesson.Count())
+            {
+                countData = AppData.Context.TrialLesson.Count();
+                updateData();
+            }
+            timer.Start();
         }
 
         public void updateData()
@@ -87,8 +108,8 @@ namespace ClassSchedule.Pages
                 Properties.Settings.Default.dayStart = "Sunday";
             }
 
-            DataGrid[] trialDataGrids = new[] { trialNineDataGrid, trialTenDataGrid, trialElevenDataGrid, trialTwelveDataGrid, trialThirteenDataGrid, trialFourteenDataGrid, trialFifteenDataGrid, trialSixteenDataGrid, trialSeventeenDataGrid, trialEighteenDataGrid, trialNineteenDataGrid, trialTwentyDataGrid, trialTwentyOneDataGrid };
-            TimeSpan[] time = new TimeSpan[] { TimeSpan.Parse("09:00"),  TimeSpan.Parse("10:00"), TimeSpan.Parse("11:00"), TimeSpan.Parse("12:00"), TimeSpan.Parse("13:00"), TimeSpan.Parse("14:00"), TimeSpan.Parse("15:00"), TimeSpan.Parse("16:00"),  TimeSpan.Parse("17:00"), TimeSpan.Parse("18:00"),  TimeSpan.Parse("19:00"),  TimeSpan.Parse("20:00"), TimeSpan.Parse("21:00"), };
+            trialDataGrids = new[] { trialNineDataGrid, trialTenDataGrid, trialElevenDataGrid, trialTwelveDataGrid, trialThirteenDataGrid, trialFourteenDataGrid, trialFifteenDataGrid, trialSixteenDataGrid, trialSeventeenDataGrid, trialEighteenDataGrid, trialNineteenDataGrid, trialTwentyDataGrid, trialTwentyOneDataGrid };
+            time = new TimeSpan[] { TimeSpan.Parse("09:00"), TimeSpan.Parse("10:00"), TimeSpan.Parse("11:00"), TimeSpan.Parse("12:00"), TimeSpan.Parse("13:00"), TimeSpan.Parse("14:00"), TimeSpan.Parse("15:00"), TimeSpan.Parse("16:00"), TimeSpan.Parse("17:00"), TimeSpan.Parse("18:00"), TimeSpan.Parse("19:00"), TimeSpan.Parse("20:00"), TimeSpan.Parse("21:00"), };
             for (int i = 0; i < trialDataGrids.Length; i++)
             {
                 for (int j = 0; j < time.Length; j++)
@@ -98,88 +119,10 @@ namespace ClassSchedule.Pages
                     if (trialLesson.FirstOrDefault() != null)
                     {
                         trialDataGrids[j].ItemsSource = trialLesson.ToList();
+                        break;
                     }
                 }
             }
-
-            //var trialNine = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && (c.Time == "09:00" || c.Time == "9:00") && c.IsDeleted == false);
-            //if (trialNine.FirstOrDefault() != null)
-            //{
-            //    trialNineDataGrid.ItemsSource = trialNine.ToList();
-            //}
-
-            //var trialTen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "10:00" && c.IsDeleted == false);
-            //if (trialTen.FirstOrDefault() != null)
-            //{
-            //    trialTenDataGrid.ItemsSource = trialTen.ToList();
-            //}
-
-            //var trialEleven = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "11:00" && c.IsDeleted == false);
-            //if (trialEleven.FirstOrDefault() != null)
-            //{
-            //    trialElevenDataGrid.ItemsSource = trialEleven.ToList();
-            //}
-
-            //var trialTwelve = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "12:00" && c.IsDeleted == false);
-            //if (trialTwelve.FirstOrDefault() != null)
-            //{
-            //    trialTwelveDataGrid.ItemsSource = trialTwelve.ToList();
-            //}
-
-            //var trialThirteen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "13:00" && c.IsDeleted == false);
-            //if (trialThirteen.FirstOrDefault() != null)
-            //{
-            //    trialThirteenDataGrid.ItemsSource = trialThirteen.ToList();
-            //}
-
-            //var trialFourteen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "14:00" && c.IsDeleted == false);
-            //if (trialFourteen.FirstOrDefault() != null)
-            //{
-            //    trialFourteenDataGrid.ItemsSource = trialFourteen.ToList();
-            //}
-
-            //var trialFifteen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "15:00" && c.IsDeleted == false);
-            //if (trialFifteen.FirstOrDefault() != null)
-            //{
-            //    trialFifteenDataGrid.ItemsSource = trialFifteen.ToList();
-            //}
-
-            //var trialSixteen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "16:00" && c.IsDeleted == false);
-            //if (trialSixteen.FirstOrDefault() != null)
-            //{
-            //    trialSixteenDataGrid.ItemsSource = trialSixteen.ToList();
-            //}
-
-            //var trialSeventeen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "17:00" && c.IsDeleted == false);
-            //if (trialSeventeen.FirstOrDefault() != null)
-            //{
-            //    trialSeventeenDataGrid.ItemsSource = trialSeventeen.ToList();
-            //}
-
-            //var trialEighteen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "18:00" && c.IsDeleted == false);
-            //if (trialEighteen.FirstOrDefault() != null)
-            //{
-            //    trialEighteenDataGrid.ItemsSource = trialEighteen.ToList();
-            //}
-
-            //var trialNineteen = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "19:00" && c.IsDeleted == false);
-            //if (trialNineteen.FirstOrDefault() != null)
-            //{
-            //    trialNineteenDataGrid.ItemsSource = trialNineteen.ToList();
-            //}
-
-            //var trialTwenty = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "20:00" && c.IsDeleted == false);
-            //if (trialTwenty.FirstOrDefault() != null)
-            //{
-            //    trialTwentyDataGrid.ItemsSource = trialTwenty.ToList();
-            //}
-
-            //var trialTwentyOne = AppData.Context.TrialLesson.Where(c => c.Date == selectedDate && c.Time == "21:00" && c.IsDeleted == false);
-            //if (trialTwentyOne.FirstOrDefault() != null)
-            //{
-            //    trialTwentyOneDataGrid.ItemsSource = trialTwentyOne.ToList();
-            //}
-
         }
 
         private void trialCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
@@ -224,501 +167,47 @@ namespace ClassSchedule.Pages
 
         private void selectedDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (trialNineDataGrid.IsMouseOver == true)
+            for (int i = 0; i < trialDataGrids.Length; i++)
             {
-                TrialLesson CurrentTrialLesson = trialNineDataGrid.SelectedItem as TrialLesson;
-                if (CurrentTrialLesson != null)
+                if (trialDataGrids[i].IsMouseOver == true)
                 {
-                    var editTrialLesson = new WpfMessageBoxProperties()
+                    TrialLesson CurrentTrialLesson = trialDataGrids[i].SelectedItem as TrialLesson;
+                    if (CurrentTrialLesson != null)
                     {
-                        Title = "Внимание!",
-                        Button = MessageBoxButton.YesNoCancel,
-                        ButtonYesText = "Изменить",
-                        ButtonNoText = "Удалить",
-                        ButtonCancelText = "Отмена",
-                        Image = MessageBoxImage.Question,
-                        Header = "Что вы хотите сделать с существующим пробным занятием?",
-                    };
-                    MessageBoxResult result = WpfMessageBox.Show(ref editTrialLesson);
-
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        NavigationService.Navigate(new editTrialPage(CurrentTrialLesson));
-                    }
-                    else if (result == MessageBoxResult.No)
-                    {
-                        if (MessageBox.Show("Вы действительно хотите удалить пробное занятие?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                        var editTrialLesson = new WpfMessageBoxProperties()
                         {
-                            CurrentTrialLesson.IsDeleted = true;
-                            AppData.Context.SaveChanges();
-                            Page_Loaded(null, null);
-                            MessageBox.Show("Пробное занятие было удалено!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
-                        }
-                    }
+                            Title = "Внимание!",
+                            Button = MessageBoxButton.YesNoCancel,
+                            ButtonYesText = "Изменить",
+                            ButtonNoText = "Удалить",
+                            ButtonCancelText = "Отмена",
+                            Image = MessageBoxImage.Question,
+                            Header = "Что вы хотите сделать с существующим пробным занятием?",
+                        };
+                        MessageBoxResult result = WpfMessageBox.Show(ref editTrialLesson);
 
-                }
-                else
-                {
-                    MessageBox.Show("Выберите занятие!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        if (result == MessageBoxResult.Yes)
+                        {
+                            NavigationService.Navigate(new editTrialPage(CurrentTrialLesson));
+                        }
+                        else if (result == MessageBoxResult.No)
+                        {
+                            if (MessageBox.Show("Вы действительно хотите удалить пробное занятие?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                            {
+                                CurrentTrialLesson.IsDeleted = true;
+                                AppData.Context.SaveChanges();
+                                Page_Loaded(null, null);
+                                MessageBox.Show("Пробное занятие было удалено!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Выберите занятие!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
             }
-            else if (trialTenDataGrid.IsMouseOver == true)
-            {
-                TrialLesson CurrentTrialLesson = trialTenDataGrid.SelectedItem as TrialLesson;
-                if (CurrentTrialLesson != null)
-                {
-                    var editTrialLesson = new WpfMessageBoxProperties()
-                    {
-                        Title = "Внимание!",
-                        Button = MessageBoxButton.YesNoCancel,
-                        ButtonYesText = "Изменить",
-                        ButtonNoText = "Удалить",
-                        ButtonCancelText = "Отмена",
-                        Image = MessageBoxImage.Question,
-                        Header = "Что вы хотите сделать с существующим пробным занятием?",
-                    };
-                    MessageBoxResult result = WpfMessageBox.Show(ref editTrialLesson);
-
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        NavigationService.Navigate(new editTrialPage(CurrentTrialLesson));
-                    }
-                    else if (result == MessageBoxResult.No)
-                    {
-                        if (MessageBox.Show("Вы действительно хотите удалить пробное занятие?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                        {
-                            CurrentTrialLesson.IsDeleted = true;
-                            AppData.Context.SaveChanges();
-                            Page_Loaded(null, null);
-                            MessageBox.Show("Пробное занятие было удалено!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
-                        }
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Выберите занятие!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            else if (trialElevenDataGrid.IsMouseOver == true)
-            {
-                TrialLesson CurrentTrialLesson = trialElevenDataGrid.SelectedItem as TrialLesson;
-                if (CurrentTrialLesson != null)
-                {
-                    var editTrialLesson = new WpfMessageBoxProperties()
-                    {
-                        Title = "Внимание!",
-                        Button = MessageBoxButton.YesNoCancel,
-                        ButtonYesText = "Изменить",
-                        ButtonNoText = "Удалить",
-                        ButtonCancelText = "Отмена",
-                        Image = MessageBoxImage.Question,
-                        Header = "Что вы хотите сделать с существующим пробным занятием?",
-                    };
-                    MessageBoxResult result = WpfMessageBox.Show(ref editTrialLesson);
-
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        NavigationService.Navigate(new editTrialPage(CurrentTrialLesson));
-                    }
-                    else if (result == MessageBoxResult.No)
-                    {
-                        if (MessageBox.Show("Вы действительно хотите удалить пробное занятие?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                        {
-                            CurrentTrialLesson.IsDeleted = true;
-                            AppData.Context.SaveChanges();
-                            Page_Loaded(null, null);
-                            MessageBox.Show("Пробное занятие было удалено!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
-                        }
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Выберите занятие!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            else if (trialTwelveDataGrid.IsMouseOver == true)
-            {
-                TrialLesson CurrentTrialLesson = trialTwelveDataGrid.SelectedItem as TrialLesson;
-                if (CurrentTrialLesson != null)
-                {
-                    var editTrialLesson = new WpfMessageBoxProperties()
-                    {
-                        Title = "Внимание!",
-                        Button = MessageBoxButton.YesNoCancel,
-                        ButtonYesText = "Изменить",
-                        ButtonNoText = "Удалить",
-                        ButtonCancelText = "Отмена",
-                        Image = MessageBoxImage.Question,
-                        Header = "Что вы хотите сделать с существующим пробным занятием?",
-                    };
-                    MessageBoxResult result = WpfMessageBox.Show(ref editTrialLesson);
-
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        NavigationService.Navigate(new editTrialPage(CurrentTrialLesson));
-                    }
-                    else if (result == MessageBoxResult.No)
-                    {
-                        if (MessageBox.Show("Вы действительно хотите удалить пробное занятие?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                        {
-                            CurrentTrialLesson.IsDeleted = true;
-                            AppData.Context.SaveChanges();
-                            Page_Loaded(null, null);
-                            MessageBox.Show("Пробное занятие было удалено!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
-                        }
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Выберите занятие!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            else if (trialThirteenDataGrid.IsMouseOver == true)
-            {
-                TrialLesson CurrentTrialLesson = trialThirteenDataGrid.SelectedItem as TrialLesson;
-                if (CurrentTrialLesson != null)
-                {
-                    var editTrialLesson = new WpfMessageBoxProperties()
-                    {
-                        Title = "Внимание!",
-                        Button = MessageBoxButton.YesNoCancel,
-                        ButtonYesText = "Изменить",
-                        ButtonNoText = "Удалить",
-                        ButtonCancelText = "Отмена",
-                        Image = MessageBoxImage.Question,
-                        Header = "Что вы хотите сделать с существующим пробным занятием?",
-                    };
-                    MessageBoxResult result = WpfMessageBox.Show(ref editTrialLesson);
-
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        NavigationService.Navigate(new editTrialPage(CurrentTrialLesson));
-                    }
-                    else if (result == MessageBoxResult.No)
-                    {
-                        if (MessageBox.Show("Вы действительно хотите удалить пробное занятие?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                        {
-                            CurrentTrialLesson.IsDeleted = true;
-                            AppData.Context.SaveChanges();
-                            Page_Loaded(null, null);
-                            MessageBox.Show("Пробное занятие было удалено!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
-                        }
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Выберите занятие!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            else if (trialFourteenDataGrid.IsMouseOver == true)
-            {
-                TrialLesson CurrentTrialLesson = trialFourteenDataGrid.SelectedItem as TrialLesson;
-                if (CurrentTrialLesson != null)
-                {
-                    var editTrialLesson = new WpfMessageBoxProperties()
-                    {
-                        Title = "Внимание!",
-                        Button = MessageBoxButton.YesNoCancel,
-                        ButtonYesText = "Изменить",
-                        ButtonNoText = "Удалить",
-                        ButtonCancelText = "Отмена",
-                        Image = MessageBoxImage.Question,
-                        Header = "Что вы хотите сделать с существующим пробным занятием?",
-                    };
-                    MessageBoxResult result = WpfMessageBox.Show(ref editTrialLesson);
-
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        NavigationService.Navigate(new editTrialPage(CurrentTrialLesson));
-                    }
-                    else if (result == MessageBoxResult.No)
-                    {
-                        if (MessageBox.Show("Вы действительно хотите удалить пробное занятие?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                        {
-                            CurrentTrialLesson.IsDeleted = true;
-                            AppData.Context.SaveChanges();
-                            Page_Loaded(null, null);
-                            MessageBox.Show("Пробное занятие было удалено!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
-                        }
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Выберите занятие!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            else if (trialFifteenDataGrid.IsMouseOver == true)
-            {
-                TrialLesson CurrentTrialLesson = trialFifteenDataGrid.SelectedItem as TrialLesson;
-                if (CurrentTrialLesson != null)
-                {
-                    var editTrialLesson = new WpfMessageBoxProperties()
-                    {
-                        Title = "Внимание!",
-                        Button = MessageBoxButton.YesNoCancel,
-                        ButtonYesText = "Изменить",
-                        ButtonNoText = "Удалить",
-                        ButtonCancelText = "Отмена",
-                        Image = MessageBoxImage.Question,
-                        Header = "Что вы хотите сделать с существующим пробным занятием?",
-                    };
-                    MessageBoxResult result = WpfMessageBox.Show(ref editTrialLesson);
-
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        NavigationService.Navigate(new editTrialPage(CurrentTrialLesson));
-                    }
-                    else if (result == MessageBoxResult.No)
-                    {
-                        if (MessageBox.Show("Вы действительно хотите удалить пробное занятие?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                        {
-                            CurrentTrialLesson.IsDeleted = true;
-                            AppData.Context.SaveChanges();
-                            Page_Loaded(null, null);
-                            MessageBox.Show("Пробное занятие было удалено!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
-                        }
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Выберите занятие!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            else if (trialSixteenDataGrid.IsMouseOver == true)
-            {
-                TrialLesson CurrentTrialLesson = trialSixteenDataGrid.SelectedItem as TrialLesson;
-                if (CurrentTrialLesson != null)
-                {
-                    var editTrialLesson = new WpfMessageBoxProperties()
-                    {
-                        Title = "Внимание!",
-                        Button = MessageBoxButton.YesNoCancel,
-                        ButtonYesText = "Изменить",
-                        ButtonNoText = "Удалить",
-                        ButtonCancelText = "Отмена",
-                        Image = MessageBoxImage.Question,
-                        Header = "Что вы хотите сделать с существующим пробным занятием?",
-                    };
-                    MessageBoxResult result = WpfMessageBox.Show(ref editTrialLesson);
-
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        NavigationService.Navigate(new editTrialPage(CurrentTrialLesson));
-                    }
-                    else if (result == MessageBoxResult.No)
-                    {
-                        if (MessageBox.Show("Вы действительно хотите удалить пробное занятие?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                        {
-                            CurrentTrialLesson.IsDeleted = true;
-                            AppData.Context.SaveChanges();
-                            Page_Loaded(null, null);
-                            MessageBox.Show("Пробное занятие было удалено!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
-                        }
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Выберите занятие!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            else if (trialSeventeenDataGrid.IsMouseOver == true)
-            {
-                TrialLesson CurrentTrialLesson = trialSeventeenDataGrid.SelectedItem as TrialLesson;
-                if (CurrentTrialLesson != null)
-                {
-                    var editTrialLesson = new WpfMessageBoxProperties()
-                    {
-                        Title = "Внимание!",
-                        Button = MessageBoxButton.YesNoCancel,
-                        ButtonYesText = "Изменить",
-                        ButtonNoText = "Удалить",
-                        ButtonCancelText = "Отмена",
-                        Image = MessageBoxImage.Question,
-                        Header = "Что вы хотите сделать с существующим пробным занятием?",
-                    };
-                    MessageBoxResult result = WpfMessageBox.Show(ref editTrialLesson);
-
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        NavigationService.Navigate(new editTrialPage(CurrentTrialLesson));
-                    }
-                    else if (result == MessageBoxResult.No)
-                    {
-                        if (MessageBox.Show("Вы действительно хотите удалить пробное занятие?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                        {
-                            CurrentTrialLesson.IsDeleted = true;
-                            AppData.Context.SaveChanges();
-                            Page_Loaded(null, null);
-                            MessageBox.Show("Пробное занятие было удалено!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
-                        }
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Выберите занятие!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            else if (trialEighteenDataGrid.IsMouseOver == true)
-            {
-                TrialLesson CurrentTrialLesson = trialEighteenDataGrid.SelectedItem as TrialLesson;
-                if (CurrentTrialLesson != null)
-                {
-                    var editTrialLesson = new WpfMessageBoxProperties()
-                    {
-                        Title = "Внимание!",
-                        Button = MessageBoxButton.YesNoCancel,
-                        ButtonYesText = "Изменить",
-                        ButtonNoText = "Удалить",
-                        ButtonCancelText = "Отмена",
-                        Image = MessageBoxImage.Question,
-                        Header = "Что вы хотите сделать с существующим пробным занятием?",
-                    };
-                    MessageBoxResult result = WpfMessageBox.Show(ref editTrialLesson);
-
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        NavigationService.Navigate(new editTrialPage(CurrentTrialLesson));
-                    }
-                    else if (result == MessageBoxResult.No)
-                    {
-                        if (MessageBox.Show("Вы действительно хотите удалить пробное занятие?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                        {
-                            CurrentTrialLesson.IsDeleted = true;
-                            AppData.Context.SaveChanges();
-                            Page_Loaded(null, null);
-                            MessageBox.Show("Пробное занятие было удалено!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
-                        }
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Выберите занятие!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            else if (trialNineteenDataGrid.IsMouseOver == true)
-            {
-                TrialLesson CurrentTrialLesson = trialNineteenDataGrid.SelectedItem as TrialLesson;
-                if (CurrentTrialLesson != null)
-                {
-                    var editTrialLesson = new WpfMessageBoxProperties()
-                    {
-                        Title = "Внимание!",
-                        Button = MessageBoxButton.YesNoCancel,
-                        ButtonYesText = "Изменить",
-                        ButtonNoText = "Удалить",
-                        ButtonCancelText = "Отмена",
-                        Image = MessageBoxImage.Question,
-                        Header = "Что вы хотите сделать с существующим пробным занятием?",
-                    };
-                    MessageBoxResult result = WpfMessageBox.Show(ref editTrialLesson);
-
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        NavigationService.Navigate(new editTrialPage(CurrentTrialLesson));
-                    }
-                    else if (result == MessageBoxResult.No)
-                    {
-                        if (MessageBox.Show("Вы действительно хотите удалить пробное занятие?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                        {
-                            CurrentTrialLesson.IsDeleted = true;
-                            AppData.Context.SaveChanges();
-                            Page_Loaded(null, null);
-                            MessageBox.Show("Пробное занятие было удалено!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
-                        }
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Выберите занятие!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            else if (trialTwentyDataGrid.IsMouseOver == true)
-            {
-                TrialLesson CurrentTrialLesson = trialTwentyDataGrid.SelectedItem as TrialLesson;
-                if (CurrentTrialLesson != null)
-                {
-                    var editTrialLesson = new WpfMessageBoxProperties()
-                    {
-                        Title = "Внимание!",
-                        Button = MessageBoxButton.YesNoCancel,
-                        ButtonYesText = "Изменить",
-                        ButtonNoText = "Удалить",
-                        ButtonCancelText = "Отмена",
-                        Image = MessageBoxImage.Question,
-                        Header = "Что вы хотите сделать с существующим пробным занятием?",
-                    };
-                    MessageBoxResult result = WpfMessageBox.Show(ref editTrialLesson);
-
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        NavigationService.Navigate(new editTrialPage(CurrentTrialLesson));
-                    }
-                    else if (result == MessageBoxResult.No)
-                    {
-                        if (MessageBox.Show("Вы действительно хотите удалить пробное занятие?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                        {
-                            CurrentTrialLesson.IsDeleted = true;
-                            AppData.Context.SaveChanges();
-                            Page_Loaded(null, null);
-                            MessageBox.Show("Пробное занятие было удалено!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
-                        }
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Выберите занятие!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            else if (trialTwentyOneDataGrid.IsMouseOver == true)
-            {
-                TrialLesson CurrentTrialLesson = trialTwentyOneDataGrid.SelectedItem as TrialLesson;
-                if (CurrentTrialLesson != null)
-                {
-                    var editTrialLesson = new WpfMessageBoxProperties()
-                    {
-                        Title = "Внимание!",
-                        Button = MessageBoxButton.YesNoCancel,
-                        ButtonYesText = "Изменить",
-                        ButtonNoText = "Удалить",
-                        ButtonCancelText = "Отмена",
-                        Image = MessageBoxImage.Question,
-                        Header = "Что вы хотите сделать с существующим пробным занятием?",
-                    };
-                    MessageBoxResult result = WpfMessageBox.Show(ref editTrialLesson);
-
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        NavigationService.Navigate(new editTrialPage(CurrentTrialLesson));
-                    }
-                    else if (result == MessageBoxResult.No)
-                    {
-                        if (MessageBox.Show("Вы действительно хотите удалить пробное занятие?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                        {
-                            CurrentTrialLesson.IsDeleted = true;
-                            AppData.Context.SaveChanges();
-                            Page_Loaded(null, null);
-                            MessageBox.Show("Пробное занятие было удалено!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
-                        }
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Выберите занятие!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-
         }
     }
 }
