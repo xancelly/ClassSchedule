@@ -1,0 +1,106 @@
+﻿<Page x:Class="ClassSchedule.Pages.lessonPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClassSchedule.Pages"
+      mc:Ignorable="d" 
+      Loaded="Page_Loaded"
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="lessonPage">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+        <DataGrid x:Name="lessonDataGrid"
+                  DockPanel.Dock="Left"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  Width="500"
+                  Height="500"
+                  CanUserAddRows="False"
+                  VirtualizingPanel.IsVirtualizing="True"
+                  VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                  VirtualizingPanel.ScrollUnit="Pixel"
+                  VirtualizingPanel.VirtualizationMode="Recycling"
+                  VirtualizingPanel.IsContainerVirtualizable="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Продолжительность"
+                                    Width="*"
+                                    Binding="{Binding LessonTime}" />
+                <DataGridTextColumn Header="Преподаватель"
+                                    Width="*"
+                                    Binding="{Binding Teacher.FirstName}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid x:Name="clientLessonDataGrid"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  Width="500"
+                  Height="500"
+                  DockPanel.Dock="Left"
+                  Margin="0,0,5,0"
+                  CanUserAddRows="False"
+                  VirtualizingPanel.IsVirtualizing="True"
+                  VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                  VirtualizingPanel.ScrollUnit="Pixel"
+                  VirtualizingPanel.VirtualizationMode="Recycling"
+                  VirtualizingPanel.IsContainerVirtualizable="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Обучающийся"
+                                    Width="3*">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding  StringFormat="{} {0} {1}">
+                            <Binding Path="Client.FirstName" />
+                            <Binding Path="Client.LastName" />
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridTemplateColumn Header="Оплата"
+                                        Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Path=IsPaid}"
+                                      Checked="PaidAndAttendance"
+                                      Name="paid"
+                                      Unchecked="PaidAndAttendance"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Явка"
+                                        Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Path=IsAttendance}"
+                                      Checked="PaidAndAttendance"
+                                      Name="attendance"
+                                      Unchecked="PaidAndAttendance"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center">
+            <Button Style="{StaticResource normalButton}" 
+                    Content="Изменить"
+                    x:Name="EditButton"
+                    Click="EditButton_Click" />
+            <Button x:Name="DeleteButton" 
+                    Style="{StaticResource normalButton}"
+                    Content="Удалить"
+                    Click="DeleteButton_Click" />
+        </StackPanel>
+    </Grid>
+</Page>

@@ -129,9 +129,6 @@
     <Compile Include="Entities\GetLessonEntities_Result.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\GetLessonLINQ_Result.cs">
-      <DependentUpon>DataBase.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entities\Groups.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
@@ -139,15 +136,6 @@
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Lesson.cs">
-      <DependentUpon>DataBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>DataBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\sp_helpdiagrams_Result.cs">
-      <DependentUpon>DataBase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\sysdiagrams.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Teacher.cs">
@@ -199,6 +187,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\lessonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\mainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -244,6 +236,9 @@
     </Compile>
     <Compile Include="Pages\groupPage.xaml.cs">
       <DependentUpon>groupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\lessonPage.xaml.cs">
+      <DependentUpon>lessonPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\mainMenu.xaml.cs">
       <DependentUpon>mainMenu.xaml</DependentUpon>

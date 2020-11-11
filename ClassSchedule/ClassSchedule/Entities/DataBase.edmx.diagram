@@ -4,30 +4,29 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a62b5ad370374715bd8ccba14adab80e" Name="Diagram1">
-        <EntityTypeShape EntityType="ClassScheduleModel.Client" Width="1.5" PointX="6" PointY="9.875" />
-        <EntityTypeShape EntityType="ClassScheduleModel.ClientDayOfWeek" Width="1.5" PointX="8.25" PointY="7.875" />
-        <EntityTypeShape EntityType="ClassScheduleModel.ClientLesson" Width="1.5" PointX="8.25" PointY="4.5" />
-        <EntityTypeShape EntityType="ClassScheduleModel.DayOfWeek" Width="1.5" PointX="3.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ClassScheduleModel.Groups" Width="1.5" PointX="0.75" PointY="8.875" />
-        <EntityTypeShape EntityType="ClassScheduleModel.LanguageLevel" Width="1.5" PointX="3.75" PointY="10.75" />
-        <EntityTypeShape EntityType="ClassScheduleModel.Lesson" Width="1.5" PointX="3" PointY="4" />
-        <EntityTypeShape EntityType="ClassScheduleModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="11" />
-        <EntityTypeShape EntityType="ClassScheduleModel.Teacher" Width="1.5" PointX="0.75" PointY="4.125" />
-        <EntityTypeShape EntityType="ClassScheduleModel.TeacherDayOfWeek" Width="1.5" PointX="6" PointY="4.5" />
-        <EntityTypeShape EntityType="ClassScheduleModel.TrialLesson" Width="1.5" PointX="6" PointY="15" />
-        <EntityTypeShape EntityType="ClassScheduleModel.TypeLesson" Width="1.5" PointX="0.75" PointY="1.625" />
-        <AssociationConnector Association="ClassScheduleModel.FK_Client_LanguageLevel" />
-        <AssociationConnector Association="ClassScheduleModel.FK_ClientDayOfWeek_Client" />
-        <AssociationConnector Association="ClassScheduleModel.FK_ClientLesson_Client" />
-        <AssociationConnector Association="ClassScheduleModel.FK_ClientDayOfWeek_DayOfWeek" />
-        <AssociationConnector Association="ClassScheduleModel.FK_ClientLesson_Lesson" />
-        <AssociationConnector Association="ClassScheduleModel.FK_TeacherDayOfWeek_DayOfWeek" />
-        <AssociationConnector Association="ClassScheduleModel.FK_Lesson_Group" />
-        <AssociationConnector Association="ClassScheduleModel.FK_TrialLesson_LanguageLevel" />
-        <AssociationConnector Association="ClassScheduleModel.FK_Lesson_Teacher" />
-        <AssociationConnector Association="ClassScheduleModel.FK_Lesson_TypeLesson" />
-        <AssociationConnector Association="ClassScheduleModel.FK_TeacherDayOfWeek_Teacher" />
+      <Diagram DiagramId="a6ad2705c69c446a836ad08207ff8863" Name="Diagram1">
+        <EntityTypeShape EntityType="ClassScheduleTestModel.Client" Width="1.5" PointX="6" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassScheduleTestModel.ClientDayOfWeek" Width="1.5" PointX="8.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassScheduleTestModel.ClientLesson" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassScheduleTestModel.DayOfWeek" Width="1.5" PointX="3.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassScheduleTestModel.Groups" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassScheduleTestModel.LanguageLevel" Width="1.5" PointX="3.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassScheduleTestModel.Lesson" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassScheduleTestModel.Teacher" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassScheduleTestModel.TeacherDayOfWeek" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassScheduleTestModel.TrialLesson" Width="1.5" PointX="6" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassScheduleTestModel.TypeLesson" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="ClassScheduleTestModel.FK_Client_LanguageLevel" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassScheduleTestModel.FK_ClientDayOfWeek_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassScheduleTestModel.FK_ClientLesson_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassScheduleTestModel.FK_ClientDayOfWeek_DayOfWeek" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassScheduleTestModel.FK_ClientLesson_Lesson" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassScheduleTestModel.FK_TeacherDayOfWeek_DayOfWeek" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassScheduleTestModel.FK_Lesson_Group" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassScheduleTestModel.FK_TrialLesson_LanguageLevel" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassScheduleTestModel.FK_Lesson_Teacher" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassScheduleTestModel.FK_Lesson_TypeLesson" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassScheduleTestModel.FK_TeacherDayOfWeek_Teacher" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

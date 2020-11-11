@@ -8,9 +8,9 @@ namespace ClassSchedule.Entities
 {
     class AppData
     {
-        public static ClassScheduleEntities Context
+        public static ClassScheduleTestEntities Context
         {
             get; set;
-        } = new ClassScheduleEntities();
+        } = new ClassScheduleTestEntities();
     }
 }

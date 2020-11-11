@@ -26,6 +26,7 @@ namespace ClassSchedule.Pages
     {
         TimeSpan[] time;
         string[] day;
+        int ItemId = 0;
         Teacher CurrentTeacher = null;
         public testPage()
         {
@@ -95,7 +96,7 @@ namespace ClassSchedule.Pages
 
                 using (SqlConnection connection = new SqlConnection())
                 {
-                    connection.ConnectionString = @"data source=DESKTOP-SJAS45C;initial catalog=ClassSchedule;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework;";
+                    connection.ConnectionString = @"data source=77.73.92.35;initial catalog=ClassScheduleTest;user id=britanica_user;password=@Rtt2020nica123;MultipleActiveResultSets=True;App=EntityFramework;";
                     try
                     {
                         connection.Open();
@@ -215,12 +216,20 @@ namespace ClassSchedule.Pages
 
         private void showLesson(object sender, MouseButtonEventArgs e)
         {
-            //int ItemId = Int32.Parse(((TextBlock)this.FindName($"{((ListViewItem)((ListView)sender).SelectedItem).Name}Id")).Text);
-            //Lesson CurrentLesson = AppData.Context.Lesson.Where(c => c.Id == ItemId).FirstOrDefault();
-            //if (CurrentLesson != null)
-            //{
-                
-            //}
+            try
+            {
+                ItemId = Int32.Parse(((TextBlock)this.FindName($"{((ListViewItem)sender).Name}Id")).Text);
+                Lesson CurrentLesson = AppData.Context.Lesson.Where(c => c.Id == ItemId).FirstOrDefault();
+                if (CurrentLesson != null)
+                {
+                    NavigationService.Navigate(new lessonPage(CurrentLesson));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void teacherComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
