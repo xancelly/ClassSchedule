@@ -20,4 +20,4 @@
 </ol>
 
 <h3>Ссылки: </h3>
-<a href="https://github.com/Pizza19/Lab1">*ТЫК*</a>
+<a href="https://github.com/xancelly/ClassSchedule/">*ТЫК*</a>
